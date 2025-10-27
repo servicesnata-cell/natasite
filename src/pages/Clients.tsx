@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { User } from 'lucide-react';
-import AutoDesk from "./public/AutoDesk.svg";
-import Cisco from "./public/Cisco.svg";
-import Dell from "./public/Dell.svg";
-import JnJ from "./public/JNJ.svg";
-import Tesla from "./public/Tesla.svg";
-import Walmart from "./public/Walmart.svg";
+import AutoDesk from "./AutoDesk.svg";
+import Cisco from "./Cisco.svg";
+import Dell from "./Dell.svg";
+import JnJ from "./JNJ.svg";
+import Tesla from "./Tesla.svg";
+import Walmart from "./Walmart.svg";
 
 const clients = [
   {
