@@ -81,3 +81,11 @@
     scrollbar-width: none;
   }
 }
+
+html, body, #root {
+   margin: 0;
+   padding: 0;
+   over-flow-x: hidden;
+   width: 100%;
+   box-sizing: border-box;
+}
