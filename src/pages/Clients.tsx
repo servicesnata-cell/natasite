@@ -1,47 +1,41 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { User } from 'lucide-react';
-import AutoDesk from "./public/AutoDesk.svg";
-import Cisco from "./public/Cisco.svg";
-import Dell from "./public/Dell.svg";
-import JnJ from "./public/JNJ.svg";
-import Tesla from "./public/Tesla.svg";
-import Walmart from "./public/Walmart.svg";
 
 const clients = [
   {
     name: 'AutoDesk',
-    logo: AutoDesk,
+    logo: '/AutoDesk.svg',
     description:
       'Autodesk collaborates with Nata Consultancy Services to enhance digital design platforms, implementing cloud automation and AI-driven 3D modeling workflows.',
   },
   {
     name: 'CISCO',
-    logo: Cisco,
+    logo: '/Cisco.svg',
     description:
       'Partnering with Cisco to deliver robust network automation, cybersecurity, and intelligent infrastructure solutions across industries.',
   },
   {
     name: 'Dell Technologies',
-    logo: Dell,
+    logo: '/Dell.svg',
     description:
       'Dell leverages Nata Consultancy’s cloud-native expertise for scalable infrastructure solutions, powering seamless business operations worldwide.',
   },
   {
     name: 'Johnson & Johnson',
-    logo: JnJ,
+    logo: '/JNJ.svg',
     description:
       'Collaborating with J&J to integrate digital healthcare technologies and data-driven insights that improve patient care globally.',
   },
   {
     name: 'Tesla',
-    logo: Tesla,
+    logo: '/Tesla.svg',
     description:
       'Supporting Tesla’s AI and IoT initiatives through intelligent analytics, cloud systems, and sustainable technology integration.',
   },
   {
     name: 'Walmart',
-    logo: Walmart,
+    logo: '/Walmart.svg',
     description:
       'Walmart partners with Nata Consultancy to optimize retail technology platforms, enhancing customer experiences through AI and automation.',
   },
@@ -56,14 +50,14 @@ export default function Clients() {
 
     const resize = () => {
       canvas.width = window.innerWidth;
-      canvas.height = 400;
+      canvas.height = Math.min(400, window.innerHeight * 0.6);
       nodes.length = 0;
       for (let i = 0; i < 200; i++) {
         nodes.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          dx: (Math.random() - 1.5) * 0.5,
-          dy: (Math.random() - 1.5) * 0.5,
+          dx: (Math.random() - 0.5) * 0.8,
+          dy: (Math.random() - 0.5) * 0.8,
         });
       }
     };
@@ -109,7 +103,7 @@ export default function Clients() {
       {/* --- Glowing Network Header --- */}
       <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
         <canvas id="network-bg" className="absolute inset-0"></canvas>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black"></div>
         <div className="relative z-10 text-center">
           <div className="flex justify-center mb-6">
             <User size={64} className="text-cyan-400 animate-pulse" />
@@ -149,7 +143,7 @@ export default function Clients() {
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="w-48 h-auto mx-auto object-contain grayscale hover:grayscale-0 transition duration-300"
+                    className="w-48 h-auto mx-auto object-contain transition-transform duration-300 hover:scale-110"
                     onError={(e) => {
                       const img = e.target as HTMLImageElement;
                       img.style.padding = '2rem';
