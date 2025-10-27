@@ -1,47 +1,41 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { User } from 'lucide-react';
-import AutoDesk from "./AutoDesk.svg";
-import Cisco from "./Cisco.svg";
-import Dell from "./Dell.svg";
-import JnJ from "./JNJ.svg";
-import Tesla from "./Tesla.svg";
-import Walmart from "./Walmart.svg";
 
 const clients = [
   {
     name: 'AutoDesk',
-    logo: AutoDesk,
+    logo: "./AutoDesk.svg",
     description:
       'Autodesk collaborates with Nata Consultancy Services to enhance digital design platforms, implementing cloud automation and AI-driven 3D modeling workflows.',
   },
   {
     name: 'CISCO',
-    logo: Cisco,
+    logo: "./Cisco.svg",
     description:
       'Partnering with Cisco to deliver robust network automation, cybersecurity, and intelligent infrastructure solutions across industries.',
   },
   {
     name: 'Dell Technologies',
-    logo: Dell,
+    logo: "./Dell.svg",
     description:
       'Dell leverages Nata Consultancy’s cloud-native expertise for scalable infrastructure solutions, powering seamless business operations worldwide.',
   },
   {
     name: 'Johnson & Johnson',
-    logo: JnJ,
+    logo: "./JNJ.svg",
     description:
       'Collaborating with J&J to integrate digital healthcare technologies and data-driven insights that improve patient care globally.',
   },
   {
     name: 'Tesla',
-    logo: Tesla,
+    logo: "./Tesla.svg",
     description:
       'Supporting Tesla’s AI and IoT initiatives through intelligent analytics, cloud systems, and sustainable technology integration.',
   },
   {
     name: 'Walmart',
-    logo: Walmart,
+    logo: "./Walmart.svg",
     description:
       'Walmart partners with Nata Consultancy to optimize retail technology platforms, enhancing customer experiences through AI and automation.',
   },
