@@ -2,18 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
+/* -----------------------------
+   Base Layer (Global Styles)
+----------------------------- */
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Prevent text zoom issues on mobile */
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     @apply bg-black text-white antialiased;
+    /* Ensure the site fits any screen */
+    @apply min-h-screen flex flex-col;
+    overflow-x: hidden;
+  }
+
+  /* Better typography scaling */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Make images responsive by default */
+  img, video {
+    @apply max-w-full h-auto;
+    display: block;
+  }
+
+  /* Responsive container width */
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    width: 100%;
+    max-width: 1280px;
   }
 }
 
+/* -----------------------------
+   Components Layer
+----------------------------- */
+@layer components {
+  /* Optional: Add reusable responsive classes here */
+  .btn {
+    @apply inline-block px-4 py-2 rounded-md font-medium transition;
+    @apply bg-white text-black hover:bg-gray-200;
+  }
+
+  .card {
+    @apply bg-gray-900 p-6 rounded-lg shadow-md;
+  }
+}
+
+/* -----------------------------
+   Utilities Layer (Custom)
+----------------------------- */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Handle overflow safely for small screens */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

@@ -13,7 +13,7 @@ interface Particle {
 const slides = [
   {
     type: 'galaxy',
-    title: 'Welcome to \nNata Consultancy Services',
+    title: 'Nata Consultancy Services',
     subtitle: 'Transforming Businesses Through Technology Excellence',
     description:
       'Your trusted partner for innovative solutions in cloud computing, AI, and digital transformation',
