@@ -41,7 +41,7 @@ export default function Header() {
                 <span className="text-black font-bold text-xl">N</span>
               </div>
             </div>
-            <span className="text-2xl font-bold text-white">
+            <span className="text-1xl font-bold text-white">
               Nata <span>Consultancy Services</span>
             </span>
           </Link>
