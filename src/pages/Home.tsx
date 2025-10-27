@@ -65,22 +65,6 @@ export default function Home() {
           </div>
 
           <div className="relative max-w-lg mx-auto">
-            {/* Navigation Buttons */}
-            <button
-              onClick={() => setCurrentFeature((prev) => (prev - 1 + features.length) % features.length)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 bg-cyan-500 hover:bg-cyan-400 rounded-full transition-all duration-300 shadow-lg shadow-cyan-500/50 text-black"
-              aria-label="Previous feature"
-            >
-              <ChevronLeft size={24} />
-            </button>
-
-            <button
-              onClick={() => setCurrentFeature((prev) => (prev + 1) % features.length)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 bg-cyan-500 hover:bg-cyan-400 rounded-full transition-all duration-300 shadow-lg shadow-cyan-500/50 text-black"
-              aria-label="Next feature"
-            >
-              <ChevronRight size={24} />
-            </button>
 
             {/* Card Container */}
             <div 

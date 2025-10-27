@@ -26,10 +26,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md bg-black/20 ${
         isScrolled
           ? 'backdrop-blur-xl bg-black/40 shadow-2xl shadow-cyan-500/10'
-          : 'bg-transparent'
+          : ''
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">

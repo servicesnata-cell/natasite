@@ -5,37 +5,37 @@ import { User } from 'lucide-react';
 const clients = [
   {
     name: 'AutoDesk',
-    logo: './public/AutoDesk.svg',
+    logo: '/AutoDesk.svg',
     description:
       'Autodesk collaborates with Nata Consultancy Services to enhance digital design platforms, implementing cloud automation and AI-driven 3D modeling workflows.',
   },
   {
     name: 'CISCO',
-    logo: './public/Cisco.svg',
+    logo: '/Cisco.svg',
     description:
       'Partnering with Cisco to deliver robust network automation, cybersecurity, and intelligent infrastructure solutions across industries.',
   },
   {
     name: 'Dell Technologies',
-    logo: './public/Dell.svg',
+    logo: '/Dell.svg',
     description:
       'Dell leverages Nata Consultancy’s cloud-native expertise for scalable infrastructure solutions, powering seamless business operations worldwide.',
   },
   {
     name: 'Johnson & Johnson',
-    logo: './public/JNJ.svg',
+    logo: '/JNJ.svg',
     description:
       'Collaborating with J&J to integrate digital healthcare technologies and data-driven insights that improve patient care globally.',
   },
   {
     name: 'Tesla',
-    logo: './public/Tesla.svg',
+    logo: '/Tesla.svg',
     description:
       'Supporting Tesla’s AI and IoT initiatives through intelligent analytics, cloud systems, and sustainable technology integration.',
   },
   {
     name: 'Walmart',
-    logo: './public/Walmart.svg',
+    logo: '/Walmart.svg',
     description:
       'Walmart partners with Nata Consultancy to optimize retail technology platforms, enhancing customer experiences through AI and automation.',
   },
