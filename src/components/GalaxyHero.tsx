@@ -12,7 +12,7 @@ interface Particle {
 const slides = [
   {
     type: 'galaxy',
-    title: 'Welcom to NCS',
+    title: 'Welcome to NCS',
     subtitle: 'Transforming Businesses Through Technology Excellence',
     description:
       'Your trusted partner for innovative solutions in cloud computing, AI, and digital transformation',
