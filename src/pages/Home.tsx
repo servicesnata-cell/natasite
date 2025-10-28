@@ -151,7 +151,7 @@ export default function Home() {
                 ))}
               </ul>
               <a
-                href="/About"
+                href="./pages/About"
                 className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-cyan-500/50"
               >
                 Learn More About Us
@@ -212,13 +212,13 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/Contact"
+              href="./pages/Contact"
               className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-cyan-500/50"
             >
               Get Started Today
             </a>
             <a
-              href="/Services"
+              href="./pages/Services"
               className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/20"
             >
               View All Services
