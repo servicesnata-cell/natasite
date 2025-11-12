@@ -1,50 +1,156 @@
 import GalaxyHero from '../components/GalaxyHero';
 import ServicesCarousel from '../components/ServicesCarousel';
-import { Users, Globe, Award, TrendingUp, CheckCircle, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { Users, Globe, Award, TrendingUp } from 'lucide-react';
+
+// Clients list (inlined to remove separate Clients page)
+export const clients = [
+  {
+    name: 'AutoDesk',
+    logo: '/AutoDesk.svg',
+    description:
+      'Autodesk collaborates with Nata Consultancy Services to enhance digital design platforms, implementing cloud automation and AI-driven 3D modeling workflows.',
+  },
+  {
+    name: 'CISCO',
+    logo: '/Cisco.svg',
+    description:
+      'Partnering with Cisco to deliver robust network automation, cybersecurity, and intelligent infrastructure solutions across industries.',
+  },
+  {
+    name: 'Dell Technologies',
+    logo: '/Dell.svg',
+    description:
+      'Dell leverages Nata Consultancy’s cloud-native expertise for scalable infrastructure solutions, powering seamless business operations worldwide.',
+  },
+  {
+    name: 'Johnson & Johnson',
+    logo: '/JNJ.svg',
+    description:
+      'Collaborating with J&J to integrate digital healthcare technologies and data-driven insights that improve patient care globally.',
+  },
+  {
+    name: 'Tesla',
+    logo: '/Tesla.svg',
+    description:
+      'Supporting Tesla’s AI and IoT initiatives through intelligent analytics, cloud systems, and sustainable technology integration.',
+  },
+  {
+    name: 'Walmart',
+    logo: '/Walmart.svg',
+    description:
+      'Walmart partners with Nata Consultancy to optimize retail technology platforms, enhancing customer experiences through AI and automation.',
+  },
+];
+import { useEffect, useRef, useState } from 'react';
+
+// Animation hook for scroll-triggered effects
+const useScrollReveal = (threshold = 0.3) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [threshold]);
+
+  return { ref, isVisible };
+};
 
 
 export default function Home() {
-  
-  const [currentFeature, setCurrentFeature] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  
-  // Auto-flip effect
-  useEffect(() => {
-    if (isHovered) return; // Pause auto-flip when hovering
-
-    const intervalId = setInterval(() => {
-      setCurrentFeature((prev) => (prev + 1) % features.length);
-    }, 3000); // Change card every 3 seconds
-
-    return () => clearInterval(intervalId); // Cleanup on unmount
-  }, [isHovered]);
   
   const features = [
     {
       icon: Users,
       title: 'Expert Team',
       description: 'Highly skilled professionals with years of industry experience',
+      bgImage: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200',
     },
     {
       icon: Globe,
       title: 'Global Reach',
       description: 'Serving clients across India and USA with local expertise',
+      bgImage: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1200',
     },
     {
       icon: Award,
       title: 'Proven Track Record',
       description: 'Successful delivery of 500+ projects for diverse industries',
+      bgImage: 'https://images.pexels.com/photos/3182750/pexels-photo-3182750.jpeg?auto=compress&cs=tinysrgb&w=1200',
     },
     {
       icon: TrendingUp,
       title: 'Business Growth',
       description: 'Drive measurable results and accelerate your business growth',
+      bgImage: 'https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg?auto=compress&cs=tinysrgb&w=1200',
     },
   ];
 
-  
+  // Counter component with scroll animation
+  const CounterComponent = ({ targetValue, label }: { targetValue: number; label: string }) => {
+    const [displayValue, setDisplayValue] = useState(0);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const hasAnimated = useRef(false);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !hasAnimated.current) {
+            hasAnimated.current = true;
+            let currentValue = 0;
+            const step = Math.ceil(targetValue / 50); // Animate over ~50 steps for smooth effect
+            const increment = () => {
+              currentValue += step;
+              if (currentValue >= targetValue) {
+                setDisplayValue(targetValue);
+              } else {
+                setDisplayValue(currentValue);
+                requestAnimationFrame(increment);
+              }
+            };
+            increment();
+          }
+        },
+        { threshold: 0.3 }
+      );
+
+      if (sectionRef.current) {
+        observer.observe(sectionRef.current);
+      }
+
+      return () => {
+        if (sectionRef.current) {
+          observer.unobserve(sectionRef.current);
+        }
+      };
+    }, [targetValue]);
+
+    return (
+      <div ref={sectionRef} className="text-center">
+        <div className="text-5xl md:text-6xl font-bold text-white mb-2">
+          {displayValue}+
+        </div>
+        <div className="text-gray-400 text-base font-medium">{label}</div>
+      </div>
+    );
+  };
 
   return (
     <div className="bg-black">
@@ -52,190 +158,298 @@ export default function Home() {
 
       <ServicesCarousel />
 
-      <section className="py-24 bg-gradient-to-b from-black via-gray-900 to-black">
+      <section 
+        className="py-56 relative transition-all duration-500"
+        style={{
+          backgroundImage: 'url(/naw1.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      >
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/70"></div>
         
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Why Choose <span className="text-cyan-400">NCS</span>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-32">
+            <h2 className="text-6xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+              Why Choose <span className="text-white">NCS</span>
             </h2>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-300 text-2xl max-w-2xl mx-auto font-light">
               We deliver exceptional value through expertise, innovation, and dedication
             </p>
           </div>
 
-          <div className="relative max-w-lg mx-auto">
-            {/* Navigation Buttons */}
-            <button
-              onClick={() => setCurrentFeature((prev) => (prev - 1 + features.length) % features.length)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 bg-cyan-500 hover:bg-cyan-400 rounded-full transition-all duration-300 shadow-lg shadow-cyan-500/50 text-black"
-              aria-label="Previous feature"
-            >
-            </button>
+          {/* Features Grid - Content only, no boxes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div key={index} className="text-center">
+                  <div className="flex justify-center mb-10">
+                    <div className="w-32 h-32 bg-white flex items-center justify-center">
+                      <Icon className="text-black" size={64} />
+                    </div>
+                  </div>
+                  <h3 className="text-3xl font-semibold text-white mb-6">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-300 text-xl leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      <section className="py-16 bg-black">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl text-white font-semibold mb-4">Our Clients</h2>
+            <p className="text-5xl text-white font-bold mb-4">Trusted by leading organizations across industries</p>
+          </div>
 
-            <button
-              onClick={() => setCurrentFeature((prev) => (prev + 1) % features.length)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 bg-cyan-500 hover:bg-cyan-400 rounded-full transition-all duration-300 shadow-lg shadow-cyan-500/50 text-black"
-              aria-label="Next feature"
-            >
-              <ChevronRight size={24} />
-            </button>
+          <div className="overflow-hidden bg-white">
+            <style>{`
+              @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .marquee-track { display: flex; gap: 2rem; align-items: center; flex-wrap: nowrap; }
+              .marquee-item { flex: 0 0 auto; }
+              .marquee-track.animate { animation: marquee 20s linear infinite; }
+            `}</style>
 
-            {/* Card Container */}
-            <div 
-              className="relative h-[400px] perspective-1000"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <AnimatePresence mode="wait">
-                {features.map((feature, index) => {
-                  const Icon = feature.icon;
-                  return index === currentFeature ? (
-                    <motion.div
-                      key={index}
-                      initial={{ rotateY: -90, opacity: 0 }}
-                      animate={{ rotateY: 0, opacity: 1 }}
-                      exit={{ rotateY: 90, opacity: 0 }}
-                      transition={{
-                        duration: 0.1,
-                        ease: "easeOut"
-                      }}
-                      className="absolute inset-0 preserve-3d backface-hidden"
-                    >
-                      <div className="relative h-full bg-gradient-to-br from-gray-800/90 to-gray-900/90 border border-gray-700/50 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
-                        <div className="w-24 h-24 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center mb-8 shadow-lg shadow-cyan-400/20">
-                          <Icon className="text-black" size={48} />
-                        </div>
-                        <h3 className="text-3xl font-bold text-white mb-4">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-300 text-lg max-w-sm">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ) : null;
-                })}
-              </AnimatePresence>
-            </div>
-
-            {/* Pagination Dots */}
-            <div className="flex justify-center gap-2 mt-8">
-              {features.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentFeature(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentFeature 
-                      ? 'w-8 bg-cyan-400' 
-                      : 'w-2 bg-gray-600 hover:bg-gray-500'
-                  }`}
-                  aria-label={`Go to feature ${index + 1}`}
-                />
+            <div className="marquee-track animate" aria-hidden={false}>
+              {[...clients, ...clients].map((c, i) => (
+                <div key={i} className="marquee-item flex items-center justify-center w-48 h-24">
+                  <img
+                    src={c.logo}
+                    alt={c.name}
+                    className="max-h-16 object-contain grayscale opacity-90 hover:opacity-100 transition"
+                    onError={(e) => {
+                      const img = e.target as HTMLImageElement;
+                      img.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(c.name)}&background=ffffff&color=111827&size=200&bold=true`;
+                    }}
+                  />
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/20 via-blue-900/20 to-purple-900/20"></div>
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Transform Your Business with{' '}
-                <span className="text-cyan-400">Digital Excellence</span>
-              </h2>
-              <p className="text-gray-300 text-lg mb-8">
-                At Nata Consultancy Services, we combine cutting-edge technology with deep industry
-                expertise to deliver solutions that drive real business impact. Our comprehensive
-                approach ensures seamless integration and sustainable growth.
-              </p>
-              <ul className="space-y-4 mb-8">
-                {[
-                  'End-to-end digital transformation strategies',
-                  'Scalable cloud infrastructure solutions',
-                  'Advanced AI and ML implementation',
-                  '24/7 dedicated support and maintenance',
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <CheckCircle className="text-cyan-400 flex-shrink-0 mt-1" size={20} />
-                    <span className="text-gray-300">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="/about"
-                className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-cyan-500/50"
-              >
-                Learn More About Us
-              </a>
-            </div>
-
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-cyan-500/20">
-                <img
-                  src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Business transformation"
-                  className="w-full h-auto"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl opacity-20 blur-3xl"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-gradient-to-b from-black via-gray-900 to-black">
+      <section className="py-24 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Our <span className="text-cyan-400">Impact</span>
+              Our <span className="text-white">Impact</span>
             </h2>
-            <p className="text-gray-300 text-lg">Delivering measurable results for our clients</p>
+            <p className="text-gray-400 text-lg">Delivering measurable results for our clients</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: '500+', label: 'Projects Delivered' },
-              { number: '200+', label: 'Happy Clients' },
-              { number: '50+', label: 'Expert Team' },
-              { number: '15+', label: 'Years Experience' },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-cyan-400 mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-gray-400">{stat.label}</div>
-              </div>
-            ))}
+            <CounterComponent targetValue={500} label="Projects Delivered" />
+            <CounterComponent targetValue={200} label="Happy Clients" />
+            <CounterComponent targetValue={50} label="Expert Team" />
+            <CounterComponent targetValue={15} label="Years Experience" />
           </div>
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 to-blue-900/20"></div>
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <Zap className="w-16 h-16 text-cyan-400 mx-auto mb-6" />
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-gray-300 text-lg mb-8">
-            Let's discuss how we can help you achieve your goals with our innovative solutions
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-cyan-500/50"
-            >
+      <section className="py-40 relative overflow-hidden" style={{
+        backgroundImage: 'url(/cta.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}>
+        {/* Gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
+        
+        <style>{`
+          @keyframes slideInUp {
+            from {
+              opacity: 0;
+              transform: translateY(40px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          @keyframes slideInLeft {
+            from {
+              opacity: 0;
+              transform: translateX(-40px);
+            }
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+          @keyframes slideInRight {
+            from {
+              opacity: 0;
+              transform: translateX(40px);
+            }
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+          .step-visible {
+            animation: slideInUp 0.6s ease-out forwards;
+          }
+          .step-visible.left-align {
+            animation: slideInLeft 0.6s ease-out forwards;
+          }
+          .step-visible.right-align {
+            animation: slideInRight 0.6s ease-out forwards;
+          }
+          .dot-visible {
+            animation: slideInUp 0.6s ease-out forwards;
+          }
+        `}</style>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <p className="text-3xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              A clear, repeatable process<br />that takes you from discovery to delivery.
+            </p>
+            <p className="text-gray-200 text-lg max-w-3xl mx-auto">
+              Follow our proven methodology to transform your business goals into measurable results
+            </p>
+          </div>
+
+          {/* Vertical Timeline: Central line with alternating steps */}
+          <div className="relative max-w-4xl mx-auto">
+            {/* Central dotted line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cyan-400/40 via-purple-400/40 to-emerald-400/40 border-l-2 border-dashed border-white/20" style={{ top: '60px', bottom: 0 }}></div>
+
+            {/* Timeline steps */}
+            <div className="space-y-20 relative py-8">
+              
+              {/* Step 1 - Left Side */}
+              {(() => {
+                const { ref: step1Ref, isVisible: step1Visible } = useScrollReveal(0.2);
+                return (
+                  <div ref={step1Ref} className="flex items-center gap-8">
+                    <div className="w-full md:w-5/12 text-right">
+                      <div className={`bg-white/8 border border-white/20 rounded-lg p-6 hover:bg-white/12 transition-all duration-300 hover:shadow-lg ${
+                        step1Visible ? 'step-visible left-align' : 'opacity-0'
+                      }`}>
+                        <div className="flex items-center justify-end gap-3 mb-3">
+                          <div className="text-right">
+                            <h4 className="text-xl font-bold text-cyan-300">Discover</h4>
+                          </div>
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400/40 to-blue-500/40 border border-cyan-300/50 flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-500/30"></div>
+                        </div>
+                        <p className="text-gray-300 text-sm">Understand goals, stakeholders & constraints</p>
+                      </div>
+                    </div>
+                    <div className="hidden md:flex w-2/12 justify-center">
+                      <div className={`w-4 h-4 rounded-full bg-cyan-400/50 border border-cyan-300 shadow-lg shadow-cyan-400/50 ${
+                        step1Visible ? 'dot-visible' : 'opacity-0'
+                      }`}></div>
+                    </div>
+                    <div className="md:w-5/12"></div>
+                  </div>
+                );
+              })()}
+
+              {/* Step 2 - Right Side */}
+              {(() => {
+                const { ref: step2Ref, isVisible: step2Visible } = useScrollReveal(0.2);
+                return (
+                  <div ref={step2Ref} className="flex items-center gap-8">
+                    <div className="md:w-5/12"></div>
+                    <div className="hidden md:flex w-2/12 justify-center">
+                      <div className={`w-4 h-4 rounded-full bg-purple-400/50 border border-purple-300 shadow-lg shadow-purple-400/50 ${
+                        step2Visible ? 'dot-visible' : 'opacity-0'
+                      }`}></div>
+                    </div>
+                    <div className="w-full md:w-5/12">
+                      <div className={`bg-white/8 border border-white/20 rounded-lg p-6 hover:bg-white/12 transition-all duration-300 hover:shadow-lg ${
+                        step2Visible ? 'step-visible right-align' : 'opacity-0'
+                      }`}>
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400/40 to-pink-500/40 border border-purple-300/50 flex items-center justify-center font-bold text-white shadow-lg shadow-purple-500/30"></div>
+                          <div>
+                            <h4 className="text-xl font-bold text-purple-300">Plan</h4>
+                          </div>
+                        </div>
+                        <p className="text-gray-300 text-sm">Roadmap, scope and milestones</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* Step 3 - Left Side */}
+              {(() => {
+                const { ref: step3Ref, isVisible: step3Visible } = useScrollReveal(0.2);
+                return (
+                  <div ref={step3Ref} className="flex items-center gap-8">
+                    <div className="w-full md:w-5/12 text-right">
+                      <div className={`bg-white/8 border border-white/20 rounded-lg p-6 hover:bg-white/12 transition-all duration-300 hover:shadow-lg ${
+                        step3Visible ? 'step-visible left-align' : 'opacity-0'
+                      }`}>
+                        <div className="flex items-center justify-end gap-3 mb-3">
+                          <div className="text-right">
+                            <h4 className="text-xl font-bold text-amber-300">Build</h4>
+                          </div>
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400/40 to-orange-500/40 border border-amber-300/50 flex items-center justify-center font-bold text-white shadow-lg shadow-amber-500/30"></div>
+                        </div>
+                        <p className="text-gray-300 text-sm">Design, development and iterative delivery</p>
+                      </div>
+                    </div>
+                    <div className="hidden md:flex w-2/12 justify-center">
+                      <div className={`w-4 h-4 rounded-full bg-amber-400/50 border border-amber-300 shadow-lg shadow-amber-400/50 ${
+                        step3Visible ? 'dot-visible' : 'opacity-0'
+                      }`}></div>
+                    </div>
+                    <div className="md:w-5/12"></div>
+                  </div>
+                );
+              })()}
+
+              {/* Step 4 - Right Side */}
+              {(() => {
+                const { ref: step4Ref, isVisible: step4Visible } = useScrollReveal(0.2);
+                return (
+                  <div ref={step4Ref} className="flex items-center gap-8">
+                    <div className="md:w-5/12"></div>
+                    <div className="hidden md:flex w-2/12 justify-center">
+                      <div className={`w-4 h-4 rounded-full bg-emerald-400/50 border border-emerald-300 shadow-lg shadow-emerald-400/50 ${
+                        step4Visible ? 'dot-visible' : 'opacity-0'
+                      }`}></div>
+                    </div>
+                    <div className="w-full md:w-5/12">
+                      <div className={`bg-white/8 border border-white/20 rounded-lg p-6 hover:bg-white/12 transition-all duration-300 hover:shadow-lg ${
+                        step4Visible ? 'step-visible right-align' : 'opacity-0'
+                      }`}>
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400/40 to-teal-500/40 border border-emerald-300/50 flex items-center justify-center font-bold text-white shadow-lg shadow-emerald-500/30"></div>
+                          <div>
+                            <h4 className="text-xl font-bold text-emerald-300">Deliver</h4>
+                          </div>
+                        </div>
+                        <p className="text-gray-300 text-sm">Deployment, support and measurable outcomes</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+
+            </div>
+          </div>
+
+          <div className="text-center mt-16">
+            <a href="/contact" className="inline-block px-8 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold mr-4 border-none shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70 hover:scale-105 transition-all duration-300 rounded">
               Get Started Today
             </a>
-            <a
-              href="/services"
-              className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/20"
-            >
+            <a href="/services" className="inline-block px-8 py-3 bg-transparent text-white font-bold border-2 border-white hover:bg-white/10 hover:scale-105 transition-all duration-300 rounded">
               View All Services
             </a>
           </div>

@@ -21,30 +21,30 @@ export default function Header() {
     { path: '/about', label: 'About Us' },
     { path: '/contact', label: 'Contact Us' },
     { path: '/careers', label: 'Careers' },
-    { path: '/Clients', label: 'Clients' },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md bg-black/20 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'backdrop-blur-xl bg-black/40 shadow-2xl shadow-cyan-500/10'
-          : ''
+          ? 'backdrop-blur-xl bg-black/70 shadow-lg shadow-black/50 border-b border-white/10'
+          : 'backdrop-blur-md bg-black/50 border-b border-white/5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-2">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
-              <div className="relative bg-gradient-to-r from-cyan-400 to-blue-500 p-2 rounded-lg">
-                <span className="text-black font-bold text-xl">N</span>
-              </div>
-            </div>
-            <span className="text-1xl font-bold text-white">
-              Nata <span>Consultancy Services</span>
-            </span>
-          </Link>
+          <Link to="/" className="flex items-center space-x-2 group">
+  <div className="relative">
+    <div>
+      <img
+        src="/1logo.svg"
+        alt="Logo"
+        className="w-[200px] h-[100px] object-contain"
+      />
+    </div>
+  </div>
+</Link>
+
 
           <nav className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => (
@@ -53,15 +53,15 @@ export default function Header() {
                 to={link.path}
                 className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 group ${
                   location.pathname === link.path
-                    ? 'text-cyan-400'
+                    ? 'text-white'
                     : 'text-gray-300 hover:text-white'
                 }`}
               >
                 <span className="relative z-10">{link.label}</span>
                 <div
-                  className={`absolute inset-0 rounded-lg transition-all duration-300 ${
+                  className={`absolute inset-0 rounded-none transition-all duration-300 ${
                     location.pathname === link.path
-                      ? 'bg-cyan-400/10 border border-cyan-400/30'
+                      ? 'bg-white/10 border border-white/20'
                       : 'bg-white/0 group-hover:bg-white/5'
                   }`}
                 ></div>
@@ -71,7 +71,7 @@ export default function Header() {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="md:hidden text-white p-2 hover:bg-white/10 rounded-none transition-colors"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -84,9 +84,9 @@ export default function Header() {
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                className={`block px-4 py-3 rounded-none text-sm font-medium transition-all ${
                   location.pathname === link.path
-                    ? 'bg-cyan-400/10 text-cyan-400 border border-cyan-400/30'
+                    ? 'bg-white/10 text-white border border-white/20'
                     : 'text-gray-300 hover:bg-white/5 hover:text-white'
                 }`}
               >

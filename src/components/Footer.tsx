@@ -56,9 +56,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/Clients" className="text-gray-400 hover:text-cyan-400 text-sm transition-colors">
-                  Clients
-                </Link>
+                {/* Clients page removed */}
               </li>
             </ul>
           </div>

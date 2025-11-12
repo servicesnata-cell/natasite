@@ -1,241 +1,195 @@
-import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Server, DollarSign, Code, Cloud, Brain, TrendingUp, Database, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-
+import { Link } from "react-router-dom";
+import { useEffect, useRef } from 'react';
 
 const services = [
-    {
-      id: 'bpo',
-      name: 'BPO',
-      description: 'Business Process Outsourcing solutions to streamline your operations',
-      icon: Server,
-      image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'payrolls',
-      name: 'Payrolls',
-      description: 'Comprehensive payroll management and processing services',
-      icon: DollarSign,
-      image: 'https://images.pexels.com/photos/6863332/pexels-photo-6863332.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'devops',
-      name: 'DevOps',
-      description: 'Modern DevOps practices to accelerate your delivery pipeline',
-      icon: Code,
-      image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'cloud',
-      name: 'Cloud Solutions',
-      description: 'Azure, AWS, and Google Cloud infrastructure and migration',
-      icon: Cloud,
-      image: 'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'ai',
-      name: 'Artificial Intelligence',
-      description: 'AI-powered solutions to transform your business intelligence',
-      icon: Brain,
-      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'ml',
-      name: 'Machine Learning',
-      description: 'Custom ML models and predictive analytics solutions',
-      icon: TrendingUp,
-      image: 'https://images.pexels.com/photos/8439093/pexels-photo-8439093.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'etl',
-      name: 'ETL',
-      description: 'Extract, Transform, Load data pipelines and integration',
-      icon: Database,
-      image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'staffing',
-      name: 'Staffing',
-      description: 'Global staffing solutions across India and USA',
-      icon: Users,
-      image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-  ];
+  {
+    id: "bpo",
+    name: "BPO",
+    description:
+      "Business Process Outsourcing solutions to streamline your operations and improve efficiency across departments",
+    icon: "📋",
+    bgGradient: "from-blue-50 to-cyan-50",
+    accentColor: "blue",
+    image: "https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  {
+    id: "payrolls",
+    name: "Payrolls",
+    description:
+      "Comprehensive payroll management and processing services ensuring accuracy and compliance",
+    icon: "💰",
+    bgGradient: "from-green-50 to-emerald-50",
+    accentColor: "green",
+    image: "https://images.pexels.com/photos/6863332/pexels-photo-6863332.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  {
+    id: "devops",
+    name: "DevOps",
+    description:
+      "Modern DevOps practices to accelerate your delivery pipeline and enhance operational reliability",
+    icon: "⚙️",
+    bgGradient: "from-orange-50 to-amber-50",
+    accentColor: "orange",
+    image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  {
+    id: "cloud",
+    name: "Cloud Solutions",
+    description:
+      "Azure, AWS, and Google Cloud infrastructure and migration for scalable enterprise solutions",
+    icon: "☁️",
+    bgGradient: "from-purple-50 to-violet-50",
+    accentColor: "purple",
+    image: "https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  {
+    id: "ai",
+    name: "Artificial Intelligence",
+    description:
+      "AI-powered solutions to transform your business intelligence and drive data-driven decisions",
+    icon: "🤖",
+    bgGradient: "from-pink-50 to-rose-50",
+    accentColor: "pink",
+    image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  {
+    id: "ml",
+    name: "Machine Learning",
+    description:
+      "Custom ML models and predictive analytics solutions tailored to your business needs",
+    icon: "📊",
+    bgGradient: "from-indigo-50 to-blue-50",
+    accentColor: "indigo",
+    image: "https://images.pexels.com/photos/8439093/pexels-photo-8439093.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  {
+    id: "etl",
+    name: "ETL",
+    description:
+      "Extract, Transform, and Load your data efficiently with robust ETL pipelines",
+    icon: "💾",
+    bgGradient: "from-teal-50 to-cyan-50",
+    accentColor: "teal",
+    image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  {
+    id: "staffing",
+    name: "Staffing",
+    description:
+      "Connect with top talent across India and USA with our comprehensive staffing solutions",
+    icon: "👥",
+    bgGradient: "from-amber-50 to-orange-50",
+    accentColor: "amber",
+    image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+];
 
 export default function ServicesCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  
-  const totalServices = services.length;
-  const radius = 600; // Radius of the circular path
+  // ref array to hold section elements for intersection observer
+  const servicesRef = useRef<Array<HTMLElement | null>>([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isAnimating) {
-        setIsAnimating(true);
-        setCurrentIndex(prev => (prev + 1) % totalServices);
-        setTimeout(() => setIsAnimating(false), 500); 
-      }
-    }, 4000);
-    
-    return () => clearInterval(interval); 
-  }, [isAnimating, totalServices]);
+    const obs = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            el.querySelectorAll('.slide-in-left, .slide-in-right').forEach((child) => {
+              child.classList.add('visible');
+            });
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.28 }
+    );
 
-  const calculatePosition = (index: number, currentIndex: number) => {
-    const angleStep = (2 * Math.PI) / totalServices;
-    const angle = angleStep * (index - currentIndex);
-    
-    const x = Math.sin(angle) * radius;
-    const z = Math.cos(angle) * radius - radius;
-    
-    // Calculate distance from center (0-1 range)
-    const distance = Math.abs(angle) / Math.PI;
-    const scale = 1 - distance * 0.3; // Scale down items further from center
-    const blur = Math.min(distance * 8, 4); // Blur based on distance
-    
-    return {
-      x,
-      z,
-      scale,
-      blur,
-      rotateY: -angle * (180 / Math.PI), // Rotate cards to face center
-    };
-  };
+    servicesRef.current.forEach((el) => {
+      if (el) obs.observe(el);
+    });
 
-  const nextSlide = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentIndex((prev) => (prev + 1) % totalServices);
-    setTimeout(() => setIsAnimating(false), 500);
-  };
-
-  const prevSlide = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentIndex((prev) => (prev - 1 + totalServices) % totalServices);
-    setTimeout(() => setIsAnimating(false), 500);
-  };
-
-  const backgroundImage = services[currentIndex]?.image;
+    return () => obs.disconnect();
+  }, []);
 
   return (
-    <section id="services" className="relative py-24 overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-all duration-700"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      >
-        <div className="absolute inset-0 bg-black/85"></div>
+    <section id="services" className="relative bg-black">
+      <style>
+        {`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+          }
+          @keyframes pulse-glow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+          }
+          .animate-float { animation: float 4s ease-in-out infinite; }
+          .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+        `}
+      </style>
+
+      {/* Section Header */}
+      <div className="text-center py-10 relative z-10 bg-white">
+        <p className="text-gray-700 text-sm uppercase tracking-wider font-semibold mb-4">
+          SERVICES
+        </p>
+        <h2 className="text-5xl md:text-6xl font-bold text-black mb-6 tracking-tight px-6">
+          Guiding businesses to new heights with innovative solutions
+        </h2>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our <span className="text-cyan-400">Services</span>
-          </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Comprehensive solutions tailored to drive your business forward
-          </p>
-        </div>
+        {/* Services - full viewport sections, alternating alignment */}
+        <style>{`
+          .slide-in-left { transform: translateX(-48px); opacity: 0; transition: transform 700ms cubic-bezier(.2,.9,.2,1), opacity 700ms ease; }
+          .slide-in-left.visible { transform: translateX(0); opacity: 1; }
+          .slide-in-right { transform: translateX(48px); opacity: 0; transition: transform 700ms cubic-bezier(.2,.9,.2,1), opacity 700ms ease; }
+          .slide-in-right.visible { transform: translateX(0); opacity: 1; }
+        `}</style>
 
-        <div className="relative" style={{ perspective: '1500px', height: '600px' }}>
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            disabled={isAnimating}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-3 bg-cyan-500 hover:bg-cyan-400 disabled:bg-gray-600 rounded-full transition-all duration-300 shadow-lg shadow-cyan-500/50 text-black"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={nextSlide}
-            disabled={isAnimating}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-3 bg-cyan-500 hover:bg-cyan-400 disabled:bg-gray-600 rounded-full transition-all duration-300 shadow-lg shadow-cyan-500/50 text-black"
-          >
-            <ChevronRight size={24} />
-          </button>
+        <div className="relative z-10">
+          {services.map((service, index) => {
+            const isReverse = index % 2 === 1;
+            return (
+              <section
+                key={service.id}
+                className="h-screen flex items-center bg-cover bg-center bg-no-repeat relative"
+                style={{
+                  backgroundImage: `url('${service.image}')`,
+                }}
+                ref={(el) => {
+                  // attach ref for intersection observer via dataset
+                  if (!el) return;
+                  // store element for observer initialization later
+                  (servicesRef.current as any)[index] = el;
+                }}
+              >
+                {/* Dark overlay for text contrast */}
+                <div className="absolute inset-0 bg-black/60"></div>
+                <div className={`w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-0 items-center relative z-10 ${isReverse ? 'lg:flex-row-reverse' : ''}`}>
+                  <div className={`space-y-8 px-12 lg:px-20 py-20 flex flex-col justify-center h-full ${isReverse ? 'lg:text-right' : 'lg:text-left'} ${isReverse ? 'slide-in-right' : 'slide-in-left'}`}>
+                    <div className={`inline-flex items-center gap-4 text-base font-medium ${isReverse ? 'lg:justify-end' : ''} ${service.accentColor === 'blue' ? 'text-blue-400' : ''}`}>
+                      <span className={`inline-block px-4 py-2 bg-white/10 border border-white/10 text-white rounded-sm text-3xl`}>{service.icon}</span>
+                      <span className="text-white text-xl">{service.name}</span>
+                    </div>
 
-          {/* 3D Carousel Container */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div 
-              className="relative"
-              style={{ 
-                transformStyle: 'preserve-3d',
-                width: '300px',
-                height: '400px',
-              }}
-            >
-              <AnimatePresence>
-                {services.map((service, index) => {
-                  const position = calculatePosition(index, currentIndex);
-                  const Icon = service.icon;
-                  
-                  return (
-                    <motion.div
-                      key={service.id}
-                      initial={false}
-                      animate={{
-                        x: position.x,
-                        z: position.z,
-                        scale: position.scale,
-                        rotateY: position.rotateY,
-                      }}
-                      transition={{
-                        duration: 0.5,
-                        ease: "easeOut"
-                      }}
-                      style={{
-                        position: 'absolute',
-                        width: '300px',
-                        transformOrigin: 'center center',
-                        filter: `blur(${position.blur}px)`,
-                        zIndex: Math.round(position.z) * -1,
-                      }}
-                    >
-                      <Link
-                        to={`/services/${service.id}`}
-                        className="block w-full rounded-2xl overflow-hidden transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,191,255,0.8)]"
-                        style={{ background: 'linear-gradient(to bottom right, #1e1e2f, #111)' }}
-                      >
-                        <div className="relative p-6 h-[400px]">
-                          <div className="w-16 h-16 ">
-                            <Icon className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" size={32} />
-                          </div>
-                          <h3 className="text-2xl font-bold text-white mb-3">
-                            {service.name}
-                          </h3>
-                          <p className="text-gray-300">
-                            {service.description}
-                          </p>
-                          <div
-                            className="absolute inset-0 bg-cover bg-center opacity-30"
-                            style={{ backgroundImage: `url(${service.image})` }}
-                          />
-                        </div>
+                    <h3 className="text-6xl lg:text-7xl font-bold text-white leading-tight">{service.name}</h3>
+                    <p className="text-gray-300 text-2xl leading-relaxed max-w-3xl">{service.description}</p>
+
+                    <div className={isReverse ? 'lg:justify-end flex' : 'flex'}>
+                      <Link to={`/services/${service.id}`} className="mt-6 inline-block px-8 py-4 bg-white text-black font-bold text-lg rounded-none hover:bg-gray-100 transition">
+                        Learn More →
                       </Link>
-                    </motion.div>
-                  );
-                })}
-              </AnimatePresence>
-            </div>
-          </div>
-        </div>
+                    </div>
+                  </div>
 
-        {/* Pagination Dots */}
-        <div className="flex justify-center gap-2 mt-12">
-          {services.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => !isAnimating && setCurrentIndex(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex 
-                  ? 'w-8 bg-cyan-400' 
-                  : 'w-2 bg-gray-600 hover:bg-gray-500'
-              }`}
-            />
-          ))}
+                  <div className={`flex items-center justify-center h-full ${isReverse ? 'slide-in-left' : 'slide-in-right'}`}>
+                    <div className="text-[200px] select-none opacity-90">{service.icon}</div>
+                  </div>
+                </div>
+              </section>
+            );
+          })}
         </div>
-      </div>
     </section>
   );
 }

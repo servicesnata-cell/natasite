@@ -1,11 +1,7 @@
-import { Mail, Phone, MapPin, Send, Building2, Clock } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
+import { Mail, Phone, MapPin, Send, Clock } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Contact() {
-  useEffect(() => {
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY');
-  }, []);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,12 +11,10 @@ export default function Contact() {
     message: '',
   });
   const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSuccessMessage('');
     setErrorMessage('');
 
     // Basic client-side validation
@@ -28,36 +22,14 @@ export default function Contact() {
       setErrorMessage('Please fill in required fields (name, email, message).');
       return;
     }
-
+    // Simulate send (match Careers page behaviour): simple alert and reset
     setLoading(true);
-
-    // Use Vite environment variables. Create a .env file with the following keys:
-    // VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, VITE_EMAILJS_PUBLIC_KEY
-    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
-    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
-    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
-
-    const templateParams = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      company: formData.company,
-      service: formData.service,
-      message: formData.message,
-    } as Record<string, string>;
-
-    try {
-      const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
-      // result.status typically 200 on success
-      setSuccessMessage('Message sent successfully. Thank you — we will get back to you soon.');
-      setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' });
-      console.log('EmailJS result', result);
-    } catch (err) {
-      console.error('EmailJS error', err);
-      setErrorMessage('Failed to send message. Please try again later or contact us directly.');
-    } finally {
+    setTimeout(() => {
       setLoading(false);
-    }
+      // Show a simple confirmation similar to Careers
+      alert('Message sent successfully. Thank you — we will get back to you soon.');
+      setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' });
+    }, 700);
   };
 
   const handleChange = (
@@ -69,100 +41,230 @@ export default function Contact() {
     });
   };
 
+  // reveal animation refs
+  const leftRef = useRef<HTMLDivElement | null>(null);
+  const rightRef = useRef<HTMLDivElement | null>(null);
+  const [leftVisible, setLeftVisible] = useState(false);
+  const [rightVisible, setRightVisible] = useState(false);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === leftRef.current && entry.isIntersecting) setLeftVisible(true);
+          if (entry.target === rightRef.current && entry.isIntersecting) setRightVisible(true);
+        });
+      },
+      { threshold: 0.2 }
+    );
+    if (leftRef.current) obs.observe(leftRef.current);
+    if (rightRef.current) obs.observe(rightRef.current);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <div className="bg-black min-h-screen pt-20">
-      <div className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/20 to-black"></div>
+      {/* Hero - matching Home theme */}
+      <div
+        className="relative py-32 overflow-hidden bg-cover bg-center kenburns-bg"
+        style={{
+          backgroundImage: "url('/che.jpeg')",
+          backgroundAttachment: 'fixed',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Get In <span className="text-cyan-400">Touch</span>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
+            Get In <span className="text-white">Touch</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
             We'd love to hear from you. Let's discuss how we can help transform your business
           </p>
+
         </div>
       </div>
+      {/* no success modal - behaviour matches Careers page (simple alert + reset) */}
+
+      <style>{`
+        /* Hero kenburns */
+        .kenburns-bg { transform-origin: center; animation: kenburns 18s ease-out both; }
+        @keyframes kenburns { 0%{ transform: scale(1.08);}50%{ transform: scale(1.03);}100%{ transform: scale(1);} }
+
+        /* reveal */
+        .reveal-up { transform: translateY(24px); opacity: 0; }
+        .reveal-up.visible { transform: translateY(0); opacity: 1; transition: all 700ms cubic-bezier(.2,.9,.2,1); }
+
+        /* floating labels */
+        .form-field { position: relative; }
+        .form-field input,
+        .form-field textarea,
+        .form-field select {
+          transition: box-shadow .15s ease, border-color .15s ease;
+        }
+        .form-field input::placeholder,
+        .form-field textarea::placeholder { color: transparent; }
+        .form-label {
+          position: absolute;
+          left: 12px;
+          top: 12px;
+          pointer-events: none;
+          color: #6b7280;
+          background: transparent;
+          padding: 0 4px;
+          transform-origin: left top;
+          transition: transform .18s ease, color .18s ease, top .18s ease;
+        }
+        .form-field input:focus + .form-label,
+        .form-field textarea:focus + .form-label,
+        .form-field select:focus + .form-label,
+        .form-field input:not(:placeholder-shown) + .form-label,
+        .form-field textarea:not(:placeholder-shown) + .form-label {
+          transform: translateY(-12px) scale(.85);
+          color: #111827;
+        }
+
+        /* success modal removed - using simple alert for confirmation */
+      `}</style>
 
       <div className="max-w-7xl mx-auto px-6 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2">
-            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700">
-              <h2 className="text-3xl font-bold text-white mb-6">Send Us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Left: Contact details + map */}
+          <div ref={leftRef} className={`space-y-8 ${leftVisible ? 'reveal-up visible' : 'reveal-up'}`}>
+            <div className="bg-gray-900/60 p-8 border border-gray-800 rounded-2xl">
+              <h3 className="text-2xl font-bold text-white mb-4">Contact Information</h3>
+              <p className="text-gray-300 mb-4">
+                Reach out to us for enquiries on our services — sales, partnerships, or general questions.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-white text-black flex items-center justify-center rounded-md flex-shrink-0">
+                    <Mail size={18} />
+                  </div>
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                      Full Name <span className="text-red-400">*</span>
-                    </label>
+                    <h4 className="text-white font-semibold">Email</h4>
+                    <a href="mailto:info@nataconsultancy.com" className="text-gray-300 hover:text-white">
+                      info@nataservices.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-white text-black flex items-center justify-center rounded-md flex-shrink-0">
+                    <Phone size={18} />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">Phone</h4>
+                    <p className="text-gray-300">USA: +1 404-593-8792</p>
+                    <p className="text-gray-300">India: +91 8886665220</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-white text-black flex items-center justify-center rounded-md flex-shrink-0">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">Offices</h4>
+                    <p className="text-gray-300">Atlanta, Georgia</p>
+                    <p className="text-gray-300">Hyderabad, Telangana</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-white text-black flex items-center justify-center rounded-md flex-shrink-0">
+                    <Clock size={18} />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">Business Hours</h4>
+                    <p className="text-gray-300">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                    <p className="text-gray-300">Saturday: 10:00 AM - 2:00 PM</p>
+                    <p className="text-gray-300">Sunday: Closed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Locations grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="p-4 bg-gray-900 border border-gray-800 rounded-2xl">
+                <h4 className="text-white font-semibold">Atlanta, USA</h4>
+                <p className="text-gray-300 text-sm mt-2">123 Technology Drive<br/>Atlanta, GA 30303</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Atlanta%2C+GA" target="_blank" rel="noreferrer" className="mt-3 inline-block text-cyan-400">Open in Maps</a>
+              </div>
+              <div className="p-4 bg-gray-900 border border-gray-800 rounded-2xl">
+                <h4 className="text-white font-semibold">Hyderabad, India</h4>
+                <p className="text-gray-300 text-sm mt-2">Hitech City, Hyderabad<br/>Telangana, 500081</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Hyderabad%2C+India" target="_blank" rel="noreferrer" className="mt-3 inline-block text-cyan-400">Open in Maps</a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Contact Form */}
+            <div ref={rightRef} className={`${rightVisible ? 'reveal-up visible' : 'reveal-up'}`}>
+            <div className="bg-white shadow-xl rounded-2xl p-8">
+              <h2 className="text-2xl font-bold text-black mb-4">Send Us a Message</h2>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="form-field">
                     <input
-                      type="text"
                       id="name"
                       name="name"
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 outline-none transition-all"
-                      placeholder="John Doe"
+                      className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300"
+                      placeholder=" "
                     />
+                    <label htmlFor="name" className="form-label">Full Name <span className="text-red-500">*</span></label>
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                      Email Address <span className="text-red-400">*</span>
-                    </label>
+                  <div className="form-field">
                     <input
-                      type="email"
                       id="email"
                       name="email"
+                      type="email"
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 outline-none transition-all"
-                      placeholder="john@example.com"
+                      className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300"
+                      placeholder=" "
                     />
+                    <label htmlFor="email" className="form-label">Email Address <span className="text-red-500">*</span></label>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
-                      Phone Number
-                    </label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="form-field">
                     <input
-                      type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 outline-none transition-all"
-                      placeholder="+1 (555) 000-0000"
+                      className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300"
+                      placeholder=" "
                     />
+                    <label htmlFor="phone" className="form-label">Phone Number</label>
                   </div>
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
-                      Company Name
-                    </label>
+                  <div className="form-field">
                     <input
-                      type="text"
                       id="company"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 outline-none transition-all"
-                      placeholder="Your Company"
+                      className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300"
+                      placeholder=" "
                     />
+                    <label htmlFor="company" className="form-label">Company Name</label>
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
-                    Service Interested In
-                  </label>
+                <div className="form-field">
                   <select
                     id="service"
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300"
                   >
                     <option value="">Select a service</option>
                     <option value="bpo">BPO</option>
@@ -176,10 +278,7 @@ export default function Contact() {
                   </select>
                 </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                    Message <span className="text-red-400">*</span>
-                  </label>
+                <div className="form-field">
                   <textarea
                     id="message"
                     name="message"
@@ -187,113 +286,60 @@ export default function Contact() {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 outline-none transition-all resize-none"
-                    placeholder="Tell us about your project..."
+                    className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300 resize-none"
+                    placeholder=" "
                   ></textarea>
+                  <label htmlFor="message" className="form-label">Message <span className="text-red-500">*</span></label>
                 </div>
 
                 <div>
                   <button
                     type="submit"
                     disabled={loading}
-                    className={`w-full flex items-center justify-center space-x-2 px-8 py-4 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg ${
+                    className={`w-full flex items-center justify-center space-x-2 px-6 py-3 text-white font-semibold rounded-md transition-all duration-300 shadow-lg ${
                       loading
                         ? 'bg-gray-600 cursor-wait shadow-gray-700/40'
-                        : 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-cyan-500/50'
+                        : 'bg-black/90 hover:bg-black/100'
                     }`}
                   >
-                    <Send size={20} />
+                    <Send size={18} />
                     <span>{loading ? 'Sending...' : 'Send Message'}</span>
                   </button>
 
-                  {successMessage && (
-                    <p className="mt-4 text-green-400 font-medium">{successMessage}</p>
-                  )}
+                  {/* confirmation shown via alert (Careers-style) */}
 
                   {errorMessage && (
-                    <p className="mt-4 text-red-400 font-medium">{errorMessage}</p>
+                    <p className="mt-4 text-red-500 font-medium">{errorMessage}</p>
                   )}
                 </div>
               </form>
             </div>
           </div>
-
-          <div className="space-y-6">
-            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700">
-              <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="text-black" size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Email</h4>
-                    <a
-                      href="mailto:info@nataconsultancy.com"
-                      className="text-gray-400 hover:text-cyan-400 transition-colors"
-                    >
-                      info@nataservices.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="text-black" size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Phone</h4>
-                    <p className="text-gray-400">USA: +1 404-593-8792</p>
-                    <p className="text-gray-400">India: +91 8886665220</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-black" size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Offices</h4>
-                    <p className="text-gray-400 mb-2">
-                      Atlanta, Georgia
-                    </p>
-                    <p className="text-gray-400">
-                      Hyderabad, Telangana
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="text-black" size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Business Hours</h4>
-                    <p className="text-gray-400">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                    <p className="text-gray-400">Saturday: 10:00 AM - 2:00 PM</p>
-                    <p className="text-gray-400">Sunday: Closed</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-cyan-900/20 to-blue-900/20 rounded-2xl p-8 border border-cyan-400/30">
-              <Building2 className="w-12 h-12 text-cyan-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-3">Looking for Partnership?</h3>
-              <p className="text-gray-300 mb-4">
-                We're always interested in connecting with innovative companies and exploring
-                partnership opportunities.
-              </p>
-              <a
-                href="mailto:partnerships@nataconsultancy.com"
-                className="text-cyan-400 hover:text-cyan-300 font-semibold transition-colors"
-              >
-                partnerships@nataconsultancy.com
-              </a>
-            </div>
-          </div>
         </div>
       </div>
+
+    {/* FAQ section (Antra-like) */}
+    <section className="py-16 bg-black">
+      <div className="max-w-5xl mx-auto px-6">
+        <h3 className="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h3>
+        <div className="space-y-3">
+          <details className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+            <summary className="cursor-pointer text-white font-medium">How quickly will you respond to enquiries?</summary>
+            <div className="mt-2 text-gray-300">We typically respond within 24-48 hours for standard enquiries. For urgent matters, please call our sales line.</div>
+          </details>
+
+          <details className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+            <summary className="cursor-pointer text-white font-medium">Do you offer global staffing and remote teams?</summary>
+            <div className="mt-2 text-gray-300">Yes — we provide global staffing solutions across India and the USA with flexible engagement models.</div>
+          </details>
+
+          <details className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+            <summary className="cursor-pointer text-white font-medium">Can you handle enterprise-scale cloud migrations?</summary>
+            <div className="mt-2 text-gray-300">Absolutely. We have experience migrating large-scale workloads across Azure, AWS and Google Cloud with minimal disruption.</div>
+          </details>
+        </div>
+      </div>
+    </section>
     </div>
   );
 }

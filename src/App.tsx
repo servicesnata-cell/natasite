@@ -7,7 +7,6 @@ import ServiceDetail from './pages/ServiceDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Careers from './pages/Careers';
-import Clients from './pages/Clients';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/careers" element={<Careers />} />
-          <Route path="/Clients" element={<Clients />} />
         </Routes>
         <Footer />
       </div>

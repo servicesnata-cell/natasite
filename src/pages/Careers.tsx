@@ -33,103 +33,140 @@ export default function Careers() {
 
   return (
     <div className="bg-black min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16">
-      {/* --- Apply Now Header --- */}
-      <div className="relative text-center mb-16">
-        <h1 className="text-6xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient">
-          Apply Now
-        </h1>
-        <div className="absolute -inset-x-10 top-1/2 -translate-y-1/2 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-transparent h-[2px] blur-md"></div>
-        <p className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto">
-          Ready to take the next step? Fill in your details and send us your application today.
-        </p>
+      {/* --- Hero Section (Careers) - match Home theme --- */}
+      <div
+        className="relative w-full py-32 overflow-hidden bg-cover bg-center mb-12"
+        style={{ backgroundImage: "url('/aphe.jpeg')", backgroundAttachment: 'fixed' }}
+      >
+        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="relative max-w-7xl mx-auto px-6 text-center z-10">
+          <h1 className="text-6xl md:text-7xl font-extrabold text-white mb-4 tracking-tight">
+            Apply <span className="text-white">Now</span>
+          </h1>
+          <p className="mt-4 text-gray-400 text-lg max-w-2xl mx-auto">
+            Ready to take the next step? Fill in your details and send us your application today.
+          </p>
+        </div>
       </div>
+
+      <style>{`
+        .form-field { position: relative; }
+        .form-field input,
+        .form-field textarea { transition: box-shadow .15s ease, border-color .15s ease; }
+        .form-field input::placeholder,
+        .form-field textarea::placeholder { color: transparent; }
+        .form-label {
+          position: absolute;
+          left: 12px;
+          top: 12px;
+          pointer-events: none;
+          color: #6b7280;
+          background: transparent;
+          padding: 0 4px;
+          transform-origin: left top;
+          transition: transform .18s ease, color .18s ease, top .18s ease;
+        }
+        .form-field input:focus + .form-label,
+        .form-field textarea:focus + .form-label,
+        .form-field input:not(:placeholder-shown) + .form-label,
+        .form-field textarea:not(:placeholder-shown) + .form-label {
+          transform: translateY(-12px) scale(.85);
+          color: #111827;
+        }
+      `}</style>
 
       {/* --- Application Form --- */}
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-3xl bg-gradient-to-br from-gray-900/60 to-gray-800/80 border border-gray-700/50 rounded-2xl p-10 shadow-2xl shadow-cyan-500/10 backdrop-blur-lg"
+        className="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <h2 className="text-2xl font-bold text-black mb-6">Apply Now</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           {/* Name */}
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+          <div className="form-field">
             <input
               type="text"
+              id="name"
               name="name"
               required
               value={formData.name}
               onChange={handleChange}
-              placeholder="John Doe"
-              className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 outline-none transition-all"
+              className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300"
+              placeholder=" "
             />
+            <label htmlFor="name" className="form-label">Full Name <span className="text-red-500">*</span></label>
           </div>
 
           {/* Email */}
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+          <div className="form-field">
             <input
               type="email"
+              id="email"
               name="email"
               required
               value={formData.email}
               onChange={handleChange}
-              placeholder="john@example.com"
-              className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 outline-none transition-all"
+              className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300"
+              placeholder=" "
             />
+            <label htmlFor="email" className="form-label">Email Address <span className="text-red-500">*</span></label>
           </div>
 
           {/* Phone */}
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+          <div className="form-field">
             <input
               type="tel"
+              id="phone"
               name="phone"
               required
               value={formData.phone}
               onChange={handleChange}
-              placeholder="+1 (555) 123-4567"
-              className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 outline-none transition-all"
+              className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300"
+              placeholder=" "
             />
+            <label htmlFor="phone" className="form-label">Phone Number <span className="text-red-500">*</span></label>
           </div>
 
-          {/* Message */}
-          <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
-            <textarea
-              name="message"
-              rows={4}
-              required
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Write your message here..."
-              className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 outline-none transition-all resize-none"
-            />
-          </div>
-        </div>
-
-        {/* File Upload */}
-        <div className="mb-8">
-          <label className="block text-sm font-medium text-gray-300 mb-2">Upload Resume / File</label>
-          <div className="relative flex items-center justify-between bg-black border border-gray-700 rounded-lg px-4 py-3 text-white cursor-pointer hover:border-cyan-400 transition-all">
-            <input
-              type="file"
-              onChange={handleFileChange}
-              className="absolute inset-0 opacity-0 cursor-pointer"
-            />
-            <span className="truncate text-gray-400">
-              {formData.file ? formData.file.name : 'Choose a file to upload'}
-            </span>
-            <Upload className="text-cyan-400" size={20} />
+          {/* Resume Upload */}
+          <div className="form-field">
+            <label className="block text-sm font-medium text-black mb-2">Upload Resume</label>
+            <div className="relative flex items-center justify-between bg-gray-100 border border-gray-200 rounded-md px-4 py-3 text-black cursor-pointer hover:border-gray-300 transition-all">
+              <input
+                type="file"
+                id="resume"
+                onChange={handleFileChange}
+                className="absolute inset-0 opacity-0 cursor-pointer"
+              />
+              <span className="truncate text-gray-600 text-sm">
+                {formData.file ? formData.file.name : 'Choose file'}
+              </span>
+              <Upload size={18} />
+            </div>
           </div>
         </div>
 
-        {/* Send Message Button */}
+        {/* Message */}
+        <div className="form-field mb-4">
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows={4}
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300 resize-none"
+            placeholder=" "
+          />
+          <label htmlFor="message" className="form-label">Message <span className="text-red-500">*</span></label>
+        </div>
+
+        {/* Submit Button */}
         <button
           type="submit"
-          className="w-full flex items-center justify-center space-x-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-cyan-500/30"
+          className="w-full flex items-center justify-center space-x-2 px-6 py-3 text-white font-semibold rounded-md transition-all duration-300 shadow-lg bg-black/90 hover:bg-black/100"
         >
-          <Send size={20} />
-          <span>Send Message</span>
+          <Send size={18} />
+          <span>Send Application</span>
         </button>
       </form>
     </div>

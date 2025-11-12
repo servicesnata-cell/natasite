@@ -214,92 +214,130 @@ export default function ServiceDetail() {
   }
 
   const Icon = service.icon;
-
+  // Unified enhanced layout for all services (parameterized BPO layout)
   return (
-    <div className="bg-black min-h-screen pt-20">
-      <div className="relative h-96 overflow-hidden">
+    <div className="bg-black min-h-screen text-white">
+      {/* Hero - full screen, matching home thematic */}
+      <div className="relative h-screen overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${service.image})` }}
-        ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black"></div>
+        />
+        <div className="absolute inset-0 bg-black/60" />
 
         <div className="relative h-full max-w-7xl mx-auto px-6 flex flex-col justify-center">
-          <Link
-            to="/services"
-            className="inline-flex items-center space-x-2 text-cyan-400 hover:text-cyan-300 mb-6 transition-colors"
-          >
-            <ArrowLeft size={20} />
-            <span>Back to Services</span>
-          </Link>
-          <div className="flex items-center space-x-4 mb-4">
-            <div className="w-20 h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-400/50">
-              <Icon className="text-black" size={40} />
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white">{service.name}</h1>
+          <div className="flex items-center justify-between mb-8">
+            <Link to="/services" className="inline-flex items-center space-x-2 text-cyan-400 hover:text-cyan-300 transition-colors">
+              <ArrowLeft size={18} />
+              <span>Back to Services</span>
+            </Link>
           </div>
-          <p className="text-xl text-gray-300 max-w-3xl">{service.description}</p>
+
+          <div className="flex items-center gap-6">
+            <div className="w-36 h-36 flex items-center justify-center bg-white/90 rounded-lg">
+              {/* use svg icon if available for clarity */}
+              <div className="text-5xl text-black">
+                <Icon />
+              </div>
+            </div>
+            <div>
+              <h1 className="text-5xl md:text-6xl font-bold">{service.name}</h1>
+              <p className="text-gray-300 text-lg mt-2 max-w-2xl">{service.description}</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
-          <div className="lg:col-span-2">
-            <h2 className="text-3xl font-bold text-white mb-6">Overview</h2>
-            <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              {service.longDescription}
-            </p>
+      {/* Overview - larger */}
+      <section className="py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-5xl font-bold mb-6">Overview</h2>
+          <p className="text-2xl text-gray-300 leading-relaxed">{service.longDescription}</p>
+        </div>
+      </section>
 
-            <h3 className="text-2xl font-bold text-white mb-6">What We Offer</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-              {service.services.map((item: string, index: number) => (
-                <div
-                  key={index}
-                  className="flex items-start space-x-3 p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-400/30 transition-all"
-                >
-                  <CheckCircle className="text-cyan-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">{item}</span>
+      {/* What We Offer - vertical stack, one per line, bigger */}
+      <section className="py-24 px-6 bg-black">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-5xl font-bold mb-8">What We Offer</h2>
+          <div className="space-y-6">
+            {service.services.map((item: string, idx: number) => (
+              <div key={idx} className="flex items-start gap-6 p-6 bg-gray-900/60 border border-gray-800">
+                <div className="mt-1 text-cyan-400">
+                  <CheckCircle size={28} />
+                </div>
+                <div className="text-xl font-semibold">{item}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Key Benefits - center vertical line with alternating items */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-bold text-center mb-12">Key Benefits</h2>
+
+          <div className="relative">
+            <div className="absolute left-1/2 top-0 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-400 to-blue-600" />
+
+            <div className="space-y-16">
+              {service.benefits.map((benefit: string, i: number) => (
+                <div key={i} className={`flex items-center ${i % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
+                  {i % 2 === 0 ? (
+                    <>
+                      <div className="w-1/2 pr-12 text-right">
+                        <div className="inline-block bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-400/30 p-6">
+                          <p className="text-white text-xl font-semibold">{benefit}</p>
+                        </div>
+                      </div>
+                      <div className="w-12 flex justify-center">
+                        <div className="w-6 h-6 rounded-full bg-cyan-400 border-4 border-black" />
+                      </div>
+                      <div className="w-1/2" />
+                    </>
+                  ) : (
+                    <>
+                      <div className="w-1/2" />
+                      <div className="w-12 flex justify-center">
+                        <div className="w-6 h-6 rounded-full bg-cyan-400 border-4 border-black" />
+                      </div>
+                      <div className="w-1/2 pl-12 text-left">
+                        <div className="inline-block bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-400/30 p-6">
+                          <p className="text-white text-xl font-semibold">{benefit}</p>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          <div>
-            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700 sticky top-24">
-              <h3 className="text-2xl font-bold text-white mb-6">Key Benefits</h3>
-              <ul className="space-y-4">
-                {service.benefits.map((benefit: string, index: number) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <CheckCircle className="text-cyan-400 flex-shrink-0 mt-1" size={18} />
-                    <span className="text-gray-300">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-8 pt-8 border-t border-gray-700">
-                <h4 className="text-lg font-semibold text-white mb-4">Technologies</h4>
-                <div className="flex flex-wrap gap-2">
-                  {service.technologies.map((tech: string, index: number) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 bg-cyan-400/10 border border-cyan-400/30 rounded-full text-sm text-cyan-400"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+      {/* Technologies - each in its own container box */}
+      <section className="py-24 px-6 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl font-bold mb-10">Technologies We Use</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {service.technologies.map((tech: string, idx: number) => (
+              <div key={idx} className="p-6 bg-gray-900/60 border border-gray-800 text-center">
+                <p className="text-white font-semibold">{tech}</p>
               </div>
-
-              <a
-                href="/contact"
-                className="block w-full mt-8 px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-cyan-500/50 text-center"
-              >
-                Get Started
-              </a>
-            </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Get Started - black themed, prominent CTA */}
+      <section className="py-24 px-6 bg-black">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-5xl font-bold text-white mb-6">Ready to Get Started?</h2>
+          <p className="text-gray-300 mb-8">Let's discuss how {service.name} can transform your business.</p>
+          <Link to="/contact" className="inline-block px-12 py-6 bg-cyan-400 text-black font-bold text-2xl">Get Started →</Link>
+        </div>
+      </section>
     </div>
   );
 }
