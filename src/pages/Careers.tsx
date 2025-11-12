@@ -32,29 +32,33 @@ export default function Careers() {
   };
 
   return (
-    <div className="bg-black min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16">
-      {/* --- Hero Section (Careers) - match Home theme --- */}
+    <div className="bg-black min-h-screen flex flex-col items-center justify-start px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+      {/* --- Hero Section --- */}
       <div
-        className="relative w-full py-32 overflow-hidden bg-cover bg-center mb-12"
+        className="relative w-full py-24 sm:py-32 overflow-hidden bg-cover bg-center mb-12"
         style={{ backgroundImage: "url('/aphe.jpeg')", backgroundAttachment: 'fixed' }}
       >
         <div className="absolute inset-0 bg-black/70"></div>
-        <div className="relative max-w-7xl mx-auto px-6 text-center z-10">
-          <h1 className="text-6xl md:text-7xl font-extrabold text-white mb-4 tracking-tight">
+        <div className="relative max-w-4xl mx-auto px-4 text-center z-10">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">
             Apply <span className="text-white">Now</span>
           </h1>
-          <p className="mt-4 text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="mt-4 text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
             Ready to take the next step? Fill in your details and send us your application today.
           </p>
         </div>
       </div>
 
       <style>{`
-        .form-field { position: relative; }
+        .form-field { position: relative; width: 100%; }
         .form-field input,
-        .form-field textarea { transition: box-shadow .15s ease, border-color .15s ease; }
+        .form-field textarea {
+          transition: box-shadow .15s ease, border-color .15s ease;
+        }
         .form-field input::placeholder,
-        .form-field textarea::placeholder { color: transparent; }
+        .form-field textarea::placeholder {
+          color: transparent;
+        }
         .form-label {
           position: absolute;
           left: 12px;
@@ -78,10 +82,11 @@ export default function Careers() {
       {/* --- Application Form --- */}
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8"
+        className="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-6 sm:p-8 lg:p-10"
       >
-        <h2 className="text-2xl font-bold text-black mb-6">Apply Now</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-black mb-6 text-center">Apply Now</h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           {/* Name */}
           <div className="form-field">
             <input
@@ -137,7 +142,7 @@ export default function Careers() {
                 onChange={handleFileChange}
                 className="absolute inset-0 opacity-0 cursor-pointer"
               />
-              <span className="truncate text-gray-600 text-sm">
+              <span className="truncate text-gray-600 text-sm sm:text-base">
                 {formData.file ? formData.file.name : 'Choose file'}
               </span>
               <Upload size={18} />
