@@ -65,7 +65,7 @@ export default function Header() {
           <Link to="/" className="flex items-center group">
             <div className="relative">
               <img
-                src="/1logo.svg"
+                src="/natalogo1.svg"
                 alt="Logo"
                 className="w-32 h-16 sm:w-40 sm:h-20 md:w-48 md:h-24 lg:w-[200px] lg:h-[100px] object-contain"
               />
