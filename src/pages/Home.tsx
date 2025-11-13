@@ -267,7 +267,7 @@ export default function Home() {
       <section
         className="py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 relative overflow-hidden"
         style={{
-          backgroundImage: 'url(/cta1.jpeg)',
+          backgroundImage: 'url(/cta.jpeg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'scroll',

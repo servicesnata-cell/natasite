@@ -67,11 +67,11 @@ export default function HeaderCTA() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center">
-              <img
-                src="/natalogo1.svg"
-                alt="Logo"
-                className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 object-contain"
-              />
+             <img
+  src="/natalogo1.svg"
+  alt="Logo"
+  className="w-36 h-18 sm:w-48 sm:h-24 md:w-60 md:h-30 lg:w-72 lg:h-36 object-contain"
+/>
             </Link>
 
             {/* Desktop Nav */}
