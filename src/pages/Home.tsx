@@ -265,15 +265,9 @@ export default function Home() {
 
       {/* CTA Section with Timeline */}
       <section
-        className="py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 relative overflow-hidden"
-        style={{
-          backgroundImage: 'url(/cta.jpeg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'scroll',
-        }}
+        className="bg-white py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 relative overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/45 to-black/50"></div>
+        <div></div>
         <style>{`
           @keyframes slideInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
           @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
@@ -286,10 +280,10 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-4">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight px-4">
               A clear, repeatable process<br className="hidden sm:block" />that takes you from discovery to delivery.
             </p>
-            <p className="text-gray-200 text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4">
+            <p className="text-gray-900 text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4">
               Follow our proven methodology to transform your business goals into measurable results
             </p>
           </div>
@@ -305,10 +299,10 @@ export default function Home() {
                 const isLeft = i % 2 === 0;
                 const { ref, isVisible } = useScrollReveal(0.2);
                 const colors = [
-                  {bg:'from-cyan-400/40 to-blue-500/40', text:'text-cyan-300', dot:'bg-cyan-400/50 border-cyan-300 shadow-cyan-400/50'},
-                  {bg:'from-purple-400/40 to-pink-500/40', text:'text-purple-300', dot:'bg-purple-400/50 border-purple-300 shadow-purple-400/50'},
-                  {bg:'from-amber-400/40 to-orange-500/40', text:'text-amber-300', dot:'bg-amber-400/50 border-amber-300 shadow-amber-400/50'},
-                  {bg:'from-emerald-400/40 to-teal-500/40', text:'text-emerald-300', dot:'bg-emerald-400/50 border-emerald-300 shadow-emerald-400/50'},
+                  {bg:'from-cyan-700/40 to-blue-800/40', text:'text-cyan-500', dot:'bg-cyan-700/50 border-cyan-500 shadow-cyan-400/50'},
+                  {bg:'from-purple-700/40 to-pink-800/40', text:'text-purple-500', dot:'bg-purple-700/50 border-purple-500 shadow-purple-400/50'},
+                  {bg:'from-amber-700/40 to-orange-800/40', text:'text-amber-500', dot:'bg-amber-700/50 border-amber-500 shadow-amber-400/50'},
+                  {bg:'from-emerald-700/40 to-teal-800/40', text:'text-emerald-500', dot:'bg-emerald-700/50 border-emerald-500 shadow-emerald-400/50'},
                 ];
                 const c = colors[i];
                 const descriptions = [
@@ -322,12 +316,12 @@ export default function Home() {
                     {isLeft ? (
                       <>
                         <div className="w-full md:w-5/12 text-left md:text-right">
-                          <div className={`bg-white/8 border border-white/20 rounded-lg p-4 sm:p-5 md:p-6 hover:bg-white/12 transition-all duration-300 hover:shadow-lg ${isVisible ? 'step-visible left-align' : 'opacity-0'}`}>
+                          <div className={`bg-white/8 border border-black rounded-lg p-4 sm:p-5 md:p-6 hover:bg-white/12 transition-all duration-300 hover:shadow-lg ${isVisible ? 'step-visible left-align' : 'opacity-0'}`}>
                             <div className="flex items-center md:justify-end gap-3 mb-2 sm:mb-3">
-                              <div className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-br ${c.bg} border border-white/50 flex items-center justify-center font-bold text-white shadow-lg shadow-white/30 flex-shrink-0`}></div>
+                              <div className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-br ${c.bg} border border-white/50 flex items-center justify-center font-bold text-black shadow-lg shadow-white/30 flex-shrink-0`}></div>
                               <div className="text-left md:text-right"><h4 className={`text-base sm:text-lg md:text-xl font-bold ${c.text}`}>{step}</h4></div>
                             </div>
-                            <p className="text-gray-300 text-xs sm:text-sm">{descriptions[i]}</p>
+                            <p className="text-gray-900 text-xs sm:text-sm">{descriptions[i]}</p>
                           </div>
                         </div>
                         <div className="hidden md:flex w-2/12 justify-center">
@@ -342,12 +336,12 @@ export default function Home() {
                           <div className={`w-3 h-3 md:w-4 md:h-4 rounded-full ${c.dot} ${isVisible ? 'dot-visible' : 'opacity-0'}`}></div>
                         </div>
                         <div className="w-full md:w-5/12">
-                          <div className={`bg-white/8 border border-white/20 rounded-lg p-4 sm:p-5 md:p-6 hover:bg-white/12 transition-all duration-300 hover:shadow-lg ${isVisible ? 'step-visible right-align' : 'opacity-0'}`}>
+                          <div className={`bg-white/8 border border-black rounded-lg p-4 sm:p-5 md:p-6 hover:bg-white/12 transition-all duration-300 hover:shadow-lg ${isVisible ? 'step-visible right-align' : 'opacity-0'}`}>
                             <div className="flex items-center gap-3 mb-2 sm:mb-3">
                               <div className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-br ${c.bg} border border-white/50 flex items-center justify-center font-bold text-white shadow-lg shadow-white/30 flex-shrink-0`}></div>
                               <div><h4 className={`text-base sm:text-lg md:text-xl font-bold ${c.text}`}>{step}</h4></div>
                             </div>
-                            <p className="text-gray-300 text-xs sm:text-sm">{descriptions[i]}</p>
+                            <p className="text-gray-900 text-xs sm:text-sm">{descriptions[i]}</p>
                           </div>
                         </div>
                       </>
@@ -362,7 +356,7 @@ export default function Home() {
             <a href="/contact" className="inline-block px-6 sm:px-8 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold border-none shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70 hover:scale-105 transition-all duration-300 rounded-md text-sm sm:text-base min-h-[44px] flex items-center justify-center">
               Get Started Today
             </a>
-            <a href="/services" className="inline-block px-6 sm:px-8 py-3 bg-transparent text-white font-bold border-2 border-white hover:bg-white/10 hover:scale-105 transition-all duration-300 rounded-md text-sm sm:text-base min-h-[44px] flex items-center justify-center">
+            <a href="/services" className="inline-block px-6 sm:px-8 py-3 bg-gradient-to-r from-yellow-200 to-yellow-700 text-black font-bold border-2 border-white hover:bg-white/10 hover:scale-105 transition-all duration-300 rounded-md text-sm sm:text-base min-h-[44px] flex items-center justify-center">
               View All Services
             </a>
           </div>
