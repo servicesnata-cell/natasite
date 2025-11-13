@@ -32,23 +32,23 @@ export default function Careers() {
   };
 
   return (
-    <div className="bg-black min-h-screen flex flex-col items-center justify-start px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-      {/* --- Hero Section --- */}
+    <>
+      {/* --- Hero Section (full-bleed, outside padded container) --- */}
       <div
-        className="relative w-full py-24 sm:py-32 overflow-hidden bg-cover bg-center mb-12"
-        style={{ backgroundImage: "url('/aphe.jpeg')", backgroundAttachment: 'fixed' }}
+        className="relative w-full py-24 sm:py-32 overflow-hidden bg-cover bg-center mb-0"
+        style={{ backgroundImage: "url('/aphe.jpeg')", backgroundAttachment: 'scroll' }}
       >
-        <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative max-w-4xl mx-auto px-4 text-center z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">
-            Apply <span className="text-white">Now</span>
+            Apply <span className="text-blue-400">Now</span>
           </h1>
-          <p className="mt-4 text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="mt-4 text-blue-200 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
             Ready to take the next step? Fill in your details and send us your application today.
           </p>
         </div>
       </div>
 
+  <div className="bg-white min-h-screen flex flex-col items-center justify-start px-4 sm:px-6 lg:px-8 pt-12 pb-16">
       <style>{`
         .form-field { position: relative; width: 100%; }
         .form-field input,
@@ -64,7 +64,7 @@ export default function Careers() {
           left: 12px;
           top: 12px;
           pointer-events: none;
-          color: #6b7280;
+          color: #3b82f6; /* blue-500 */
           background: transparent;
           padding: 0 4px;
           transform-origin: left top;
@@ -75,16 +75,16 @@ export default function Careers() {
         .form-field input:not(:placeholder-shown) + .form-label,
         .form-field textarea:not(:placeholder-shown) + .form-label {
           transform: translateY(-12px) scale(.85);
-          color: #111827;
+          color: #1e3a8a; /* blue-900 */
         }
       `}</style>
 
       {/* --- Application Form --- */}
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-6 sm:p-8 lg:p-10"
+        className="w-full max-w-3xl bg-blue-50 shadow-xl rounded-2xl p-6 sm:p-8 lg:p-10"
       >
-        <h2 className="text-2xl sm:text-3xl font-bold text-black mb-6 text-center">Apply Now</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-blue-900 mb-6 text-center">Apply Now</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           {/* Name */}
@@ -96,7 +96,7 @@ export default function Careers() {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300"
+              className="w-full px-4 py-3 bg-white border border-blue-200 rounded-md text-blue-900 outline-none focus:ring-2 focus:ring-blue-400"
               placeholder=" "
             />
             <label htmlFor="name" className="form-label">Full Name <span className="text-red-500">*</span></label>
@@ -111,7 +111,7 @@ export default function Careers() {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300"
+              className="w-full px-4 py-3 bg-white border border-blue-200 rounded-md text-blue-900 outline-none focus:ring-2 focus:ring-blue-400"
               placeholder=" "
             />
             <label htmlFor="email" className="form-label">Email Address <span className="text-red-500">*</span></label>
@@ -126,7 +126,7 @@ export default function Careers() {
               required
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300"
+              className="w-full px-4 py-3 bg-white border border-blue-200 rounded-md text-blue-900 outline-none focus:ring-2 focus:ring-blue-400"
               placeholder=" "
             />
             <label htmlFor="phone" className="form-label">Phone Number <span className="text-red-500">*</span></label>
@@ -134,18 +134,18 @@ export default function Careers() {
 
           {/* Resume Upload */}
           <div className="form-field">
-            <label className="block text-sm font-medium text-black mb-2">Upload Resume</label>
-            <div className="relative flex items-center justify-between bg-gray-100 border border-gray-200 rounded-md px-4 py-3 text-black cursor-pointer hover:border-gray-300 transition-all">
+            <label className="block text-sm font-medium text-blue-900 mb-2">Upload Resume</label>
+            <div className="relative flex items-center justify-between bg-white border border-blue-200 rounded-md px-4 py-3 text-blue-900 cursor-pointer hover:border-blue-400 transition-all">
               <input
                 type="file"
                 id="resume"
                 onChange={handleFileChange}
                 className="absolute inset-0 opacity-0 cursor-pointer"
               />
-              <span className="truncate text-gray-600 text-sm sm:text-base">
+              <span className="truncate text-blue-500 text-sm sm:text-base">
                 {formData.file ? formData.file.name : 'Choose file'}
               </span>
-              <Upload size={18} />
+              <Upload size={18} className="text-blue-500" />
             </div>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function Careers() {
             rows={4}
             value={formData.message}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-md text-black outline-none focus:ring-2 focus:ring-gray-300 resize-none"
+            className="w-full px-4 py-3 bg-white border border-blue-200 rounded-md text-blue-900 outline-none focus:ring-2 focus:ring-blue-400 resize-none"
             placeholder=" "
           />
           <label htmlFor="message" className="form-label">Message <span className="text-red-500">*</span></label>
@@ -168,12 +168,13 @@ export default function Careers() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full flex items-center justify-center space-x-2 px-6 py-3 text-white font-semibold rounded-md transition-all duration-300 shadow-lg bg-black/90 hover:bg-black/100"
+          className="w-full flex items-center justify-center space-x-2 px-6 py-3 text-white font-semibold rounded-md transition-all duration-300 shadow-lg bg-blue-600 hover:bg-blue-700"
         >
           <Send size={18} />
           <span>Send Application</span>
         </button>
       </form>
     </div>
+    </>
   );
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const slides = [
   {
-    title: 'Welcom to NCS',
+    title: 'Welcome to NCS',
     subtitle: 'Transforming Businesses Through Technology Excellence',
     description:
       'Your trusted partner for innovative solutions in cloud computing, AI, and digital transformation',
@@ -27,7 +27,6 @@ const slides = [
 export default function GalaxyHero() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // --- Auto Slide Rotation ---
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -36,7 +35,7 @@ export default function GalaxyHero() {
   }, []);
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-[70vh] sm:h-[80vh] md:h-screen overflow-hidden">
       <style>{`
         @keyframes glideUp {
           from {
@@ -93,27 +92,27 @@ export default function GalaxyHero() {
             <div className="absolute inset-0 bg-black/50" />
           </div>
 
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="max-w-4xl mx-auto px-6 text-center">
-              <h1 className="glide-up-h1 text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight whitespace-pre-line tracking-tight">
+          <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6">
+            <div className="max-w-5xl mx-auto text-center">
+              <h1 className="glide-up-h1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight tracking-tight">
                 {slide.title}
               </h1>
-              <p className="glide-up-p text-xl md:text-2xl text-white/80 mb-6 font-medium">
+              <p className="glide-up-p text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 mb-4 sm:mb-6 font-medium px-4">
                 {slide.subtitle}
               </p>
-              <p className="glide-up-desc text-lg md:text-lg text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+              <p className="glide-up-desc text-sm sm:text-base md:text-lg text-gray-300 mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-4">
                 {slide.description}
               </p>
-              <div className="glide-up-buttons flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="glide-up-buttons flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
                 <a
                   href="#services"
-                  className="px-8 py-3.5 bg-white text-black font-semibold hover:bg-gray-100 transition-all duration-300"
+                  className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-black font-semibold hover:bg-gray-100 transition-all duration-300 rounded-md text-sm sm:text-base min-h-[44px] flex items-center justify-center"
                 >
                   Explore Services
                 </a>
                 <a
                   href="/contact"
-                  className="px-8 py-3.5 bg-transparent text-white font-semibold border-2 border-white/40 hover:border-white/80 transition-all duration-300"
+                  className="px-6 sm:px-8 py-3 sm:py-3.5 bg-transparent text-white font-semibold border-2 border-white/40 hover:border-white/80 transition-all duration-300 rounded-md text-sm sm:text-base min-h-[44px] flex items-center justify-center"
                 >
                   Get in Touch
                 </a>
@@ -124,16 +123,17 @@ export default function GalaxyHero() {
       ))}
 
       {/* Slide Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-3">
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 sm:space-x-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-2.5 h-2.5 transition-all duration-300 ${
+            aria-label={`Go to slide ${index + 1}`}
+            className={`min-h-[44px] min-w-[44px] flex items-center justify-center transition-all duration-300 ${
               index === currentSlide
-                ? 'bg-white w-8'
-                : 'bg-white/30 hover:bg-white/50'
-            }`}
+                ? 'bg-white w-8 h-2.5'
+                : 'bg-white/30 hover:bg-white/50 w-2.5 h-2.5'
+            } rounded-full`}
           />
         ))}
       </div>

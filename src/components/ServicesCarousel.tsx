@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 const services = [
   {
@@ -69,129 +69,64 @@ const services = [
 ];
 
 export default function ServicesCarousel() {
-  const servicesRef = useRef<Array<HTMLElement | null>>([]);
-
-  // Slide/fade animations
   useEffect(() => {
-    const obs = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            el.querySelectorAll(".slide-in-left, .slide-in-right").forEach((child) => {
-              child.classList.add("visible");
-            });
-            observer.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.28 }
-    );
-
-    servicesRef.current.forEach((el) => el && obs.observe(el));
-
-    return () => obs.disconnect();
-  }, []);
-
-  // Zoom-out scroll animation
-  useEffect(() => {
-    const handleScroll = () => {
-      servicesRef.current.forEach((el) => {
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const progress = Math.min(Math.max((windowHeight - rect.top) / windowHeight, 0), 1);
-        const scale = 1.2 - progress * 0.2;
-        el.style.setProperty("--bg-scale", `${scale}`);
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.scrollTo(0, 0);
   }, []);
 
   return (
-    <section id="services" className="relative bg-black">
-      <style>{`
-        .slide-in-left { transform: translateX(-48px); opacity: 0; transition: transform 700ms cubic-bezier(.2,.9,.2,1), opacity 700ms ease; }
-        .slide-in-left.visible { transform: translateX(0); opacity: 1; }
-        .slide-in-right { transform: translateX(48px); opacity: 0; transition: transform 700ms cubic-bezier(.2,.9,.2,1), opacity 700ms ease; }
-        .slide-in-right.visible { transform: translateX(0); opacity: 1; }
-        .zoom-bg {
-          background-size: calc(var(--bg-scale, 1) * 100%) auto;
-          transition: background-size 0.3s ease-out;
-        }
+    <section id="services" className="relative bg-white text-black py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 flex justify-center rounded-3xl overflow-hidden shadow-xl">
+      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
+          <p className="text-[#002E6D] text-xs sm:text-sm uppercase tracking-widest font-semibold mb-2 sm:mb-3">
+            Services
+          </p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight px-4">
+            Guiding businesses to new heights with innovative solutions
+          </h2>
+          <div className="mt-3 sm:mt-4 mx-auto w-20 sm:w-24 h-[3px] bg-[#002E6D]" />
+        </div>
 
-        /* Make each section shorter on mobile */
-        @media (max-width: 768px) {
-          .service-section {
-            height: 70vh;
-          }
-        }
-        @media (max-width: 480px) {
-          .service-section {
-            height: 60vh;
-          }
-        }
-      `}</style>
-
-      {/* Header */}
-      <div className="text-center py-10 relative z-10 bg-white">
-        <p className="text-gray-700 text-sm uppercase tracking-wider font-semibold mb-4">
-          SERVICES
-        </p>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight px-4 leading-snug">
-          Guiding businesses to new heights with innovative solutions
-        </h2>
-      </div>
-
-      {/* Services Sections */}
-      <div className="relative z-10">
-        {services.map((service, index) => {
-          const isReverse = index % 2 === 1;
-          return (
-            <section
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+          {services.map((service) => (
+            <div
               key={service.id}
-              className={`service-section zoom-bg flex items-center bg-cover bg-center bg-no-repeat relative`}
-              style={
-                {
-                  backgroundImage: `url('${service.image}')`,
-                  "--bg-scale": "1.2",
-                } as React.CSSProperties
-              }
-              ref={(el) => (servicesRef.current[index] = el)}
+              className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
             >
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/60"></div>
+              {/* Image */}
+              <div className="h-48 sm:h-52 md:h-56 w-full overflow-hidden flex-shrink-0">
+                <img
+                  src={service.image}
+                  alt={service.name}
+                  className="h-full w-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
 
-              <div
-                className={`w-full h-full flex items-center relative z-10 px-4 sm:px-8 lg:px-20 ${
-                  isReverse ? "justify-end text-right" : "justify-start text-left"
-                }`}
-              >
-                <div
-                  className={`max-w-3xl py-12 sm:py-16 md:py-20 ${
-                    isReverse ? "slide-in-right" : "slide-in-left"
-                  }`}
-                >
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+              {/* Content */}
+              <div className="p-5 sm:p-6 md:p-8 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-[#002E6D] group-hover:text-[#0040a3] transition-colors">
                     {service.name}
                   </h3>
-                  <p className="text-gray-300 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed max-w-2xl">
+                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4">
                     {service.description}
                   </p>
+                </div>
+
+                {/* Button */}
+                <div className="mt-auto">
                   <Link
                     to={`/services/${service.id}`}
-                    className="inline-block px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-black font-semibold sm:font-bold text-sm sm:text-base md:text-lg rounded-none hover:bg-gray-100 transition"
+                    className="inline-block text-sm sm:text-base font-semibold text-white bg-[#002E6D] hover:bg-[#003c91] px-5 sm:px-6 py-2.5 sm:py-3 transition-colors duration-300 rounded-md min-h-[44px] flex items-center justify-center"
                   >
                     Learn More →
                   </Link>
                 </div>
               </div>
-            </section>
-          );
-        })}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
