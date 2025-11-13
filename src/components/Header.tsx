@@ -195,27 +195,6 @@ export default function HeaderCTA() {
           )}
         </div>
       </header>
-
-      {/* --- CTA Section --- */}
-      <section className="relative bg-cover bg-center min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8"
-        style={{ backgroundImage: "url('/cta-background.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-black/60"></div>
-        <div className="relative text-center max-w-3xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Take the Next Step with Us
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6">
-            Discover how our solutions can help your business grow and succeed in the digital era.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-block px-6 py-4 sm:px-8 sm:py-5 text-lg sm:text-xl font-semibold rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-all min-h-[44px] min-w-[120px]"
-          >
-            Get Started
-          </Link>
-        </div>
-      </section>
     </>
   );
 }
