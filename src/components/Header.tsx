@@ -60,15 +60,16 @@ export default function Header() {
     : 'bg-[#002E6D]/70 backdrop-blur-sm border-b border-[#002E6D]/10'
 }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">
+      <div className="max-w-[100rem] mx-auto px-4 sm:px-6 py-2">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center group">
             <div className="relative">
               <img
-                src="/natalogo1.svg"
-                alt="Logo"
-                className="w-32 h-16 sm:w-40 sm:h-20 md:w-48 md:h-24 lg:w-[200px] lg:h-[100px] object-contain"
-              />
+  src="/natalogo1.svg"
+  alt="Logo"
+  className="w-32 h-16 sm:w-40 sm:h-20 md:w-48 md:h-24 lg:w-[200px] lg:h-[100px] object-contain transform scale-150"
+/>
+
             </div>
           </Link>
 
