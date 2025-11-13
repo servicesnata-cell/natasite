@@ -267,13 +267,13 @@ export default function Home() {
       <section
         className="py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 relative overflow-hidden"
         style={{
-          backgroundImage: 'url(/cta.png)',
+          backgroundImage: 'url(/cta1.jpeg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'scroll',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/50 to-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/45 to-black/50"></div>
         <style>{`
           @keyframes slideInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
           @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
