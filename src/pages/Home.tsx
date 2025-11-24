@@ -113,8 +113,8 @@ const CounterComponent = ({
 
   return (
     <div ref={sectionRef} className={`text-center ${className ?? ''}`}>
-      <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">{displayValue}+</div>
-      <div className="text-gray-400 text-sm sm:text-base font-medium">{label}</div>
+      <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-[#003B8A] to-[#007BFF] bg-clip-text text-transparent mb-2" style={{ fontFamily: '"Berthold Akzidenz Grotesk", "Akzidenz Grotesk", sans-serif', fontWeight: 900, letterSpacing: '-0.02em' }}>{displayValue}+</div>
+      <div className="text-black text-sm sm:text-base font-medium">{label}</div>
     </div>
   );
 };
@@ -155,6 +155,53 @@ export default function Home() {
     <div className="bg-black">
       <GalaxyHero />
       <ServicesCarousel />
+      {/* Our Clients Section */}
+      <section className="py-8 sm:py-10 md:py-12 lg:py-16 bg-white px-3 sm:px-4 md:px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-4 sm:mb-6 md:mb-8">
+            <h2 className="text-[#002E6D] text-sm sm:text-base md:text-lg uppercase tracking-widest font-semibold mb-1 sm:mb-2 md:mb-3">Our Clients</h2>
+            <p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-black font-semibold mb-3 sm:mb-4 px-2">
+              Trusted by leading organizations across industries
+            </p>
+          </div>
+
+          <div className="overflow-hidden bg-white rounded-lg sm:rounded-xl shadow-lg p-3 sm:p-4 md:p-6">
+            <style>{`
+              @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .marquee-track { display: flex; gap: 1rem; align-items: center; flex-wrap: nowrap; }
+              @media (min-width: 640px) {
+                .marquee-track { gap: 1.5rem; }
+              }
+              @media (min-width: 1024px) {
+                .marquee-track { gap: 2rem; }
+              }
+              .marquee-item { flex: 0 0 auto; }
+              .marquee-track.animate { animation: marquee 20s linear infinite; }
+            `}</style>
+
+            <div className="marquee-track animate" aria-hidden={false}>
+              {[...clients, ...clients].map((c, i) => (
+                <div key={i} className="marquee-item flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20">
+                  <img
+                    src={c.logo}
+                    alt={c.name}
+                    className="max-h-8 sm:max-h-12 md:max-h-14 w-auto object-contain grayscale opacity-90 hover:opacity-100 transition"
+                    onError={(e) => {
+                      const img = e.target as HTMLImageElement;
+                      img.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                        c.name
+                      )}&background=ffffff&color=111827&size=200&bold=true`;
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Why Choose NCS Section */}
       <section
@@ -196,172 +243,131 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Clients Section */}
-      <section className="py-8 sm:py-12 md:py-16 bg-[#002E6D]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-6 sm:mb-8">
-            <h2 className="text-lg sm:text-xl md:text-2xl text-[#FFD700] font-semibold mb-3 sm:mb-4">Our Clients</h2>
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-bold mb-4 px-4">
-              Trusted by leading organizations across industries
-            </p>
-          </div>
-
-          <div className="overflow-hidden bg-white rounded-xl shadow-lg p-4 sm:p-6">
-            <style>{`
-              @keyframes marquee {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-              }
-              .marquee-track { display: flex; gap: 1.5rem; align-items: center; flex-wrap: nowrap; }
-              @media (min-width: 640px) {
-                .marquee-track { gap: 2rem; }
-              }
-              .marquee-item { flex: 0 0 auto; }
-              .marquee-track.animate { animation: marquee 20s linear infinite; }
-            `}</style>
-
-            <div className="marquee-track animate" aria-hidden={false}>
-              {[...clients, ...clients].map((c, i) => (
-                <div key={i} className="marquee-item flex items-center justify-center w-32 h-16 sm:w-40 sm:h-20 md:w-48 md:h-24">
-                  <img
-                    src={c.logo}
-                    alt={c.name}
-                    className="max-h-12 sm:max-h-14 md:max-h-16 w-auto object-contain grayscale opacity-90 hover:opacity-100 transition"
-                    onError={(e) => {
-                      const img = e.target as HTMLImageElement;
-                      img.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                        c.name
-                      )}&background=ffffff&color=111827&size=200&bold=true`;
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Impact Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#001f4d]">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
-              Our <span className="text-[#FFD700]">Impact</span>
+            <h2 className="text-[#002E6D] text-xl sm:text-xl uppercase tracking-widest font-semibold mb-2 sm:mb-3 -mt-6">
+              Our <span className="text-[#002E6D]">Impact</span>
             </h2>
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg">
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-black px-4">
               Delivering measurable results for our clients
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-            <CounterComponent targetValue={500} label="Projects Delivered" className="text-white" />
-            <CounterComponent targetValue={200} label="Happy Clients" className="text-white" />
-            <CounterComponent targetValue={50} label="Expert Team" className="text-white" />
-            <CounterComponent targetValue={15} label="Years Experience" className="text-white" />
+          <div className="overflow-hidden bg-white rounded-xl shadow-lg p-4 sm:p-6 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+            <CounterComponent targetValue={500} label="Projects Delivered" className="text-black" />
+            <CounterComponent targetValue={200} label="Happy Clients" className="text-black" />
+            <CounterComponent targetValue={50} label="Expert Team" className="text-black" />
+            <CounterComponent targetValue={15} label="Years Experience" className="text-black" />
           </div>
         </div>
       </section>
 
 
       {/* CTA Section with Timeline */}
-      <section
-        className="bg-white py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 relative overflow-hidden"
-      >
-        <div></div>
-        <style>{`
-          @keyframes slideInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-          @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
-          @keyframes slideInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
-          .step-visible { animation: slideInUp 0.6s ease-out forwards; }
-          .step-visible.left-align { animation: slideInLeft 0.6s ease-out forwards; }
-          .step-visible.right-align { animation: slideInRight 0.6s ease-out forwards; }
-          .dot-visible { animation: slideInUp 0.6s ease-out forwards; }
-        `}</style>
+<section
+  className="bg-blue-900 py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 relative overflow-hidden text-white"
+>
+  <div></div>
+  <style>{`
+    @keyframes slideInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes slideInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+    .step-visible { animation: slideInUp 0.6s ease-out forwards; }
+    .step-visible.left-align { animation: slideInLeft 0.6s ease-out forwards; }
+    .step-visible.right-align { animation: slideInRight 0.6s ease-out forwards; }
+    .dot-visible { animation: slideInUp 0.6s ease-out forwards; }
+  `}</style>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="text-center mb-10 sm:mb-12 md:mb-16">
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight px-4">
-              A clear, repeatable process<br className="hidden sm:block" />that takes you from discovery to delivery.
-            </p>
-            <p className="text-gray-900 text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4">
-              Follow our proven methodology to transform your business goals into measurable results
-            </p>
-          </div>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+    <div className="text-center mb-10 sm:mb-12 md:mb-16">
+      <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-4">
+        A clear, repeatable process<br className="hidden sm:block" />that takes you from discovery to delivery.
+      </p>
+      <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4">
+        Follow our proven methodology to transform your business goals into measurable results
+      </p>
+    </div>
 
-          <div className="relative max-w-4xl mx-auto">
-            <div
-              className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cyan-400/40 via-purple-400/40 to-emerald-400/40 border-l-2 border-dashed border-white/20"
-              style={{ top: '60px', bottom: 0 }}
-            ></div>
+    <div className="relative max-w-4xl mx-auto">
+      <div
+        className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-white/20 border-l-2 border-dashed"
+        style={{ top: '60px', bottom: 0 }}
+      ></div>
 
-            <div className="space-y-8 sm:space-y-12 md:space-y-16 lg:space-y-20 relative py-4 sm:py-6 md:py-8">
-              {['Discover','Plan','Build','Deliver'].map((step, i) => {
-                const isLeft = i % 2 === 0;
-                const { ref, isVisible } = useScrollReveal(0.2);
-                const colors = [
-                  {bg:'from-cyan-700/40 to-blue-800/40', text:'text-cyan-500', dot:'bg-cyan-700/50 border-cyan-500 shadow-cyan-400/50'},
-                  {bg:'from-purple-700/40 to-pink-800/40', text:'text-purple-500', dot:'bg-purple-700/50 border-purple-500 shadow-purple-400/50'},
-                  {bg:'from-amber-700/40 to-orange-800/40', text:'text-amber-500', dot:'bg-amber-700/50 border-amber-500 shadow-amber-400/50'},
-                  {bg:'from-emerald-700/40 to-teal-800/40', text:'text-emerald-500', dot:'bg-emerald-700/50 border-emerald-500 shadow-emerald-400/50'},
-                ];
-                const c = colors[i];
-                const descriptions = [
-                  'Understand goals, stakeholders & constraints',
-                  'Roadmap, scope and milestones',
-                  'Design, development and iterative delivery',
-                  'Deployment, support and measurable outcomes'
-                ];
-                return (
-                  <div key={i} ref={ref} className="flex items-center gap-4 md:gap-8">
-                    {isLeft ? (
-                      <>
-                        <div className="w-full md:w-5/12 text-left md:text-right">
-                          <div className={`bg-white/8 border border-black rounded-lg p-4 sm:p-5 md:p-6 hover:bg-white/12 transition-all duration-300 hover:shadow-lg ${isVisible ? 'step-visible left-align' : 'opacity-0'}`}>
-                            <div className="flex items-center md:justify-end gap-3 mb-2 sm:mb-3">
-                              <div className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-br ${c.bg} border border-white/50 flex items-center justify-center font-bold text-black shadow-lg shadow-white/30 flex-shrink-0`}></div>
-                              <div className="text-left md:text-right"><h4 className={`text-base sm:text-lg md:text-xl font-bold ${c.text}`}>{step}</h4></div>
-                            </div>
-                            <p className="text-gray-900 text-xs sm:text-sm">{descriptions[i]}</p>
-                          </div>
+      <div className="space-y-8 sm:space-y-12 md:space-y-16 lg:space-y-20 relative py-4 sm:py-6 md:py-8">
+        {['Discover','Plan','Build','Deliver'].map((step, i) => {
+          const isLeft = i % 2 === 0;
+          const { ref, isVisible } = useScrollReveal(0.2);
+          const colors = [
+            {bg:'from-white/20 to-white/30', text:'text-white', dot:'bg-white/50 border-white shadow-white/50'},
+            {bg:'from-white/20 to-white/30', text:'text-white', dot:'bg-white/50 border-white shadow-white/50'},
+            {bg:'from-white/20 to-white/30', text:'text-white', dot:'bg-white/50 border-white shadow-white/50'},
+            {bg:'from-white/20 to-white/30', text:'text-white', dot:'bg-white/50 border-white shadow-white/50'},
+          ];
+          const c = colors[i];
+          const descriptions = [
+            'Understand goals, stakeholders & constraints',
+            'Roadmap, scope and milestones',
+            'Design, development and iterative delivery',
+            'Deployment, support and measurable outcomes'
+          ];
+          return (
+            <div key={i} ref={ref} className="flex items-center gap-4 md:gap-8">
+              {isLeft ? (
+                <>
+                  <div className="w-full md:w-5/12 text-left md:text-right">
+                    <div className={`bg-white/10 border border-white/30 rounded-lg p-4 sm:p-5 md:p-6 hover:bg-white/20 transition-all duration-300 hover:shadow-lg ${isVisible ? 'step-visible left-align' : 'opacity-0'}`}>
+                      <div className="flex items-center md:justify-end gap-3 mb-2 sm:mb-3">
+                        <div className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-br ${c.bg} border border-white/50 flex items-center justify-center font-bold text-white shadow-lg shadow-white/30 flex-shrink-0`}></div>
+                        <div className="text-left md:text-right">
+                          <h4 className={`text-base sm:text-lg md:text-xl font-bold ${c.text}`}>{step}</h4>
                         </div>
-                        <div className="hidden md:flex w-2/12 justify-center">
-                          <div className={`w-3 h-3 md:w-4 md:h-4 rounded-full ${c.dot} ${isVisible ? 'dot-visible' : 'opacity-0'}`}></div>
-                        </div>
-                        <div className="hidden md:block md:w-5/12"></div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="hidden md:block md:w-5/12"></div>
-                        <div className="hidden md:flex w-2/12 justify-center">
-                          <div className={`w-3 h-3 md:w-4 md:h-4 rounded-full ${c.dot} ${isVisible ? 'dot-visible' : 'opacity-0'}`}></div>
-                        </div>
-                        <div className="w-full md:w-5/12">
-                          <div className={`bg-white/8 border border-black rounded-lg p-4 sm:p-5 md:p-6 hover:bg-white/12 transition-all duration-300 hover:shadow-lg ${isVisible ? 'step-visible right-align' : 'opacity-0'}`}>
-                            <div className="flex items-center gap-3 mb-2 sm:mb-3">
-                              <div className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-br ${c.bg} border border-white/50 flex items-center justify-center font-bold text-white shadow-lg shadow-white/30 flex-shrink-0`}></div>
-                              <div><h4 className={`text-base sm:text-lg md:text-xl font-bold ${c.text}`}>{step}</h4></div>
-                            </div>
-                            <p className="text-gray-900 text-xs sm:text-sm">{descriptions[i]}</p>
-                          </div>
-                        </div>
-                      </>
-                    )}
+                      </div>
+                      <p className="text-white/80 text-xs sm:text-sm">{descriptions[i]}</p>
+                    </div>
                   </div>
-                );
-              })}
+                  <div className="hidden md:flex w-2/12 justify-center">
+                    <div className={`w-3 h-3 md:w-4 md:h-4 rounded-full ${c.dot} ${isVisible ? 'dot-visible' : 'opacity-0'}`}></div>
+                  </div>
+                  <div className="hidden md:block md:w-5/12"></div>
+                </>
+              ) : (
+                <>
+                  <div className="hidden md:block md:w-5/12"></div>
+                  <div className="hidden md:flex w-2/12 justify-center">
+                    <div className={`w-3 h-3 md:w-4 md:h-4 rounded-full ${c.dot} ${isVisible ? 'dot-visible' : 'opacity-0'}`}></div>
+                  </div>
+                  <div className="w-full md:w-5/12">
+                    <div className={`bg-white/10 border border-white/30 rounded-lg p-4 sm:p-5 md:p-6 hover:bg-white/20 transition-all duration-300 hover:shadow-lg ${isVisible ? 'step-visible right-align' : 'opacity-0'}`}>
+                      <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                        <div className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-br ${c.bg} border border-white/50 flex items-center justify-center font-bold text-white shadow-lg shadow-white/30 flex-shrink-0`}></div>
+                        <div><h4 className={`text-base sm:text-lg md:text-xl font-bold ${c.text}`}>{step}</h4></div>
+                      </div>
+                      <p className="text-white/80 text-xs sm:text-sm">{descriptions[i]}</p>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
-          </div>
+          );
+        })}
+      </div>
+    </div>
 
-          <div className="text-center mt-10 sm:mt-12 md:mt-16 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <a href="/contact" className="inline-block px-6 sm:px-8 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold border-none shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70 hover:scale-105 transition-all duration-300 rounded-md text-sm sm:text-base min-h-[44px] flex items-center justify-center">
-              Get Started Today
-            </a>
-            <a href="/services" className="inline-block px-6 sm:px-8 py-3 bg-gradient-to-r from-yellow-200 to-yellow-700 text-black font-bold border-2 border-white hover:bg-white/10 hover:scale-105 transition-all duration-300 rounded-md text-sm sm:text-base min-h-[44px] flex items-center justify-center">
-              View All Services
-            </a>
-          </div>
-        </div>
-      </section>
+    <div className="text-center mt-10 sm:mt-12 md:mt-16 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+      <a href="/contact" className="inline-block px-6 sm:px-8 py-3 bg-white text-blue-900 font-bold border-none shadow-lg hover:shadow-white/50 hover:scale-105 transition-all duration-300 rounded-md text-sm sm:text-base min-h-[44px] flex items-center justify-center">
+        Get Started Today
+      </a>
+      <a href="/services" className="inline-block px-6 sm:px-8 py-3 border-2 border-white text-white font-bold rounded-md hover:bg-white/20 hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[44px] flex items-center justify-center">
+        View All Services
+      </a>
+    </div>
+  </div>
+</section>
+
     </div>
   );
 }

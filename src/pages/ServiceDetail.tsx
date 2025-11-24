@@ -1,5 +1,4 @@
 // src/pages/ServiceDetail.tsx
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   Server,
@@ -15,213 +14,156 @@ import {
 
 const servicesData: Record<string, any> = {
   bpo: {
-    name: 'Business Process Outsourcing',
+    name: 'Business Process Outsourcing (BPO) Services',
     icon: Server,
     description:
-      'Comprehensive BPO solutions to streamline your operations and improve efficiency',
+      'Optimize operations and reduce costs with strategic BPO solutions that offload non-core functions to experienced teams.',
     longDescription:
-      'Our Business Process Outsourcing services help organizations optimize their operations by handling non-core business processes. We provide end-to-end solutions that reduce costs, improve efficiency, and allow you to focus on strategic initiatives.',
-    image:
-      'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      `Business Process Outsourcing empowers organizations to delegate non-core operational functions—including customer support operations, technical help desk services, payroll administration, accounts payable processing, data entry, and back-office administration—to specialized providers who deliver superior efficiency at reduced operational costs.
+
+Our comprehensive BPO service portfolio includes customer-facing front-office solutions such as omnichannel customer service, inbound/outbound sales support, and technical troubleshooting, alongside critical back-office functions encompassing financial operations, accounting and reconciliation, human resources administration, procurement management, and vendor coordination. Leveraging advanced AI-augmented workflows and human expertise, we accelerate response times, improve first-contact resolution rates, and enhance overall customer satisfaction metrics.
+
+Operating with follow-the-sun coverage across multiple time zones, our global BPO teams provide uninterrupted service continuity, enabling business scalability without proportional overhead increases. Designed for both emerging startups and established enterprises, our solutions streamline operational workflows while maintaining strict confidentiality protocols, regulatory compliance standards, and consistently high service-level agreements.`,
+    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
     benefits: [
-      'Cost reduction up to 40%',
-      '24/7 operational support',
-      'Access to skilled workforce',
-      'Scalable solutions',
-      'Improved service quality',
-      'Focus on core business',
+      'Cost reduction of 30-50% compared to in-house operations',
+      '24/7/365 operational availability across global time zones',
+      'Scalable workforce models aligned with business demand',
+      'Enhanced focus on revenue-generating core competencies',
+      'Advanced quality assurance and compliance frameworks',
     ],
     services: [
-      'Customer Service & Support',
-      'Technical Support',
-      'Data Entry & Management',
-      'Back Office Operations',
-      'Order Processing',
-      'Content Moderation',
+      'Omnichannel Customer Service',
+      'Inbound/Outbound Sales Support',
+      'Technical Help Desk',
+      'Payroll & Accounts Payable',
+      'Data Entry & Back-office Operations',
+      'Vendor & Procurement Coordination',
     ],
-    technologies: ['CRM Systems', 'Ticketing Tools', 'Automation Software', 'Quality Assurance Tools'],
-  },
-  payrolls: {
-    name: 'Payroll Management',
-    icon: DollarSign,
-    description: 'End-to-end payroll processing ensuring accuracy and compliance',
-    longDescription:
-      'Our Payroll Management services ensure accurate, timely, and compliant payroll processing. We handle everything from salary calculations to tax filing, benefits administration, and reporting, giving you peace of mind and freeing up your resources.',
-    image:
-      'https://images.pexels.com/photos/6863332/pexels-photo-6863332.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    benefits: [
-      '100% accuracy guaranteed',
-      'Full tax compliance',
-      'Reduced processing time',
-      'Secure data handling',
-      'Comprehensive reporting',
-      'Expert support team',
-    ],
-    services: [
-      'Salary Processing',
-      'Tax Calculations & Filing',
-      'Benefits Administration',
-      'Time & Attendance Management',
-      'Employee Self-Service Portal',
-      'Year-end Processing',
-    ],
-    technologies: ['Payroll Software', 'HRMS Integration', 'Tax Filing Systems', 'Reporting Tools'],
-  },
-  devops: {
-    name: 'DevOps Solutions',
-    icon: Code,
-    description: 'Modern DevOps practices to accelerate your software delivery',
-    longDescription:
-      'Our DevOps services help organizations achieve faster time-to-market, improved quality, and better collaboration between development and operations teams. We implement industry best practices and cutting-edge tools to automate and optimize your software delivery pipeline.',
-    image:
-      'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    benefits: [
-      'Faster deployment cycles',
-      'Improved system reliability',
-      'Automated workflows',
-      'Reduced manual errors',
-      'Enhanced collaboration',
-      'Continuous monitoring',
-    ],
-    services: [
-      'CI/CD Pipeline Setup',
-      'Infrastructure as Code',
-      'Container Orchestration',
-      'Configuration Management',
-      'Monitoring & Alerting',
-      'Security Integration',
-    ],
-    technologies: ['Jenkins', 'Docker', 'Kubernetes', 'Terraform', 'GitLab', 'Prometheus'],
+    technologies: ['AI-augmented Workflows', 'CRM', 'RPA', 'Quality Assurance Tools'],
   },
   cloud: {
-    name: 'Cloud Solutions',
+    name: 'Cloud Infrastructure Services (Azure, AWS, Google Cloud Platform)',
     icon: Cloud,
-    description: 'Enterprise cloud solutions across Azure, AWS, and Google Cloud',
+    description:
+      'Accelerate innovation with enterprise cloud architecture, migration and managed cloud operations across Azure, AWS, and Google Cloud.',
     longDescription:
-      'We provide comprehensive cloud solutions to help you leverage the power of Azure, AWS, and Google Cloud Platform. From migration and architecture to optimization and management, we ensure your cloud infrastructure is secure, scalable, and cost-effective.',
-    image:
-      'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    benefits: [
-      'Reduced infrastructure costs',
-      'Improved scalability',
-      'Enhanced security',
-      'Global availability',
-      'Disaster recovery',
-      'Automatic updates',
-    ],
+      `Harness the transformative capabilities of industry-leading cloud platforms—Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform—to modernize IT infrastructure, enhance operational agility, improve security posture, and achieve significant cost optimization. Our cloud consulting, migration planning, architecture design, and managed services empower enterprises to transition from legacy on-premises systems to flexible, scalable cloud environments that accelerate digital transformation initiatives.
+
+Whether your strategic objectives include complete datacenter migration, implementation of hybrid or multi-cloud architectures, workload optimization, or cloud-native application development, our team of certified cloud architects and engineers delivers customized solutions aligned with your business requirements and compliance mandates.`,
+    image: 'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg',
+    benefits: ['Improved scalability', 'Cost optimization', 'Enhanced security', 'Disaster recovery & resilience'],
     services: [
-      'Cloud Migration Services',
-      'Azure Solutions',
-      'AWS Implementation',
-      'Google Cloud Platform',
-      'Multi-cloud Strategy',
-      'Cloud Cost Optimization',
+      'Cloud Readiness Assessment & Migration Strategy',
+      'Multi-cloud / Hybrid Architecture',
+      'Cloud-native Application Modernization',
+      'FinOps & Cost Optimization',
+      'Managed Cloud Operations & 24/7 Monitoring',
     ],
-    technologies: ['Azure', 'AWS', 'Google Cloud', 'Cloud Formation', 'Azure DevOps', 'Cloud Security'],
+    technologies: ['Azure', 'AWS', 'Google Cloud', 'IaC', 'Kubernetes'],
   },
-  ai: {
-    name: 'Artificial Intelligence',
+  devops: {
+    name: 'DevOps Engineering and Automation Services',
+    icon: Code,
+    description:
+      'Transform software delivery with CI/CD, automation, infrastructure as code, and observability for faster, reliable releases.',
+    longDescription:
+      `Accelerate your software development lifecycle and improve collaboration between development and operations teams through comprehensive DevOps implementation services that enable continuous delivery, automated testing, and enhanced software quality while dramatically reducing time-to-market. We implement fully automated CI/CD pipelines, infrastructure automation frameworks, real-time monitoring solutions, and observability platforms that improve system reliability and operational efficiency.`,
+    image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg',
+    benefits: ['Faster deployments', 'Automated workflows', 'Improved reliability', 'Shorter MTTR'],
+    services: [
+      'CI/CD Pipeline Design & Implementation',
+      'Infrastructure-as-Code (Terraform/Ansible)',
+      'Container Orchestration (Kubernetes)',
+      'Automated Testing & Quality Gates',
+      'Monitoring, Logging & Observability',
+    ],
+    technologies: ['Jenkins', 'GitLab', 'Terraform', 'Docker', 'Kubernetes'],
+  },
+  cybersecurity: {
+    name: 'Cybersecurity Solutions and Risk Management',
     icon: Brain,
-    description: 'AI-powered solutions to transform your business intelligence',
+    description:
+      'Enterprise-grade cybersecurity services including threat detection, SOC, pen-testing and compliance frameworks to protect critical assets.',
     longDescription:
-      'Our Artificial Intelligence services help businesses harness the power of AI to automate processes, gain insights, and create innovative products. We develop custom AI solutions including natural language processing, computer vision, and intelligent automation.',
-    image:
-      'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    benefits: [
-      'Intelligent automation',
-      'Enhanced decision making',
-      'Improved customer experience',
-      'Process optimization',
-      'Predictive capabilities',
-      'Competitive advantage',
-    ],
+      `Protect your organization’s critical digital infrastructure, sensitive data assets, and intellectual property with comprehensive, multi-layered cybersecurity solutions designed to defend against sophisticated threat actors and ensure continuous regulatory compliance. We deliver advanced threat detection and response, comprehensive vulnerability assessments, enterprise risk management frameworks, security incident response planning, and proactive security monitoring services customized to your industry’s threat landscape.`,
+    image: 'https://images.pexels.com/photos/8386450/pexels-photo-8386450.jpeg',
+    benefits: ['Advanced threat detection', 'Compliance readiness', 'Proactive monitoring', 'Incident response'],
     services: [
-      'Natural Language Processing',
-      'Computer Vision',
-      'Chatbot Development',
-      'Sentiment Analysis',
-      'AI Strategy Consulting',
-      'AI Model Development',
+      'Security Assessment & Vulnerability Management',
+      'Penetration Testing & Red/Blue Exercises',
+      'Managed SOC & Incident Response',
+      'Cloud Security & Zero-Trust Architecture',
     ],
-    technologies: ['TensorFlow', 'PyTorch', 'OpenAI', 'Hugging Face', 'Azure AI', 'AWS AI Services'],
-  },
-  ml: {
-    name: 'Machine Learning',
-    icon: TrendingUp,
-    description: 'Custom ML models and predictive analytics solutions',
-    longDescription:
-      'Our Machine Learning services enable businesses to unlock the value of their data through predictive analytics, recommendation systems, and automated decision-making. We build, train, and deploy custom ML models tailored to your specific business needs.',
-    image:
-      'https://images.pexels.com/photos/8439093/pexels-photo-8439093.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    benefits: [
-      'Data-driven decisions',
-      'Predictive insights',
-      'Personalized experiences',
-      'Automated processes',
-      'Risk reduction',
-      'Revenue optimization',
-    ],
-    services: [
-      'Predictive Analytics',
-      'Recommendation Systems',
-      'Classification Models',
-      'Regression Analysis',
-      'Model Training & Tuning',
-      'MLOps Implementation',
-    ],
-    technologies: ['Python', 'Scikit-learn', 'XGBoost', 'MLflow', 'Kubeflow', 'DataRobot'],
+    technologies: ['SIEM', 'EDR', 'DLP', 'IAM'],
   },
   etl: {
-    name: 'ETL Services',
+    name: 'ETL and Data Integration with Informatica',
     icon: Database,
-    description: 'Robust data pipelines for extraction, transformation, and loading',
+    description:
+      'Unlock business intelligence with scalable ETL pipelines, data warehousing, and data governance powered by Informatica.',
     longDescription:
-      'Our ETL services ensure your data is accurately extracted, transformed, and loaded into your target systems. We build robust, scalable data pipelines that ensure data quality, integration, and timely availability for analytics and operational needs.',
-    image:
-      'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    benefits: [
-      'Data quality assurance',
-      'Automated pipelines',
-      'Real-time processing',
-      'Scalable architecture',
-      'Reduced manual effort',
-      'Improved data accuracy',
-    ],
+      `Transform raw, disparate data sources into reliable, actionable business intelligence with our specialized ETL (Extract, Transform, Load) and data integration services powered by Informatica’s enterprise-grade platform. We design, develop, and implement scalable, high-performance ETL pipelines that seamlessly integrate data from multiple heterogeneous sources, apply complex business logic and transformations, ensure data quality and consistency, and deliver analytics-ready datasets to enterprise data warehouses and business intelligence platforms.`,
+    image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg',
+    benefits: ['Reliable ETL pipelines', 'Improved data quality', 'Real-time integration', 'Scalable architecture'],
     services: [
-      'Data Integration',
-      'Data Warehousing',
-      'Real-time Data Processing',
-      'Data Quality Management',
-      'Data Migration',
-      'API Integration',
+      'ETL Pipeline Design & Implementation',
+      'Data Warehouse Architecture',
+      'Real-time Data Streaming & Integration',
+      'Data Quality & Master Data Management',
     ],
-    technologies: ['Apache Airflow', 'Talend', 'Informatica', 'Apache Spark', 'Kafka', 'Snowflake'],
+    technologies: ['Informatica', 'Apache Spark', 'Airflow', 'Kafka'],
   },
   staffing: {
-    name: 'Global Staffing Solutions',
+    name: 'Strategic Staffing Solutions (IT, Non-IT, Healthcare)',
     icon: Users,
-    description: 'Comprehensive staffing services across India and USA',
+    description:
+      'Build high-performance teams quickly with global talent acquisition, screening, and managed workforce solutions.',
     longDescription:
-      'Our Global Staffing Solutions connect you with top talent across India and USA. We provide end-to-end recruitment services including permanent hiring, contract staffing, and talent management, ensuring you have the right people to drive your business forward.',
-    image:
-      'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    benefits: [
-      'Access to global talent pool',
-      'Reduced hiring time',
-      'Cost-effective solutions',
-      'Quality candidates',
-      'Flexible engagement models',
-      'Ongoing support',
-    ],
+      `Access exceptional talent across technology, business operations, and healthcare sectors through our comprehensive staffing and workforce solutions encompassing permanent placement, contract staffing, contract-to-hire arrangements, offshore team augmentation, and managed workforce services.`,
+    image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
+    benefits: ['Access to global talent', 'Reduced time-to-hire', 'Flexible engagement models'],
     services: [
-      'Permanent Recruitment',
-      'Contract Staffing',
-      'Talent Acquisition',
-      'Executive Search',
-      'IT Staffing',
-      'Global Workforce Solutions',
+      'Permanent & Contract Staffing',
+      'Offshore Team Augmentation',
+      'Executive Search & Assessments',
+      'Diversity & Inclusion Hiring Programs',
     ],
-    technologies: ['ATS Systems', 'Candidate Screening Tools', 'Assessment Platforms', 'HRMS Integration'],
+    technologies: ['ATS', 'Assessment Platforms', 'HRMS Integration'],
+  },
+  tax: {
+    name: 'US Tax Preparation and Compliance Services',
+    icon: DollarSign,
+    description:
+      'Navigate complex US tax regulations with expert preparation, filing and advisory services for individuals and businesses.',
+    longDescription:
+      `Successfully navigate the complexities of United States federal and state tax regulations with our comprehensive tax preparation, filing, compliance advisory, and strategic tax planning services designed for individuals, expatriates, small businesses, and corporations.`,
+    image: 'https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg',
+    benefits: ['Accurate filings', 'Audit support', 'Multi-state expertise'],
+    services: [
+      'Individual & Business Tax Preparation',
+      'ITIN / EIN Assistance',
+      'Multi-state Filing & Nexus Analysis',
+      'Tax Audit Support & Representation',
+    ],
+    technologies: ['Tax Prep Software', 'Secure Document Portals'],
+  },
+  ai: {
+    name: 'Artificial Intelligence and Machine Learning Solutions',
+    icon: TrendingUp,
+    description:
+      'End-to-end AI/ML solutions: NLP, computer vision, predictive analytics, MLOps and responsible AI practices.',
+    longDescription:
+      `Harness the power of Artificial Intelligence and Machine Learning to drive intelligent automation, predictive analytics, and data-driven decision-making across your enterprise operations. Nata Consultancy Services delivers end-to-end AI/ML solutions—from strategic consulting and use case identification to custom model development, deployment, and ongoing optimization—enabling organizations to extract actionable insights from complex data, automate repetitive processes, enhance customer experiences, and unlock new revenue opportunities.`,
+    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg',
+    benefits: ['Predictive insights', 'Automation & efficiency', 'Personalization at scale'],
+    services: [
+      'NLP & Conversational AI',
+      'Computer Vision',
+      'Predictive Analytics & Recommendation Systems',
+      'Custom ML Model Development & MLOps',
+    ],
+    technologies: ['TensorFlow', 'PyTorch', 'OpenAI', 'Hugging Face'],
   },
 };
 

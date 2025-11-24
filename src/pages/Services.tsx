@@ -1,78 +1,78 @@
 import { Link } from 'react-router-dom';
-import { Server, DollarSign, Code, Cloud, Brain, TrendingUp, Database, Users, ArrowRight } from 'lucide-react';
+import { Server, Code, Cloud, Brain, Database, Users, DollarSign, Lock, ArrowRight } from 'lucide-react';
 
 const services = [
   {
     id: 'bpo',
-    name: 'Business Process Outsourcing',
-    shortName: 'BPO',
-    description: 'Streamline your operations with our comprehensive BPO solutions. We handle everything from customer support to back-office operations, allowing you to focus on core business activities.',
+    name: 'Business Process Outsourcing (BPO) Services',
+    shortName: 'BPO Services',
+    description: 'Optimize operations and reduce costs with strategic BPO solutions. We handle customer support, payroll, data entry, and back-office functions.',
     icon: Server,
-    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800',
-    features: ['Customer Support', 'Data Entry', 'Back Office Operations', 'Technical Support'],
-  },
-  {
-    id: 'payrolls',
-    name: 'Payroll Management',
-    shortName: 'Payrolls',
-    description: 'End-to-end payroll processing and management services ensuring accuracy, compliance, and timely delivery. We handle everything from salary calculations to tax compliance.',
-    icon: DollarSign,
-    image: 'https://images.pexels.com/photos/6863332/pexels-photo-6863332.jpeg?auto=compress&cs=tinysrgb&w=800',
-    features: ['Salary Processing', 'Tax Compliance', 'Benefits Administration', 'Reporting'],
-  },
-  {
-    id: 'devops',
-    name: 'DevOps Solutions',
-    shortName: 'DevOps',
-    description: 'Accelerate your software delivery with modern DevOps practices. We implement CI/CD pipelines, infrastructure automation, and monitoring solutions for optimal performance.',
-    icon: Code,
-    image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
-    features: ['CI/CD Pipelines', 'Infrastructure as Code', 'Container Orchestration', 'Monitoring'],
+    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
+    features: ['Customer Service & Support', 'Technical Help Desk', 'Payroll & Accounts Payable', 'Data Entry & Back-office'],
   },
   {
     id: 'cloud',
-    name: 'Cloud Solutions',
-    shortName: 'Cloud',
-    description: 'Leverage the power of Azure, AWS, and Google Cloud for scalable, secure, and cost-effective infrastructure. We provide migration, optimization, and management services.',
+    name: 'Cloud Infrastructure Services (Azure, AWS, Google Cloud Platform)',
+    shortName: 'Cloud Infrastructure',
+    description: 'Accelerate innovation with enterprise cloud architecture, migration and managed operations across Azure, AWS, and Google Cloud.',
     icon: Cloud,
-    image: 'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800',
-    features: ['Cloud Migration', 'Azure Services', 'AWS Solutions', 'Google Cloud'],
+    image: 'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg',
+    features: ['Cloud Migration', 'Multi-cloud Architecture', 'Cost Optimization', 'Managed Operations'],
   },
   {
-    id: 'ai',
-    name: 'Artificial Intelligence',
-    shortName: 'AI',
-    description: 'Transform your business with AI-powered solutions. From natural language processing to computer vision, we implement cutting-edge AI technologies tailored to your needs.',
-    icon: Brain,
-    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
-    features: ['Natural Language Processing', 'Computer Vision', 'Chatbots', 'AI Strategy'],
+    id: 'devops',
+    name: 'DevOps Engineering and Automation Services',
+    shortName: 'DevOps & Automation',
+    description: 'Transform software delivery with CI/CD, automation, infrastructure as code, and observability for faster, reliable releases.',
+    icon: Code,
+    image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg',
+    features: ['CI/CD Pipelines', 'Infrastructure as Code', 'Container Orchestration', 'Monitoring & Observability'],
   },
   {
-    id: 'ml',
-    name: 'Machine Learning',
-    shortName: 'ML',
-    description: 'Unlock the power of your data with custom machine learning models. We develop predictive analytics, recommendation systems, and automated decision-making solutions.',
-    icon: TrendingUp,
-    image: 'https://images.pexels.com/photos/8439093/pexels-photo-8439093.jpeg?auto=compress&cs=tinysrgb&w=800',
-    features: ['Predictive Analytics', 'Recommendation Systems', 'Model Training', 'ML Operations'],
+    id: 'cybersecurity',
+    name: 'Cybersecurity Solutions and Risk Management',
+    shortName: 'Cybersecurity',
+    description: 'Enterprise-grade cybersecurity services including threat detection, SOC, penetration testing and compliance frameworks.',
+    icon: Lock,
+    image: 'https://images.pexels.com/photos/8386450/pexels-photo-8386450.jpeg',
+    features: ['Security Assessment', 'Penetration Testing', 'Managed SOC', 'Incident Response'],
   },
   {
     id: 'etl',
-    name: 'ETL Services',
-    shortName: 'ETL',
-    description: 'Extract, Transform, and Load your data efficiently with our robust ETL pipelines. We ensure data quality, integration, and timely availability for analytics and operations.',
+    name: 'ETL and Data Integration with Informatica',
+    shortName: 'ETL & Data Integration',
+    description: 'Unlock business intelligence with scalable ETL pipelines, data warehousing, and data governance powered by Informatica.',
     icon: Database,
-    image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
-    features: ['Data Integration', 'Data Warehousing', 'Real-time Processing', 'Data Quality'],
+    image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg',
+    features: ['ETL Pipeline Design', 'Data Warehouse Architecture', 'Real-time Integration', 'Data Quality Management'],
   },
   {
     id: 'staffing',
-    name: 'Global Staffing Solutions',
-    shortName: 'Staffing',
-    description: 'Connect with top talent across India and USA. We provide comprehensive staffing solutions including recruitment, contract staffing, and talent management services.',
+    name: 'Strategic Staffing Solutions (IT, Non-IT, Healthcare)',
+    shortName: 'Staffing Solutions',
+    description: 'Build high-performance teams quickly with global talent acquisition, screening, and managed workforce solutions.',
     icon: Users,
-    image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800',
-    features: ['Permanent Hiring', 'Contract Staffing', 'Talent Acquisition', 'Global Recruitment'],
+    image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
+    features: ['Permanent & Contract Staffing', 'Offshore Team Augmentation', 'Executive Search', 'Diversity & Inclusion Hiring'],
+  },
+  {
+    id: 'tax',
+    name: 'US Tax Preparation and Compliance Services',
+    shortName: 'US Tax Services',
+    description: 'Navigate complex US tax regulations with expert preparation, filing and advisory services for individuals and businesses.',
+    icon: DollarSign,
+    image: 'https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg',
+    features: ['Individual & Business Tax Prep', 'Multi-state Filing', 'ITIN / EIN Assistance', 'Tax Audit Support'],
+  },
+  {
+    id: 'ai',
+    name: 'Artificial Intelligence and Machine Learning Solutions',
+    shortName: 'AI / Machine Learning',
+    description: 'End-to-end AI/ML solutions: NLP, computer vision, predictive analytics, MLOps and responsible AI practices.',
+    icon: Brain,
+    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg',
+    features: ['NLP & Conversational AI', 'Computer Vision', 'Predictive Analytics', 'Custom ML Model Development'],
   },
 ];
 
@@ -88,13 +88,13 @@ export default function Services() {
       `}</style>
 
       {/* Hero Section */}
-      <div className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden bg-cover bg-center" style={{ backgroundImage: "url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1600')" }}>
-        <div className="absolute inset-0 bg-black/60"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center animate-fade-in-up">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
+      <div className="relative py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden bg-cover bg-center mx-3 sm:mx-4 md:mx-0 rounded-lg sm:rounded-xl md:rounded-none" style={{ backgroundImage: "url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1600')" }}>
+        <div className="absolute inset-0 bg-black/60 rounded-lg sm:rounded-xl md:rounded-none"></div>
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 text-center animate-fade-in-up">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 sm:mb-4 md:mb-6 tracking-tight leading-tight">
             Our <span className="text-cyan-400">Services</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light px-4">
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed font-light px-2">
             Comprehensive technology solutions and consultancy services designed to accelerate your business growth and digital transformation
           </p>
         </div>

@@ -3,38 +3,30 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
 export default function HeaderCTA() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About Us' },
-    { path: '/contact', label: 'Contact Us' },
     { path: '/careers', label: 'Careers' },
+    { path: '/contact', label: 'Contact Us' },
   ];
 
   const servicesList = [
-    { id: 'bpo', label: 'Business Process Outsourcing' },
-    { id: 'payrolls', label: 'Payroll Management' },
-    { id: 'devops', label: 'DevOps Solutions' },
-    { id: 'cloud', label: 'Cloud Solutions' },
-    { id: 'ai', label: 'Artificial Intelligence' },
-    { id: 'ml', label: 'Machine Learning' },
-    { id: 'etl', label: 'ETL Services' },
-    { id: 'staffing', label: 'Global Staffing Solutions' },
+    { id: 'bpo', label: 'BPO Services' },
+    { id: 'cloud', label: 'Cloud Infrastructure' },
+    { id: 'devops', label: 'DevOps & Automation' },
+    { id: 'cybersecurity', label: 'Cybersecurity' },
+    { id: 'etl', label: 'ETL & Data Integration' },
+    { id: 'staffing', label: 'Staffing Solutions' },
+    { id: 'tax', label: 'US Tax Services' },
+    { id: 'ai', label: 'AI / Machine Learning' },
   ];
 
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement | null>(null);
-
-  // Scroll handler
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Click outside for services dropdown
   useEffect(() => {
@@ -57,43 +49,32 @@ export default function HeaderCTA() {
     <>
       {/* --- Header --- */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-[#002E6D]/95 backdrop-blur-sm shadow-lg border-b border-[#002E6D]/20'
-            : 'bg-[#002E6D]/70 backdrop-blur-sm border-b border-[#002E6D]/10'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/50 backdrop-blur-md"
       >
-        <div className="max-w-[100rem] mx-auto px-4 sm:px-6 py-2">
+        <div className="max-w-[100rem] mx-auto px-4 sm:px-6 py-1.5">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center">
              <img
-  src="/natalogo1.svg"
+  src="/logonata.svg"
   alt="Logo"
-  className="w-36 h-18 sm:w-48 sm:h-24 md:w-60 md:h-30 lg:w-72 lg:h-36 object-contain"
+  className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 object-contain"
 />
             </Link>
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center space-x-1">
-              {navLinks.map((link) => (
+              {navLinks.slice(0, 2).map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   className={`relative px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-all duration-300 flex items-center min-h-[44px] ${
                     location.pathname === link.path
-                      ? 'text-white'
-                      : 'text-gray-300 hover:text-white'
+                      ? 'text-black font-semibold'
+                      : 'text-gray-800 hover:text-black font-bold'
                   }`}
                 >
                   <span>{link.label}</span>
-                  <div
-                    className={`absolute inset-0 rounded-none transition-all duration-300 ${
-                      location.pathname === link.path
-                        ? 'bg-white/10 border border-white/20'
-                        : 'bg-white/0 group-hover:bg-white/5'
-                    }`}
-                  ></div>
                 </Link>
               ))}
 
@@ -101,19 +82,13 @@ export default function HeaderCTA() {
               <div className="relative" ref={servicesRef}>
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="relative px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-gray-300 hover:text-white flex items-center gap-1.5 min-h-[44px]"
+                  className="relative px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-gray-800 hover:text-black flex items-center gap-1.5 min-h-[44px]"
                   aria-expanded={isServicesOpen}
                 >
                   Services
-                  <ChevronDown
-                    className={`transition-transform duration-200 ${
-                      isServicesOpen ? 'rotate-180' : 'rotate-0'
-                    }`}
-                    size={16}
-                  />
                 </button>
                 <div
-                  className={`absolute right-0 mt-2 w-56 sm:w-64 bg-black border border-white/10 shadow-lg rounded-md z-50 overflow-hidden transition-all duration-300 origin-top transform ${
+                  className={`absolute right-0 mt-2 w-56 sm:w-72 bg-white border border-gray-200 shadow-lg rounded-md z-50 overflow-hidden transition-all duration-300 origin-top transform ${
                     isServicesOpen
                       ? 'max-h-96 opacity-100 translate-y-0 pointer-events-auto'
                       : 'max-h-0 opacity-0 -translate-y-2 pointer-events-none'
@@ -124,7 +99,7 @@ export default function HeaderCTA() {
                       <Link
                         key={s.id}
                         to={`/services/${s.id}`}
-                        className="block px-4 py-3 text-sm text-gray-200 hover:bg-white/5 hover:text-white min-h-[44px] flex items-center"
+                        className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 min-h-[44px] flex items-center"
                       >
                         {s.label}
                       </Link>
@@ -132,6 +107,20 @@ export default function HeaderCTA() {
                   </div>
                 </div>
               </div>
+
+              {navLinks.slice(2).map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`relative px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-all duration-300 flex items-center min-h-[44px] ${
+                    location.pathname === link.path
+                      ? 'text-black font-semibold'
+                      : 'text-gray-800 hover:text-black font-bold'
+                  }`}
+                >
+                  <span>{link.label}</span>
+                </Link>
+              ))}
             </nav>
 
             {/* Mobile Menu Button */}

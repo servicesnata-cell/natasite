@@ -3,103 +3,107 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-blue-300 to-white border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
-          <div>
-            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
-              Nata <span>Consultancy Services</span>
-            </h3>
-            <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">
+    <footer className="bg-white border-t border-blue-200 pt-8 sm:pt-10 md:pt-12 pb-4 sm:pb-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
+
+        {/* GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
+
+          {/* LOGO + SOCIAL */}
+          <div className="text-center lg:text-left">
+            <div className="flex justify-center lg:justify-start mb-3 sm:mb-4">
+              <img
+                src="/logonata.svg"
+                alt="Nata Consultancy Logo"
+                className="h-16 sm:h-20 md:h-24 w-auto"
+              />
+            </div>
+
+            <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed px-2 lg:px-0">
               Empowering businesses through innovative technology solutions and expert consultancy services.
             </p>
-            <div className="flex space-x-3">
+
+            <div className="flex justify-center lg:justify-start gap-2 sm:gap-3 mt-3 sm:mt-4">
               <a
                 href="https://www.linkedin.com/company/nata-consultancy-services-private-limited/"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-cyan-500 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
-                aria-label="LinkedIn"
+                className="w-9 h-9 sm:w-10 sm:h-10 border border-blue-400 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all min-h-[40px] min-w-[40px]"
               >
-                <Linkedin size={20} />
+                <Linkedin size={16} className="sm:w-5 sm:h-5" />
               </a>
-              <a href="#" className="text-gray-600 hover:text-cyan-500 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Twitter">
-                <Twitter size={20} />
+
+              <a
+                href="#"
+                className="w-9 h-9 sm:w-10 sm:h-10 border border-blue-400 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all min-h-[40px] min-w-[40px]"
+              >
+                <Twitter size={16} className="sm:w-5 sm:h-5" />
               </a>
-              <a href="#" className="text-gray-600 hover:text-cyan-500 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Facebook">
-                <Facebook size={20} />
+
+              <a
+                href="#"
+                className="w-9 h-9 sm:w-10 sm:h-10 border border-blue-400 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all min-h-[40px] min-w-[40px]"
+              >
+                <Facebook size={16} className="sm:w-5 sm:h-5" />
               </a>
             </div>
           </div>
 
-          <div>
-            <h4 className="text-gray-900 font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Quick Links</h4>
+          {/* QUICK LINKS */}
+          <div className="text-center lg:text-left">
+            <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Quick Links</h4>
             <ul className="space-y-1.5 sm:space-y-2">
-              <li>
-                <Link to="/" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/careers" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">
-                  Careers
-                </Link>
-              </li>
+              <li><Link to="/" className="text-xs sm:text-sm text-gray-600 hover:text-blue-600 transition-colors">Home</Link></li>
+              <li><Link to="/services" className="text-xs sm:text-sm text-gray-600 hover:text-blue-600 transition-colors">Services</Link></li>
+              <li><Link to="/about" className="text-xs sm:text-sm text-gray-600 hover:text-blue-600 transition-colors">About Us</Link></li>
+              <li><Link to="/careers" className="text-xs sm:text-sm text-gray-600 hover:text-blue-600 transition-colors">Careers</Link></li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-gray-900 font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Services</h4>
-            <ul className="space-y-1.5 sm:space-y-2">
-              <li><Link to="/services/bpo" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">BPO</Link></li>
-              <li><Link to="/services/payrolls" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">Payroll Services</Link></li>
-              <li><Link to="/services/devops" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">Dev Ops</Link></li>
-              <li><Link to="/services/cloud" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">Cloud Solutions</Link></li>
-              <li><Link to="/services/ai" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">Artificial Intelligence</Link></li>
-              <li><Link to="/services/ml" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">Machine Learning</Link></li>
-              <li><Link to="/services/etl" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">ETL</Link></li>
-              <li><Link to="/services/staffing" className="text-gray-600 hover:text-cyan-500 text-xs sm:text-sm transition-colors inline-block min-h-[44px] flex items-center">Staffing</Link></li>
+          {/* SERVICES */}
+          <div className="text-center lg:text-left">
+            <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Services</h4>
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
+              <li><Link to="/services/bpo" className="text-gray-600 hover:text-blue-600 transition-colors">BPO Services</Link></li>
+              <li><Link to="/services/cloud" className="text-gray-600 hover:text-blue-600 transition-colors">Cloud Infrastructure</Link></li>
+              <li><Link to="/services/devops" className="text-gray-600 hover:text-blue-600 transition-colors">DevOps & Automation</Link></li>
+              <li><Link to="/services/cybersecurity" className="text-gray-600 hover:text-blue-600 transition-colors">Cybersecurity</Link></li>
+              <li><Link to="/services/etl" className="text-gray-600 hover:text-blue-600 transition-colors">ETL & Data Integration</Link></li>
+              <li><Link to="/services/staffing" className="text-gray-600 hover:text-blue-600 transition-colors">Staffing Solutions</Link></li>
+              <li><Link to="/services/tax" className="text-gray-600 hover:text-blue-600 transition-colors">US Tax Services</Link></li>
+              <li><Link to="/services/ai" className="text-gray-600 hover:text-blue-600 transition-colors">AI / Machine Learning</Link></li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-gray-900 font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Contact</h4>
-            <ul className="space-y-2 sm:space-y-3">
-              <li className="flex items-start space-x-2 text-gray-600 text-xs sm:text-sm">
-                <Mail size={16} className="mt-1 flex-shrink-0" />
+          {/* CONTACT */}
+          <div className="text-center lg:text-left">
+            <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Contact</h4>
+            <ul className="space-y-2 text-gray-600 text-xs sm:text-sm">
+              <li className="flex items-start justify-center lg:justify-start gap-2">
+                <Mail size={14} className="text-blue-600 flex-shrink-0 mt-0.5 sm:w-4 sm:h-4" />
                 <span className="break-all">info@nataservices.com</span>
               </li>
-              <li className="flex items-start space-x-2 text-gray-600 text-xs sm:text-sm">
-                <Phone size={16} className="mt-1 flex-shrink-0" />
+              <li className="flex items-start justify-center lg:justify-start gap-2">
+                <Phone size={14} className="text-blue-600 flex-shrink-0 mt-0.5 sm:w-4 sm:h-4" />
                 <span>+1 404-593-8792</span>
               </li>
-              <li className="flex items-start space-x-2 text-gray-600 text-xs sm:text-sm">
-                <Phone size={16} className="mt-1 flex-shrink-0" />
+              <li className="flex items-start justify-center lg:justify-start gap-2">
+                <Phone size={14} className="text-blue-600 flex-shrink-0 mt-0.5 sm:w-4 sm:h-4" />
                 <span>+91 8886665220</span>
               </li>
-              <li className="flex items-start space-x-2 text-gray-600 text-xs sm:text-sm">
-                <MapPin size={16} className="mt-1 flex-shrink-0" />
+              <li className="flex items-start justify-center lg:justify-start gap-2">
+                <MapPin size={14} className="text-blue-600 flex-shrink-0 mt-0.5 sm:w-4 sm:h-4" />
                 <span>Atlanta, Georgia</span>
               </li>
-              <li className="flex items-start space-x-2 text-gray-600 text-xs sm:text-sm">
-                <MapPin size={16} className="mt-1 flex-shrink-0" />
+              <li className="flex items-start justify-center lg:justify-start gap-2">
+                <MapPin size={14} className="text-blue-600 flex-shrink-0 mt-0.5 sm:w-4 sm:h-4" />
                 <span>Hyderabad, Telangana</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-6 sm:pt-8 border-t border-gray-200 text-center text-gray-500 text-xs sm:text-sm">
+        {/* COPYRIGHT */}
+        <div className="pt-4 sm:pt-6 md:pt-8 mt-6 sm:mt-8 md:mt-10 border-t border-blue-100 text-center text-gray-500 text-xs sm:text-sm px-2">
           <p>&copy; {new Date().getFullYear()} Nata Consultancy Services. All rights reserved.</p>
         </div>
       </div>
