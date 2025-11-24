@@ -37,57 +37,7 @@ export default function GalaxyHero() {
 
   return (
     <div className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen overflow-hidden bg-gradient-to-br from-blue-700 to-blue-950">
-      <style>{`
-        @keyframes glideUp {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) translateX(0px); }
-          25% { transform: translateY(-40px) translateX(30px); }
-          50% { transform: translateY(-80px) translateX(0px); }
-          75% { transform: translateY(-40px) translateX(-30px); }
-        }
-        @keyframes popOut {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.15); }
-          100% { transform: scale(1.1); }
-        }
-        .glide-up-h1 { animation: glideUp 0.8s ease-out 0.2s forwards; opacity: 0; }
-        .glide-up-p { animation: glideUp 0.8s ease-out 0.4s forwards; opacity: 0; }
-        .glide-up-desc { animation: glideUp 0.8s ease-out 0.6s forwards; opacity: 0; }
-        .glide-up-buttons { animation: glideUp 0.8s ease-out 0.8s forwards; opacity: 0; }
-        .floating-ball {
-          position: absolute;
-          border-radius: 0%;
-          background: rgba(255, 255, 255, 0.15);
-          box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-        }
-        .hero-button {
-          transition: all 0.3s ease;
-        }
-        .hero-button:hover {
-          animation: popOut 0.4s ease-out forwards;
-        }
-      `}</style>
 
-      {/* Animated floating cubes background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(36)].map((_, i) => (
-          <div
-            key={`ball-${i}`}
-            className="floating-ball"
-            style={{
-              width: `${Math.random() * 100 + 50}px`,
-              height: `${Math.random() * 100 + 50}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${Math.random() * 10 + 15}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          />
-        ))}
-      </div>
 
       {slides.map((slide, index) => (
         <div
