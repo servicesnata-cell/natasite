@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowUpRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
 export default function HeaderCTA() {
@@ -85,7 +85,7 @@ export default function HeaderCTA() {
                   className="relative px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-gray-800 hover:text-black flex items-center gap-1.5 min-h-[44px]"
                   aria-expanded={isServicesOpen}
                 >
-                  Services
+                  What we do
                 </button>
                 <div
                   className={`absolute right-0 mt-2 w-56 sm:w-72 bg-white border border-gray-200 shadow-lg rounded-md z-50 overflow-hidden transition-all duration-300 origin-top transform ${
@@ -109,17 +109,33 @@ export default function HeaderCTA() {
               </div>
 
               {navLinks.slice(2).map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`relative px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-all duration-300 flex items-center min-h-[44px] ${
-                    location.pathname === link.path
-                      ? 'text-black font-semibold'
-                      : 'text-gray-800 hover:text-black font-bold'
-                  }`}
-                >
-                  <span>{link.label}</span>
-                </Link>
+                link.path === '/contact' ? (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="relative inline-flex items-center gap-3 px-5 py-2 bg-blue-500 border-2 border-sky-500 rounded-full text-white font-bold min-h-[44px]"
+                    aria-label="Contact Us"
+                  >
+                    <span>Contact Us</span>
+                    <span className="ml-2 w-7 h-7 hexagon flex items-center justify-center">
+                      <span className="w-5 h-5 flex items-center justify-center">
+                        <ArrowUpRight size={12} className="text-white" />
+                      </span>
+                    </span>
+                  </Link>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`relative px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-all duration-300 flex items-center min-h-[44px] ${
+                      location.pathname === link.path
+                        ? 'text-black font-semibold'
+                        : 'text-gray-800 hover:text-black font-bold'
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                  </Link>
+                )
               ))}
             </nav>
 
@@ -137,18 +153,36 @@ export default function HeaderCTA() {
           {isMobileMenuOpen && (
             <nav className="lg:hidden mt-4 pb-4 space-y-2 max-h-[70vh] overflow-y-auto animate-slide-down">
               {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px] ${
-                    location.pathname === link.path
-                      ? 'bg-white/10 text-blue-600 border border-white/20'
-                      : 'text-blue-600 hover:bg-white/5 hover:text-blue-500'
-                  }`}
-                >
-                  {link.label}
-                </Link>
+                link.path === '/contact' ? (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px]"
+                  >
+                    <div className="inline-flex items-center gap-3 px-3 py-2 bg-[#05235a] border-2 border-sky-500 text-white font-bold rounded-full">
+                      <span>Contact Us</span>
+                      <span className="ml-2 w-7 h-7 hexagon flex items-center justify-center">
+                        <span className="w-5 h-5 flex items-center justify-center">
+                          <ArrowUpRight size={12} className="text-white" />
+                        </span>
+                      </span>
+                    </div>
+                  </Link>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px] ${
+                      location.pathname === link.path
+                        ? 'bg-white/10 text-blue-600 border border-white/20'
+                        : 'text-blue-600 hover:bg-white/5 hover:text-blue-500'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
 
               {/* Mobile Services Accordion */}
@@ -190,6 +224,7 @@ export default function HeaderCTA() {
           to { opacity: 1; transform: translateY(0); }
         }
         .animate-slide-down { animation: slideDown 220ms ease-out; }
+        .hexagon { clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%); background:#0ea5ff; }
       `}</style>
     </>
   );
