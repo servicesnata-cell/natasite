@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react';
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-blue-200 pt-8 sm:pt-10 md:pt-12 pb-4 sm:pb-6">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
+      <div className="max-w-8xl mx-auto px-3 sm:px-4 md:px-6">
 
         {/* GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
