@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function About() {
   return (
     <div className="bg-white min-h-screen pt-16 sm:pt-20 md:pt-24 px-3 sm:px-4 md:px-6">
@@ -54,12 +56,12 @@ export default function About() {
             Let's discuss how we can help transform your business with our innovative solutions
           </p>
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all duration-300 rounded-md text-xs sm:text-sm md:text-base min-h-[44px] flex items-center justify-center"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </section>

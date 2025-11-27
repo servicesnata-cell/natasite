@@ -1,4 +1,5 @@
 import GalaxyHero from '../components/GalaxyHero';
+import { Link } from 'react-router-dom';
 import ServicesCarousel from '../components/ServicesCarousel';
 import { Users, Globe, Award, TrendingUp } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -358,9 +359,9 @@ export default function Home() {
     </div>
 
     <div className="text-center mt-10 sm:mt-12 md:mt-16 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-      <a href="/contact" className="inline-block px-6 sm:px-8 py-3 bg-white text-blue-900 font-bold border-none shadow-lg hover:shadow-white/50 hover:scale-105 transition-all duration-300 rounded-md text-sm sm:text-base min-h-[44px] flex items-center justify-center">
+      <Link to="/contact" className="inline-block px-6 sm:px-8 py-3 bg-white text-blue-900 font-bold border-none shadow-lg hover:shadow-white/50 hover:scale-105 transition-all duration-300 rounded-md text-sm sm:text-base min-h-[44px] flex items-center justify-center">
         Get Started Today
-      </a>
+      </Link>
     </div>
   </div>
 </section>
