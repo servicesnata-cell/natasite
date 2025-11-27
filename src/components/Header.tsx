@@ -160,7 +160,7 @@ export default function HeaderCTA() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px]"
                   >
-                    <div className="inline-flex items-center gap-3 px-3 py-2 bg-[#05235a] border-2 border-sky-500 text-white font-bold rounded-full">
+                    <div className="inline-flex items-center gap-3 px-3 py-2 bg-blue-500 border-2 border-sky-500 text-white font-bold rounded-full">
                       <span>Contact Us</span>
                       <span className="ml-2 w-7 h-7 hexagon flex items-center justify-center">
                         <span className="w-5 h-5 flex items-center justify-center">
@@ -191,7 +191,7 @@ export default function HeaderCTA() {
                   onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
                   className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-blue-600 hover:text-blue-500 hover:bg-white/5 rounded-md transition-all min-h-[44px]"
                 >
-                  <span>Services</span>
+                  <span>What we do</span>
                   <ChevronDown
                     className={`transition-transform duration-200 ${
                       isMobileServicesOpen ? 'rotate-180' : 'rotate-0'
