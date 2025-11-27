@@ -199,7 +199,7 @@ export default function HeaderCTA() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px]"
               >
-                <div className="inline-flex items-center gap-3 px-3 py-2 bg-blue-500 border-2 border-sky-500 text-white font-bold rounded-full">
+                <div className="inline-flex items-center justify-between px-3 py-2 bg-blue-500 border-2 border-sky-500 text-white font-bold rounded-full">
                   <span>Contact Us</span>
                   <span className="ml-2 w-7 h-7 hexagon flex items-center justify-center">
                     <span className="w-5 h-5 flex items-center justify-center">
