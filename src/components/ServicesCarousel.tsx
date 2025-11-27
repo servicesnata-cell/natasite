@@ -83,7 +83,7 @@ export default function ServicesCarousel() {
           }
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.3 }
     );
 
     itemRefs.current.forEach((el) => {
@@ -137,7 +137,7 @@ export default function ServicesCarousel() {
                   }
                   setTappedIndex(index);
                 }}
-                className={`group relative overflow-hidden h-56 sm:h-48 md:h-56 lg:h-72 w-full transition-all duration-300 ease-out cursor-pointer ${
+                className={`group relative overflow-hidden h-56 sm:h-48 md:h-56 lg:h-72 w-full transition-all duration-200 sm:duration-300 ease-out cursor-pointer ${
                   // blur non-active on desktop
                   !isTouch && hovered !== null && hovered !== index ? 'blur-sm scale-[0.98]' : ''
                 }`}
@@ -146,7 +146,8 @@ export default function ServicesCarousel() {
                 <img
                   src={service.image}
                   alt={service.name}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 sm:duration-500 will-change-transform"
+                  loading="lazy"
                 />
 
                 {/* subtle base overlay for contrast (black/30) -> black/80 when active */}
@@ -161,7 +162,7 @@ export default function ServicesCarousel() {
 
                 {/* Bottom panel: description + hexagon+arrow — glide up when active */}
                 {/* Panel: on mobile glide in horizontally, on md+ glide up from bottom */}
-                <div className={`absolute inset-x-0 bottom-0 pb-4 px-4 transition-all duration-300 ease-out ${showOverlay ? 'translate-x-0 opacity-100 pointer-events-auto md:translate-y-0 md:opacity-100' : 'translate-x-6 opacity-0 pointer-events-none md:translate-y-6 md:opacity-0'}`}>
+                <div className={`absolute inset-x-0 bottom-0 pb-4 px-4 transition-all duration-200 sm:duration-300 ease-out ${showOverlay ? 'translate-x-0 opacity-100 pointer-events-auto md:translate-y-0 md:opacity-100' : 'translate-x-6 opacity-0 pointer-events-none md:translate-y-6 md:opacity-0'}`}>
                   <div className="bg-transparent flex items-center justify-between">
                     <p className="text-sm text-white/90 mr-3 line-clamp-3">{service.description}</p>
                     <div className="ml-3 flex-shrink-0">

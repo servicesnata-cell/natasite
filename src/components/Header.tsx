@@ -155,7 +155,7 @@ export default function HeaderCTA() {
               <div>
                 <button
                   onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                  className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-all min-h-[44px]"
+                  className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-blue-600 hover:text-blue-500 hover:bg-white/5 rounded-md transition-all min-h-[44px]"
                 >
                   <span>Services</span>
                   <ChevronDown
