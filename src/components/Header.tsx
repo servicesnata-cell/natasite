@@ -160,32 +160,8 @@ export default function HeaderCTA() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px]"
                   >
-                    <div className="inline-flex items-center gap-3 px-3 py-2 bg-blue-500 border-2 border-sky-500 text-white font-bold rounded-full">
-                      <span>Contact Us</span>
-                      <span className="ml-2 w-7 h-7 hexagon flex items-center justify-center">
-                        <span className="w-5 h-5 flex items-center justify-center">
-                          <ArrowUpRight size={12} className="text-white" />
-                        </span>
-                      </span>
-                    </div>
-                  </Link>
-                ) : (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px] ${
-                      location.pathname === link.path
-                        ? 'bg-white/10 text-blue-600 border border-white/20'
-                        : 'text-blue-600 hover:bg-white/5 hover:text-blue-500'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                )
-              ))}
 
-              {/* Mobile Services Accordion */}
+                                  {/* Mobile Services Accordion */}
               <div>
                 <button
                   onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
@@ -214,6 +190,32 @@ export default function HeaderCTA() {
                   </div>
                 )}
               </div>
+              
+                    <div className="inline-flex items-center gap-3 px-3 py-2 bg-blue-500 border-2 border-sky-500 text-white font-bold rounded-full">
+                      <span>Contact Us</span>
+                      <span className="ml-2 w-7 h-7 hexagon flex items-center justify-center">
+                        <span className="w-5 h-5 flex items-center justify-center">
+                          <ArrowUpRight size={12} className="text-white" />
+                        </span>
+                      </span>
+                    </div>
+                  </Link>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px] ${
+                      location.pathname === link.path
+                        ? 'bg-white/10 text-blue-600 border border-white/20'
+                        : 'text-blue-600 hover:bg-white/5 hover:text-blue-500'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              ))}
+
             </nav>
           )}
         </div>
