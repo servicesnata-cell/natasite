@@ -60,12 +60,6 @@ export default function About() {
             >
               Contact Us
             </a>
-            <a
-              href="/services"
-              className="px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 bg-transparent text-blue-600 font-semibold border-2 border-blue-300 hover:border-blue-500 hover:text-blue-700 transition-all duration-300 rounded-md text-xs sm:text-sm md:text-base min-h-[44px] flex items-center justify-center"
-            >
-              View Services
-            </a>
           </div>
         </div>
       </section>
