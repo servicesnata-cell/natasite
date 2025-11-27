@@ -28,7 +28,6 @@ export default function HeaderCTA() {
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement | null>(null);
 
-  // Click outside for services dropdown
   useEffect(() => {
     const handleOutside = (e: MouseEvent) => {
       if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
@@ -39,7 +38,6 @@ export default function HeaderCTA() {
     return () => document.removeEventListener('mousedown', handleOutside);
   }, []);
 
-  // Close dropdowns on route change
   useEffect(() => {
     setIsServicesOpen(false);
     setIsMobileServicesOpen(false);
@@ -47,19 +45,15 @@ export default function HeaderCTA() {
 
   return (
     <>
-      {/* --- Header --- */}
-      <header
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/70 backdrop-blur-md"
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/70 backdrop-blur-md">
         <div className="max-w-[100rem] mx-auto px-4 sm:px-6 py-1.5">
           <div className="flex items-center justify-between">
-            {/* Logo */}
             <Link to="/" className="flex items-center">
-             <img
-  src="/logonata.svg"
-  alt="Logo"
-  className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 object-contain"
-/>
+              <img
+                src="/logonata.svg"
+                alt="Logo"
+                className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 object-contain"
+              />
             </Link>
 
             {/* Desktop Nav */}
@@ -78,7 +72,7 @@ export default function HeaderCTA() {
                 </Link>
               ))}
 
-              {/* Desktop Services Dropdown */}
+              {/* Desktop Services */}
               <div className="relative" ref={servicesRef}>
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
@@ -87,6 +81,7 @@ export default function HeaderCTA() {
                 >
                   What we do
                 </button>
+
                 <div
                   className={`absolute right-0 mt-2 w-56 sm:w-72 bg-white border border-gray-200 shadow-lg rounded-md z-50 overflow-hidden transition-all duration-300 origin-top transform ${
                     isServicesOpen
@@ -108,7 +103,7 @@ export default function HeaderCTA() {
                 </div>
               </div>
 
-              {navLinks.slice(2).map((link) => (
+              {navLinks.slice(2).map((link) =>
                 link.path === '/contact' ? (
                   <Link
                     key={link.path}
@@ -136,10 +131,10 @@ export default function HeaderCTA() {
                     <span>{link.label}</span>
                   </Link>
                 )
-              ))}
+              )}
             </nav>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden text-blue-600 p-2 hover:bg-white/10 rounded-md transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
@@ -149,19 +144,27 @@ export default function HeaderCTA() {
             </button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* MOBILE MENU FIXED VERSION */}
           {isMobileMenuOpen && (
             <nav className="lg:hidden mt-4 pb-4 space-y-2 max-h-[70vh] overflow-y-auto animate-slide-down">
-              {navLinks.map((link) => (
-                link.path === '/contact' ? (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px]"
-                  >
 
-                                  {/* Mobile Services Accordion */}
+              {/* Normal mobile nav links except Contact */}
+              {navLinks.slice(0, 3).map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px] ${
+                    location.pathname === link.path
+                      ? 'bg-white/10 text-blue-600 border border-white/20'
+                      : 'text-blue-600 hover:bg-white/5 hover:text-blue-500'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+
+              {/* MOBILE WHAT WE DO (Corrected Position) */}
               <div>
                 <button
                   onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
@@ -169,12 +172,11 @@ export default function HeaderCTA() {
                 >
                   <span>What we do</span>
                   <ChevronDown
-                    className={`transition-transform duration-200 ${
-                      isMobileServicesOpen ? 'rotate-180' : 'rotate-0'
-                    }`}
+                    className={`transition-transform duration-200 ${isMobileServicesOpen ? 'rotate-180' : 'rotate-0'}`}
                     size={20}
                   />
                 </button>
+
                 {isMobileServicesOpen && (
                   <div className="mt-2 ml-4 space-y-1 animate-slide-down">
                     {servicesList.map((s) => (
@@ -190,36 +192,27 @@ export default function HeaderCTA() {
                   </div>
                 )}
               </div>
-              
-                    <div className="inline-flex items-center gap-3 px-3 py-2 bg-blue-500 border-2 border-sky-500 text-white font-bold rounded-full">
-                      <span>Contact Us</span>
-                      <span className="ml-2 w-7 h-7 hexagon flex items-center justify-center">
-                        <span className="w-5 h-5 flex items-center justify-center">
-                          <ArrowUpRight size={12} className="text-white" />
-                        </span>
-                      </span>
-                    </div>
-                  </Link>
-                ) : (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px] ${
-                      location.pathname === link.path
-                        ? 'bg-white/10 text-blue-600 border border-white/20'
-                        : 'text-blue-600 hover:bg-white/5 hover:text-blue-500'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                )
-              ))}
 
+              {/* MOBILE CONTACT (Corrected Position) */}
+              <Link
+                to="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px]"
+              >
+                <div className="inline-flex items-center gap-3 px-3 py-2 bg-blue-500 border-2 border-sky-500 text-white font-bold rounded-full">
+                  <span>Contact Us</span>
+                  <span className="ml-2 w-7 h-7 hexagon flex items-center justify-center">
+                    <span className="w-5 h-5 flex items-center justify-center">
+                      <ArrowUpRight size={12} className="text-white" />
+                    </span>
+                  </span>
+                </div>
+              </Link>
             </nav>
           )}
         </div>
       </header>
+
       <style>{`
         @keyframes slideDown {
           from { opacity: 0; transform: translateY(-8px); }
