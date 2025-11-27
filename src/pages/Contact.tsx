@@ -62,7 +62,7 @@ export default function Contact() {
       </div>
 
       <main id="main" className="px-4 sm:px-6 md:px-8">
-        <section id="contact" className="contact py-12 sm:py-16 md:py-20">
+        <section id="contact" className="contact py-12 sm:py-16 md:py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('/contact-bg.png')" }}>
           <div className="max-w-6xl mx-auto">
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">

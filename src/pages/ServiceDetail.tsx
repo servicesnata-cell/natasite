@@ -51,7 +51,7 @@ Operating with follow-the-sun coverage across multiple time zones, our global BP
       `Harness the transformative capabilities of industry-leading cloud platforms—Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform—to modernize IT infrastructure, enhance operational agility, improve security posture, and achieve significant cost optimization. Our cloud consulting, migration planning, architecture design, and managed services empower enterprises to transition from legacy on-premises systems to flexible, scalable cloud environments that accelerate digital transformation initiatives.
 
 Whether your strategic objectives include complete datacenter migration, implementation of hybrid or multi-cloud architectures, workload optimization, or cloud-native application development, our team of certified cloud architects and engineers delivers customized solutions aligned with your business requirements and compliance mandates.`,
-    image: 'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg',
+    image: '/ci.jpeg',
     benefits: ['Improved scalability', 'Cost optimization', 'Enhanced security', 'Disaster recovery & resilience'],
     services: [
       'Cloud Readiness Assessment & Migration Strategy',
@@ -87,7 +87,7 @@ Whether your strategic objectives include complete datacenter migration, impleme
       'Enterprise-grade cybersecurity services including threat detection, SOC, pen-testing and compliance frameworks to protect critical assets.',
     longDescription:
       `Protect your organization’s critical digital infrastructure, sensitive data assets, and intellectual property with comprehensive, multi-layered cybersecurity solutions designed to defend against sophisticated threat actors and ensure continuous regulatory compliance. We deliver advanced threat detection and response, comprehensive vulnerability assessments, enterprise risk management frameworks, security incident response planning, and proactive security monitoring services customized to your industry’s threat landscape.`,
-    image: 'https://images.pexels.com/photos/8386450/pexels-photo-8386450.jpeg',
+    image: '/cs.jpeg',
     benefits: ['Advanced threat detection', 'Compliance readiness', 'Proactive monitoring', 'Incident response'],
     services: [
       'Security Assessment & Vulnerability Management',
@@ -138,7 +138,7 @@ Whether your strategic objectives include complete datacenter migration, impleme
       'Navigate complex US tax regulations with expert preparation, filing and advisory services for individuals and businesses.',
     longDescription:
       `Successfully navigate the complexities of United States federal and state tax regulations with our comprehensive tax preparation, filing, compliance advisory, and strategic tax planning services designed for individuals, expatriates, small businesses, and corporations.`,
-    image: 'https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg',
+    image: '/ut.jpeg',
     benefits: ['Accurate filings', 'Audit support', 'Multi-state expertise'],
     services: [
       'Individual & Business Tax Preparation',
@@ -223,19 +223,19 @@ export default function ServiceDetail() {
       </section>
 
       {/* What We Offer */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold mb-8 text-blue-900">What We Offer</h2>
-          <div className="space-y-6">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 sm:mb-10 md:mb-12 text-blue-900">What We Offer</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
             {service.services.map((item: string, idx: number) => (
               <div
                 key={idx}
-                className="flex items-start gap-6 p-6 bg-blue-50 border border-blue-100"
+                className="flex items-start gap-3 sm:gap-4 p-4 sm:p-6 bg-blue-50 border border-blue-100 rounded-lg"
               >
-                <div className="mt-1 text-blue-600">
-                  <CheckCircle size={24} />
+                <div className="mt-1 text-blue-600 flex-shrink-0">
+                  <CheckCircle size={20} className="sm:w-6 sm:h-6" />
                 </div>
-                <div className="text-lg font-semibold text-slate-800">{item}</div>
+                <div className="text-sm sm:text-base md:text-lg font-semibold text-slate-800">{item}</div>
               </div>
             ))}
           </div>
@@ -243,60 +243,19 @@ export default function ServiceDetail() {
       </section>
 
       {/* Key Benefits */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-blue-900">Key Benefits</h2>
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 transform -translate-x-1/2 w-1 h-full bg-blue-400" />
-            <div className="space-y-16">
-              {service.benefits.map((benefit: string, i: number) => (
-                <div
-                  key={i}
-                  className={`flex items-center ${i % 2 === 0 ? 'justify-start' : 'justify-end'}`}
-                >
-                  {i % 2 === 0 ? (
-                    <>
-                      <div className="w-1/2 pr-12 text-right">
-                        <div className="inline-block bg-blue-50 border border-blue-100 p-6">
-                          <p className="text-slate-800 text-xl font-semibold">{benefit}</p>
-                        </div>
-                      </div>
-                      <div className="w-12 flex justify-center">
-                        <div className="w-6 h-6 rounded-full bg-blue-500 border-2 border-white" />
-                      </div>
-                      <div className="w-1/2" />
-                    </>
-                  ) : (
-                    <>
-                      <div className="w-1/2" />
-                      <div className="w-12 flex justify-center">
-                        <div className="w-6 h-6 rounded-full bg-cyan-400 border-4 border-black" />
-                      </div>
-                      <div className="w-1/2 pl-12 text-left">
-                        <div className="inline-block bg-blue-50 border border-blue-100 p-6">
-                          <p className="text-slate-800 text-xl font-semibold">{benefit}</p>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technologies */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold mb-10">Technologies We Use</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {service.technologies.map((tech: string, idx: number) => (
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-blue-900">Key Benefits</h2>
+          <div className="space-y-4 sm:space-y-6 md:space-y-8">
+            {service.benefits.map((benefit: string, i: number) => (
               <div
-                key={idx}
-                className="p-6 bg-gray-900/60 border border-gray-800 text-center"
+                key={i}
+                className="flex items-center gap-4 sm:gap-6 bg-white p-4 sm:p-6 md:p-8 rounded-lg border border-blue-100 shadow-sm"
               >
-                <p className="text-white font-semibold">{tech}</p>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex-shrink-0 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-base sm:text-lg md:text-xl">
+                  {i + 1}
+                </div>
+                <p className="text-slate-800 text-sm sm:text-base md:text-lg font-semibold leading-relaxed">{benefit}</p>
               </div>
             ))}
           </div>
@@ -304,17 +263,17 @@ export default function ServiceDetail() {
       </section>
 
       {/* Get Started */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-5xl font-bold text-black mb-6">Ready to Get Started?</h2>
-          <p className="text-gray-900 mb-8">
-            Let's discuss how {service.name} can transform your business.
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-blue-600 text-white">
+        <div className="max-w-3xl mx-auto px-3 sm:px-4 md:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-6 tracking-tight">Ready to Get Started?</h2>
+          <p className="text-blue-100 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 md:mb-10 leading-relaxed">
+            Let's discuss how {service.name} can transform your business and drive growth.
           </p>
           <Link
             to="/contact"
-            className="inline-block px-12 py-6 bg-blue-400 text-white font-bold text-2xl hover:bg-blue-500 transition-colors duration-300"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-100 transition-colors text-sm sm:text-base min-h-[44px]"
           >
-            Get Started →
+            Get Started Today
           </Link>
         </div>
       </section>

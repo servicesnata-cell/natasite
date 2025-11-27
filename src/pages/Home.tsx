@@ -152,7 +152,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-black">
+    <div className="bg-white text-slate-900">
       <GalaxyHero />
       <ServicesCarousel />
       {/* Our Clients Section */}
@@ -213,13 +213,13 @@ export default function Home() {
           backgroundAttachment: 'scroll',
         }}
       >
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-32">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 md:mb-8 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-4 sm:mb-6 md:mb-8 tracking-tight leading-tight">
               Why Choose <span className="text-white">NCS</span>
             </h2>
-            <p className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto font-light px-4">
+            <p className="text-gray-200 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto font-light px-4 leading-relaxed">
               We deliver exceptional value through expertise, innovation, and dedication
             </p>
           </div>
@@ -235,7 +235,7 @@ export default function Home() {
                     </div>
                   </div>
                   <h3 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold text-white mb-3 sm:mb-4 md:mb-6">{feature.title}</h3>
-                  <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed px-2">{feature.description}</p>
+                  <p className="text-gray-200 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed px-2">{feature.description}</p>
                 </div>
               );
             })}

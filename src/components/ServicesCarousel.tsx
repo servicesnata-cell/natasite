@@ -13,7 +13,7 @@ const services = [
     id: 'cloud',
     name: 'Cloud Infrastructure',
     description: 'Azure, AWS and GCP architecture, migration and managed operations',
-    image: 'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg',
+    image: '/ci.jpeg',
   },
   {
     id: 'devops',
@@ -25,7 +25,7 @@ const services = [
     id: 'cybersecurity',
     name: 'Cybersecurity',
     description: 'Managed SOC, penetration testing, and risk & compliance services',
-    image: 'https://images.pexels.com/photos/8386450/pexels-photo-8386450.jpeg',
+    image: '/cs.jpeg',
   },
   {
     id: 'etl',
@@ -43,7 +43,7 @@ const services = [
     id: 'tax',
     name: 'US Tax Services',
     description: 'US tax preparation, filing, multi-state compliance and advisory',
-    image: 'https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg',
+    image: '/ut.jpeg',
   },
   {
     id: 'ai',
@@ -115,8 +115,8 @@ export default function ServicesCarousel() {
           </h2>
         </div>
 
-        {/* Focus-style Cards Grid: no gaps, flush to edges, 2 cols on small, 4 on large */}
-        <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-0">
+        {/* Focus-style Cards Grid: 1 col on mobile, 2 cols on md, 4 on lg */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
           {services.map((service, index) => {
             const showOverlay = isTouch ? (visibleIndex === index || tappedIndex === index) : hovered === index;
             return (
@@ -135,7 +135,7 @@ export default function ServicesCarousel() {
                   }
                   setTappedIndex(index);
                 }}
-                className={`group relative overflow-hidden h-32 sm:h-40 md:h-56 lg:h-72 w-full transition-all duration-300 ease-out cursor-pointer ${
+                className={`group relative overflow-hidden h-56 sm:h-48 md:h-56 lg:h-72 w-full transition-all duration-300 ease-out cursor-pointer ${
                   // blur non-active on desktop
                   !isTouch && hovered !== null && hovered !== index ? 'blur-sm scale-[0.98]' : ''
                 }`}
@@ -158,7 +158,8 @@ export default function ServicesCarousel() {
                 </div>
 
                 {/* Bottom panel: description + hexagon+arrow — glide up when active */}
-                <div className={`absolute inset-x-0 bottom-0 pb-4 px-4 transition-all duration-300 ease-out ${showOverlay ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-6 opacity-0 pointer-events-none'}`}>
+                {/* Panel: on mobile glide in horizontally, on md+ glide up from bottom */}
+                <div className={`absolute inset-x-0 bottom-0 pb-4 px-4 transition-all duration-300 ease-out ${showOverlay ? 'translate-x-0 opacity-100 pointer-events-auto md:translate-y-0 md:opacity-100' : 'translate-x-6 opacity-0 pointer-events-none md:translate-y-6 md:opacity-0'}`}>
                   <div className="bg-transparent flex items-center justify-between">
                     <p className="text-sm text-white/90 mr-3 line-clamp-3">{service.description}</p>
                     <div className="ml-3 flex-shrink-0">

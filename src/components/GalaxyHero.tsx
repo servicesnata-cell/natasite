@@ -5,73 +5,201 @@ const slides = [
     title: 'Transforming Businesses Through Technology Excellence',
     description:
       'Your trusted partner for innovative solutions in cloud computing, AI, and digital transformation',
-    bg: 'linear-gradient(to right, #003B8A, #007BFF)', // blue gradient
   },
   {
     title: 'Driving Business Innovation',
     subtitle: 'Strategic Solutions for Modern Enterprises',
     description:
       'Empowering organizations with cutting-edge technology and expert guidance',
-    bg: 'linear-gradient(to right, #ffffff, #dbe9ff)', // white to light blue gradient
   },
   {
     title: 'Global Excellence in Consulting',
     subtitle: 'Your Success is Our Mission',
     description:
       'Delivering world-class consultancy services across India and USA',
-    bg: 'linear-gradient(to right, #007BFF, #00A3FF)', // another blue gradient
   },
 ];
 
 export default function GalaxyHero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [key, setKey] = useState(0);
+  const slideDuration = 7;
 
   useEffect(() => {
-    if (isPaused) return; // Don't auto-advance if paused
+    if (isPaused) return;
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => {
+        const next = (prev + 1) % slides.length;
+        setKey((k) => k + 1);
+        return next;
+      });
     }, 7000);
     return () => clearInterval(interval);
   }, [isPaused]);
 
+  const handleSlideChange = (index: number) => {
+    setCurrentSlide(index);
+    setKey((k) => k + 1);
+  };
+
   return (
-    <div className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen overflow-hidden bg-gradient-to-br from-blue-700 to-blue-950">
+    <>
+      <style>{`
+        :root {
+          --hero-title-size: clamp(2.2rem, 4vw + 1rem, 4.5rem);
+          --hero-sub-size: clamp(1.1rem, 2vw + 0.4rem, 1.8rem);
+          --hero-desc-size: clamp(0.9rem, 1.3vw + 0.2rem, 1.25rem);
+          --brand-blue: #1e3a8a;
+          --text-glow: rgba(255, 255, 255, 0.35);
+        }
 
+          @keyframes zoomOut {
+            0% {
+              transform: scale(1.06);
+              filter: brightness(1);
+            }
+            100% {
+              transform: scale(1);
+              filter: brightness(1);
+            }
+          }
 
-      {slides.map((slide, index) => (
+        @keyframes glideUpText {
+          0% { opacity: 0; transform: translateY(28px) scale(0.98); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .hero-zoom { will-change: transform, filter; }
+
+        .glide-up-h1, .glide-up-p, .glide-up-desc, .glide-up-buttons {
+          animation: glideUpText 0.65s ease-out forwards;
+        }
+        .glide-up-h1 { animation-delay: 0.1s; }
+        .glide-up-p { animation-delay: 0.22s; }
+        .glide-up-desc { animation-delay: 0.33s; }
+        .glide-up-buttons { animation-delay: 0.45s; }
+
+        /* Premium heading */
+        .hero-text {
+          color: #fff;
+          font-weight: 800;
+          font-family: "Inter", "SF Pro Display", system-ui;
+          line-height: 1.15;
+          letter-spacing: -0.8px;
+          font-size: var(--hero-title-size);
+          text-shadow:
+            0 4px 14px rgba(0, 0, 0, 0.36),
+            0 0 22px var(--text-glow);
+        }
+
+        /* Subtitle */
+        .hero-sub {
+          color: #000000ff;
+          font-family: "Inter", "SF Pro Text", system-ui;
+          font-weight: 500;
+          letter-spacing: 0.2px;
+          font-size: var(--hero-sub-size);
+          opacity: 0.95;
+          text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+
+        /* Description */
+        .hero-desc {
+          color: #000000ff;
+          font-family: "Inter", "SF Pro Text", system-ui;
+          font-weight: 400;
+          line-height: 1.55;
+          font-size: var(--hero-desc-size);
+          max-width: 640px;
+          margin: 0 auto;
+          opacity: 0.92;
+          text-shadow: 0 2px 6px rgba(0,0,0,0.14);
+        }
+
+        /* Premium buttons */
+        .hero-button {
+          background: linear-gradient(135deg, #1e40af, #1e3a8a);
+          color: white;
+          font-weight: 600;
+          border-radius: 0.65rem;
+          padding: 12px 26px;
+          font-size: 0.95rem;
+          letter-spacing: 0.3px;
+          transition: all 0.3s ease;
+          box-shadow:
+            0 6px 18px rgba(30, 58, 138, 0.25),
+            inset 0 0 0 0 rgba(255,255,255,0.2);
+        }
+
+        .hero-button:hover {
+          background: linear-gradient(135deg, #243da1, #1f2f74);
+          transform: translateY(-2px);
+          box-shadow:
+            0 12px 28px rgba(30, 58, 138, 0.32),
+            inset 0 0 0 1px rgba(255,255,255,0.25);
+        }
+
+        /* Premium slide dots */
+        .premium-dot-active {
+          background: white;
+          width: 26px;
+          height: 10px;
+          border-radius: 9999px;
+        }
+        .premium-dot {
+          background: rgba(255,255,255,0.35);
+          width: 12px;
+          height: 12px;
+          border-radius: 9999px;
+          backdrop-filter: blur(4px);
+          transition: all 0.25s ease;
+        }
+        .premium-dot:hover {
+          background: rgba(255,255,255,0.6);
+        }
+      `}</style>
+
+      <div className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen overflow-hidden">
+        {/* Background layer: only this element animates (zoomOut) */}
         <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{ background: index === currentSlide ? 'transparent' : slide.bg }}
-        >
-          <div className="absolute inset-0 flex items-center justify-center px-3 sm:px-4 md:px-6">
-            <div className="max-w-5xl mx-auto text-center w-full">
-              <h1 className="glide-up-h1 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight px-2">
-                {slide.title}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/hh.jpg')",
+            animation: `zoomOut ${slideDuration}s ease-out forwards`,
+          }}
+          key={key}
+        />
+
+        {/* Overlay to improve contrast (non-animating) */}
+        <div className="absolute inset-0 bg-blue-550/25" aria-hidden />
+
+        <div className="absolute inset-0 flex items-center justify-center px-3 sm:px-4 md:px-6">
+          <div className="max-w-5xl mx-auto text-center w-full">
+            <div>
+              <h1 className="glide-up-h1 hero-text">
+                {slides[currentSlide].title}
               </h1>
-              <p className="glide-up-p text-sm sm:text-base md:text-lg lg:text-xl text-white/80 mb-3 sm:mb-4 md:mb-6 font-medium px-2">
-                {slide.subtitle}
+
+              <p className="py-4 glide-up-desc hero-sub text-base sm:text-lg md:text-xl lg:text-2xl mb-4 leading-relaxed px-2">
+                {slides[currentSlide].subtitle ? `${slides[currentSlide].subtitle} — ${slides[currentSlide].description}` : slides[currentSlide].description}
               </p>
-              <p className="glide-up-desc text-xs sm:text-sm md:text-base lg:text-lg text-white/70 mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed px-2">
-                {slide.description}
-              </p>
-              <div className="glide-up-buttons flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center px-2 w-full">
+
+              <div className="py-2 glide-up-buttons flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center px-2 w-full">
                 <a
                   href="#services"
                   onMouseEnter={() => setIsPaused(true)}
                   onMouseLeave={() => setIsPaused(false)}
-                  className="hero-button px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 bg-white text-black font-semibold hover:bg-gray-100 transition-all duration-300 rounded-md text-xs sm:text-sm md:text-base min-h-[44px] flex items-center justify-center"
+                  className="hero-button"
                 >
                   Explore Services
                 </a>
+
                 <a
                   href="/contact"
                   onMouseEnter={() => setIsPaused(true)}
                   onMouseLeave={() => setIsPaused(false)}
-                  className="hero-button px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 bg-transparent text-white font-semibold border-2 border-white/40 hover:border-white/80 transition-all duration-300 rounded-md text-xs sm:text-sm md:text-base min-h-[44px] flex items-center justify-center"
+                  className="hero-button"
                 >
                   Get in Touch
                 </a>
@@ -79,24 +207,31 @@ export default function GalaxyHero() {
             </div>
           </div>
         </div>
-      ))}
 
-      {/* Slide Dots */}
-      <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-1 sm:gap-1.5 md:gap-2">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
-            className={`transition-all duration-300 rounded-full touch-target ${
-              index === currentSlide
-                ? 'bg-white w-6 h-2 sm:w-8 sm:h-2.5'
-                : 'bg-white/30 hover:bg-white/50 w-2 h-2 sm:w-2.5 sm:h-2.5'
-            }`}
-            style={{ minHeight: '40px', minWidth: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          />
-        ))}
+        {/* Dots */}
+        <div className="absolute bottom-3 sm:bottom-5 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => handleSlideChange(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              className={
+                index === currentSlide
+                  ? 'premium-dot-active'
+                  : 'premium-dot'
+              }
+              style={{
+                minHeight: '40px',
+                minWidth: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: 0,
+              }}
+            ></button>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

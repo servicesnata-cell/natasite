@@ -49,7 +49,7 @@ export default function HeaderCTA() {
     <>
       {/* --- Header --- */}
       <header
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/50 backdrop-blur-md"
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/70 backdrop-blur-md"
       >
         <div className="max-w-[100rem] mx-auto px-4 sm:px-6 py-1.5">
           <div className="flex items-center justify-between">
