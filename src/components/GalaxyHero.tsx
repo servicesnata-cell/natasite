@@ -82,7 +82,7 @@ export default function GalaxyHero() {
 
         /* Premium heading */
         .hero-text {
-          color: #fff;
+          color: #ffffffff;
           font-weight: 800;
           font-family: "Inter", "SF Pro Display", system-ui;
           line-height: 1.15;
