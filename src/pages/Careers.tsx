@@ -33,21 +33,23 @@ export default function Careers() {
 
   return (
     <>
-      {/* --- Hero Section (full-bleed, outside padded container) --- */}
-      <div
-        className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden bg-cover bg-center bg-blue-600 mb-0 mx-3 sm:mx-4 md:mx-0 rounded-lg sm:rounded-xl md:rounded-none"
-      >
-        <div className="py-20 relative max-w-4xl mx-auto px-3 sm:px-4 md:px-6 text-center z-10">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
-            Apply <span className="text-white">Now</span>
-          </h1>
-          <p className="mt-2 sm:mt-3 md:mt-4 text-blue-100 text-xs sm:text-sm md:text-base lg:text-lg max-w-2xl mx-auto px-2">
-            Ready to take the next step? Fill in your details and send us your application today.
-          </p>
+      {/* Hero Section */}
+      <div className="bg-white min-h-screen pt-16 sm:pt-20 md:pt-24 px-3 sm:px-4 md:px-6 overflow-x-hidden">
+        <div
+          className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden bg-cover bg-center mb-6 sm:mb-8 md:mb-12 rounded-lg sm:rounded-xl"
+        >
+          <div className="absolute inset-0 bg-blue-600 rounded-lg sm:rounded-xl"></div>
+          <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 text-center z-10">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
+              Apply <span className="text-white">Now</span>
+            </h1>
+            <p className="mt-2 sm:mt-3 md:mt-4 text-blue-100 text-xs sm:text-sm md:text-base lg:text-lg max-w-2xl mx-auto px-2">
+              Ready to take the next step? Fill in your details and send us your application today.
+            </p>
+          </div>
         </div>
-      </div>
 
-  <div className="bg-white min-h-screen flex flex-col items-center justify-start px-3 sm:px-4 md:px-6 lg:px-8 pt-10 sm:pt-12 md:pt-14 pb-12 sm:pb-16 overflow-x-hidden">
+        <div className="flex flex-col items-center justify-start pb-12 sm:pb-16">
       <style>{`
         .form-field { position: relative; width: 100%; }
         .form-field input,
@@ -173,7 +175,8 @@ export default function Careers() {
           <span>Send Application</span>
         </button>
       </form>
-    </div>
+        </div>
+      </div>
     </>
   );
 }

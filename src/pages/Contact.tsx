@@ -44,14 +44,14 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-white min-h-screen pt-16 sm:pt-20 md:pt-24 overflow-x-hidden">
+    <div className="bg-white min-h-screen pt-16 sm:pt-20 md:pt-24 px-3 sm:px-4 md:px-6 overflow-x-hidden">
       {/* Hero */}
       <div
-        className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden bg-cover bg-center mb-6 sm:mb-8 md:mb-12 rounded-xl sm:rounded-2xl mx-4 sm:mx-6"
+        className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden bg-cover bg-center mb-6 sm:mb-8 md:mb-12 rounded-lg sm:rounded-xl"
         style={{ backgroundImage: "url('/che.jpeg')", backgroundAttachment: 'scroll' }}
       >
-        <div className="absolute inset-0 bg-blue-900/50 rounded-xl sm:rounded-2xl"></div>
-        <div className="relative max-w-4xl mx-auto px-3 sm:px-4 md:px-6 text-center">
+        <div className="absolute inset-0 bg-blue-600/40 rounded-lg sm:rounded-xl"></div>
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 text-center z-10">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
             Get In <span className="text-white">Touch</span>
           </h1>

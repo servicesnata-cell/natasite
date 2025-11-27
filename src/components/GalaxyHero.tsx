@@ -47,9 +47,9 @@ export default function GalaxyHero() {
     <>
       <style>{`
         :root {
-          --hero-title-size: clamp(2.2rem, 4vw + 1rem, 4.5rem);
-          --hero-sub-size: clamp(1.1rem, 2vw + 0.4rem, 1.8rem);
-          --hero-desc-size: clamp(0.9rem, 1.3vw + 0.2rem, 1.25rem);
+          --hero-title-size: clamp(1.25rem, 5vw + 0.5rem, 4.5rem);
+          --hero-sub-size: clamp(0.65rem, 2.5vw + 0.2rem, 1.8rem);
+          --hero-desc-size: clamp(0.7rem, 1.5vw + 0.1rem, 1.25rem);
           --brand-blue: #1e3a8a;
           --text-glow: rgba(255, 255, 255, 0.35);
         }
@@ -123,13 +123,20 @@ export default function GalaxyHero() {
           color: white;
           font-weight: 600;
           border-radius: 0.65rem;
-          padding: 12px 26px;
-          font-size: 0.95rem;
+          padding: 8px 16px;
+          font-size: 0.8rem;
           letter-spacing: 0.3px;
           transition: all 0.3s ease;
           box-shadow:
             0 6px 18px rgba(30, 58, 138, 0.25),
             inset 0 0 0 0 rgba(255,255,255,0.2);
+        }
+
+        @media (min-width: 640px) {
+          .hero-button {
+            padding: 12px 26px;
+            font-size: 0.95rem;
+          }
         }
 
         .hero-button:hover {
@@ -177,14 +184,14 @@ export default function GalaxyHero() {
         <div className="absolute inset-0 flex items-center justify-center px-3 sm:px-4 md:px-6">
           <div className="max-w-5xl mx-auto text-center w-full px-2">
             <div>
-              <h1 className="glide-up-h1 hero-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+              <h1 className="glide-up-h1 hero-text text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
                 {slides[currentSlide].title}
               </h1>
-              <p className="py-4 glide-up-desc hero-sub text-sm sm:text-base md:text-lg lg:text-xl mb-4 leading-relaxed px-2 max-w-3xl mx-auto">
+              <p className="py-2 glide-up-desc hero-sub text-xs sm:text-sm md:text-base lg:text-lg mb-3 leading-relaxed px-2 max-w-3xl mx-auto">
                 {slides[currentSlide].subtitle ? `${slides[currentSlide].subtitle} — ${slides[currentSlide].description}` : slides[currentSlide].description}
               </p>
 
-              <div className="py-2 glide-up-buttons flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center px-2 w-full">
+              <div className="py-2 glide-up-buttons flex flex-col sm:flex-row gap-1 sm:gap-3 md:gap-4 justify-center px-2 w-full">
                 <a
                   href="#services"
                   onMouseEnter={() => setIsPaused(true)}
