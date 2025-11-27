@@ -44,13 +44,13 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-white min-h-screen pt-16 sm:pt-20 md:pt-24">
+    <div className="bg-white min-h-screen pt-16 sm:pt-20 md:pt-24 overflow-x-hidden">
       {/* Hero */}
       <div
         className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden bg-cover bg-center mb-6 sm:mb-8 md:mb-12 rounded-xl sm:rounded-2xl mx-4 sm:mx-6"
         style={{ backgroundImage: "url('/che.jpeg')", backgroundAttachment: 'scroll' }}
       >
-        <div className="absolute inset-0 bg-blue-500/70 rounded-xl sm:rounded-2xl"></div>
+        <div className="absolute inset-0 bg-blue-900/50 rounded-xl sm:rounded-2xl"></div>
         <div className="relative max-w-4xl mx-auto px-3 sm:px-4 md:px-6 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
             Get In <span className="text-white">Touch</span>
@@ -61,7 +61,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <main id="main" className="px-4 sm:px-6 md:px-8">
+      <main id="main" className="px-4 sm:px-6 md:px-8 overflow-x-hidden">
         <section id="contact" className="contact py-12 sm:py-16 md:py-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('/contact-bg.png')" }}>
           <div className="max-w-6xl mx-auto">
 

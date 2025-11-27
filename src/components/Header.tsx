@@ -126,7 +126,7 @@ export default function HeaderCTA() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden text-white p-2 hover:bg-white/10 rounded-md transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="lg:hidden text-blue-600 p-2 hover:bg-white/10 rounded-md transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -135,7 +135,7 @@ export default function HeaderCTA() {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <nav className="lg:hidden mt-4 pb-4 space-y-2 max-h-[70vh] overflow-y-auto">
+            <nav className="lg:hidden mt-4 pb-4 space-y-2 max-h-[70vh] overflow-y-auto animate-slide-down">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -143,8 +143,8 @@ export default function HeaderCTA() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px] ${
                     location.pathname === link.path
-                      ? 'bg-white/10 text-white border border-white/20'
-                      : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                      ? 'bg-white/10 text-blue-600 border border-white/20'
+                      : 'text-blue-600 hover:bg-white/5 hover:text-blue-500'
                   }`}
                 >
                   {link.label}
@@ -166,13 +166,13 @@ export default function HeaderCTA() {
                   />
                 </button>
                 {isMobileServicesOpen && (
-                  <div className="mt-2 ml-4 space-y-1">
+                  <div className="mt-2 ml-4 space-y-1 animate-slide-down">
                     {servicesList.map((s) => (
                       <Link
                         key={s.id}
                         to={`/services/${s.id}`}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-all min-h-[44px]"
+                        className="block px-4 py-3 text-sm text-blue-600 hover:text-blue-500 hover:bg-white/5 rounded-md transition-all min-h-[44px]"
                       >
                         {s.label}
                       </Link>
@@ -184,6 +184,13 @@ export default function HeaderCTA() {
           )}
         </div>
       </header>
+      <style>{`
+        @keyframes slideDown {
+          from { opacity: 0; transform: translateY(-8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-down { animation: slideDown 220ms ease-out; }
+      `}</style>
     </>
   );
 }

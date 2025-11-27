@@ -160,7 +160,7 @@ export default function GalaxyHero() {
         }
       `}</style>
 
-      <div className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen overflow-hidden">
+      <div className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen overflow-hidden overflow-x-hidden">
         {/* Background layer: only this element animates (zoomOut) */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -172,16 +172,15 @@ export default function GalaxyHero() {
         />
 
         {/* Overlay to improve contrast (non-animating) */}
-        <div className="absolute inset-0 bg-blue-550/25" aria-hidden />
+        <div className="absolute inset-0 bg-black/30" aria-hidden />
 
         <div className="absolute inset-0 flex items-center justify-center px-3 sm:px-4 md:px-6">
-          <div className="max-w-5xl mx-auto text-center w-full">
+          <div className="max-w-5xl mx-auto text-center w-full px-2">
             <div>
-              <h1 className="glide-up-h1 hero-text">
+              <h1 className="glide-up-h1 hero-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
                 {slides[currentSlide].title}
               </h1>
-
-              <p className="py-4 glide-up-desc hero-sub text-base sm:text-lg md:text-xl lg:text-2xl mb-4 leading-relaxed px-2">
+              <p className="py-4 glide-up-desc hero-sub text-sm sm:text-base md:text-lg lg:text-xl mb-4 leading-relaxed px-2 max-w-3xl mx-auto">
                 {slides[currentSlide].subtitle ? `${slides[currentSlide].subtitle} — ${slides[currentSlide].description}` : slides[currentSlide].description}
               </p>
 
@@ -190,7 +189,7 @@ export default function GalaxyHero() {
                   href="#services"
                   onMouseEnter={() => setIsPaused(true)}
                   onMouseLeave={() => setIsPaused(false)}
-                  className="hero-button"
+                  className="hero-button inline-flex items-center justify-center min-h-[44px] px-4 sm:px-6 rounded-lg"
                 >
                   Explore Services
                 </a>
@@ -199,7 +198,7 @@ export default function GalaxyHero() {
                   href="/contact"
                   onMouseEnter={() => setIsPaused(true)}
                   onMouseLeave={() => setIsPaused(false)}
-                  className="hero-button"
+                  className="hero-button inline-flex items-center justify-center min-h-[44px] px-4 sm:px-6 rounded-lg"
                 >
                   Get in Touch
                 </a>

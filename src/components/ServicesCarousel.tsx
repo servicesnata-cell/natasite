@@ -55,7 +55,7 @@ const services = [
 
 export default function ServicesCarousel() {
   const [hovered, setHovered] = useState<number | null>(null);
-  const [visibleIndex, setVisibleIndex] = useState<number | null>(null);
+  const [revealed, setRevealed] = useState<Set<number>>(new Set());
   const [tappedIndex, setTappedIndex] = useState<number | null>(null);
   const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
   const navigate = useNavigate();
@@ -74,10 +74,12 @@ export default function ServicesCarousel() {
         entries.forEach((entry) => {
           const idx = Number((entry.target as HTMLElement).dataset.index);
           if (entry.isIntersecting) {
-            setVisibleIndex(idx);
-          } else {
-            // if the item leaving viewport was the visible one, clear it
-            setVisibleIndex((current) => (current === idx ? null : current));
+            // once an item becomes visible, mark it revealed and keep it revealed
+            setRevealed((prev) => {
+              const next = new Set(prev);
+              next.add(idx);
+              return next;
+            });
           }
         });
       },
@@ -118,7 +120,7 @@ export default function ServicesCarousel() {
         {/* Focus-style Cards Grid: 1 col on mobile, 2 cols on md, 4 on lg */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
           {services.map((service, index) => {
-            const showOverlay = isTouch ? (visibleIndex === index || tappedIndex === index) : hovered === index;
+            const showOverlay = isTouch ? (revealed.has(index) || tappedIndex === index) : hovered === index;
             return (
               <div
                 key={service.id}

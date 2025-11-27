@@ -152,7 +152,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-white text-slate-900">
+    <div className="bg-white text-slate-900 overflow-x-hidden">
       <GalaxyHero />
       <ServicesCarousel />
       {/* Our Clients Section */}
@@ -360,9 +360,6 @@ export default function Home() {
     <div className="text-center mt-10 sm:mt-12 md:mt-16 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
       <a href="/contact" className="inline-block px-6 sm:px-8 py-3 bg-white text-blue-900 font-bold border-none shadow-lg hover:shadow-white/50 hover:scale-105 transition-all duration-300 rounded-md text-sm sm:text-base min-h-[44px] flex items-center justify-center">
         Get Started Today
-      </a>
-      <a href="/services" className="inline-block px-6 sm:px-8 py-3 border-2 border-white text-white font-bold rounded-md hover:bg-white/20 hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[44px] flex items-center justify-center">
-        View All Services
       </a>
     </div>
   </div>
