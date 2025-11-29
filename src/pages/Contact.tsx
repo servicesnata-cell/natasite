@@ -47,12 +47,12 @@ export default function Contact() {
     <div className="bg-white min-h-screen pt-16 sm:pt-20 md:pt-24 px-3 sm:px-4 md:px-6 overflow-x-hidden">
       {/* Hero */}
       <div
-        className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden bg-cover bg-center mb-6 sm:mb-8 md:mb-12 rounded-lg sm:rounded-xl"
+        className="relative w-full py-10 sm:py-12 md:py-16 lg:py-20 overflow-hidden bg-cover bg-center mb-6 sm:mb-8 md:mb-10 rounded-lg sm:rounded-xl"
         style={{ backgroundImage: "url('/che.jpeg')", backgroundAttachment: 'scroll' }}
       >
         <div className="absolute inset-0 bg-blue-600/40 rounded-lg sm:rounded-xl"></div>
         <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 text-center z-10">
-          <h1 className="-mt-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
+          <h1 className="-mt-6 sm:-mt-8 md:-mt-10 text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
             Get In <span className="text-white">Touch</span>
           </h1>
           <p className="mt-2 sm:mt-3 md:mt-4 text-blue-100 text-xs sm:text-sm md:text-base lg:text-lg max-w-2xl mx-auto px-2">
@@ -79,7 +79,7 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="info-item flex gap-3 sm:gap-4 p-4 sm:p-5 md:p-6 bg-white/30 backdrop-blur-xs shadow-lg rounded-lg sm:rounded-xl">
                   <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-blue-500 text-white flex items-center justify-center rounded-full min-w-[40px]">
                     <MapPin size={16} className="sm:w-5 sm:h-5" />

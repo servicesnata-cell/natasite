@@ -46,23 +46,23 @@ export default function HeaderCTA() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/70 backdrop-blur-md">
-        <div className="max-w-[100rem] mx-auto px-4 sm:px-6 py-1.5">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center">
+        <div className="w-full px-3 sm:px-4 md:px-6 py-2 sm:py-2.5">
+          <div className="flex items-center justify-between max-w-7xl mx-auto">
+            <Link to="/" className="flex items-center flex-shrink-0">
               <img
                 src="/nata.svg"
                 alt="Logo"
-                className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 object-contain"
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain"
               />
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center space-x-1">
+            <nav className="hidden lg:flex items-center gap-2">
               {navLinks.slice(0, 2).map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`relative px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-all duration-300 flex items-center min-h-[44px] ${
+                  className={`px-3 md:px-4 py-2 text-sm md:text-base font-medium transition-all duration-300 flex items-center min-h-[44px] ${
                     location.pathname === link.path
                       ? 'text-black font-semibold'
                       : 'text-gray-800 hover:text-black font-bold'
@@ -76,7 +76,7 @@ export default function HeaderCTA() {
               <div className="relative" ref={servicesRef}>
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="relative px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-gray-800 hover:text-black flex items-center gap-1.5 min-h-[44px]"
+                  className="px-3 md:px-4 py-2 text-sm md:text-base font-medium text-gray-800 hover:text-black flex items-center gap-1.5 min-h-[44px]"
                   aria-expanded={isServicesOpen}
                 >
                   What we do
@@ -108,13 +108,13 @@ export default function HeaderCTA() {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className="relative inline-flex items-center gap-3 px-5 py-2 bg-blue-500 border-2 border-sky-500 rounded-full text-white font-bold min-h-[44px]"
+                    className="inline-flex items-center gap-2 px-4 md:px-5 py-2 bg-blue-500 border-2 border-sky-500 rounded-full text-white font-bold min-h-[44px] text-sm md:text-base"
                     aria-label="Contact Us"
                   >
                     <span>Contact Us</span>
-                    <span className="ml-2 w-7 h-7 hexagon flex items-center justify-center">
-                      <span className="w-5 h-5 flex items-center justify-center">
-                        <ArrowUpRight size={12} className="text-white" />
+                    <span className="w-6 h-6 md:w-7 md:h-7 hexagon flex items-center justify-center">
+                      <span className="w-4 h-4 md:w-5 md:h-5 flex items-center justify-center">
+                        <ArrowUpRight size={10} className="md:w-3 md:h-3" />
                       </span>
                     </span>
                   </Link>
@@ -122,7 +122,7 @@ export default function HeaderCTA() {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`relative px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-all duration-300 flex items-center min-h-[44px] ${
+                    className={`px-3 md:px-4 py-2 text-sm md:text-base font-medium transition-all duration-300 flex items-center min-h-[44px] ${
                       location.pathname === link.path
                         ? 'text-black font-semibold'
                         : 'text-gray-800 hover:text-black font-bold'
@@ -144,17 +144,15 @@ export default function HeaderCTA() {
             </button>
           </div>
 
-          {/* MOBILE MENU FIXED VERSION */}
+          {/* MOBILE MENU */}
           {isMobileMenuOpen && (
-            <nav className="lg:hidden mt-4 pb-4 space-y-2 max-h-[70vh] overflow-y-auto animate-slide-down">
-
-              {/* Normal mobile nav links except Contact */}
+            <nav className="lg:hidden mt-3 pb-4 space-y-1 max-h-[calc(100vh-80px)] overflow-y-auto animate-slide-down">
               {navLinks.slice(0, 3).map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px] ${
+                  className={`block px-4 py-3 rounded-md text-sm sm:text-base font-medium transition-all min-h-[44px] ${
                     location.pathname === link.path
                       ? 'bg-white/10 text-blue-600 border border-white/20'
                       : 'text-blue-600 hover:bg-white/5 hover:text-blue-500'
@@ -164,11 +162,11 @@ export default function HeaderCTA() {
                 </Link>
               ))}
 
-              {/* MOBILE WHAT WE DO (Corrected Position) */}
+              {/* MOBILE WHAT WE DO */}
               <div>
                 <button
                   onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                  className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-blue-600 hover:text-blue-500 hover:bg-white/5 rounded-md transition-all min-h-[44px]"
+                  className="w-full flex items-center justify-between px-4 py-3 text-sm sm:text-base font-medium text-blue-600 hover:text-blue-500 hover:bg-white/5 rounded-md transition-all min-h-[44px]"
                 >
                   <span>What we do</span>
                   <ChevronDown
@@ -178,13 +176,13 @@ export default function HeaderCTA() {
                 </button>
 
                 {isMobileServicesOpen && (
-                  <div className="mt-2 ml-4 space-y-1 animate-slide-down">
+                  <div className="mt-1 ml-2 space-y-1 animate-slide-down">
                     {servicesList.map((s) => (
                       <Link
                         key={s.id}
                         to={`/services/${s.id}`}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="block px-4 py-3 text-sm text-blue-600 hover:text-blue-500 hover:bg-white/5 rounded-md transition-all min-h-[44px]"
+                        className="block px-4 py-2.5 text-xs sm:text-sm text-blue-600 hover:text-blue-500 hover:bg-white/5 rounded-md transition-all min-h-[44px] flex items-center"
                       >
                         {s.label}
                       </Link>
@@ -193,17 +191,17 @@ export default function HeaderCTA() {
                 )}
               </div>
 
-              {/* MOBILE CONTACT (Corrected Position) */}
+              {/* MOBILE CONTACT */}
               <Link
                 to="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 rounded-md text-base font-medium transition-all min-h-[44px]"
+                className="block px-4 py-3 rounded-md text-sm sm:text-base font-medium transition-all min-h-[44px]"
               >
-                <div className="inline-flex items-center justify-between px-3 py-2 bg-blue-500 border-2 border-sky-500 text-white font-bold rounded-full">
+                <div className="inline-flex items-center justify-center gap-2 px-3 py-2 bg-blue-500 border-2 border-sky-500 text-white font-bold rounded-full min-h-[44px] w-full">
                   <span>Contact Us</span>
-                  <span className="ml-2 w-7 h-7 hexagon flex items-center justify-center">
-                    <span className="w-5 h-5 flex items-center justify-center">
-                      <ArrowUpRight size={12} className="text-white" />
+                  <span className="w-6 h-6 hexagon flex items-center justify-center flex-shrink-0">
+                    <span className="w-4 h-4 flex items-center justify-center">
+                      <ArrowUpRight size={10} />
                     </span>
                   </span>
                 </div>
