@@ -20,15 +20,15 @@ export default function About() {
       </div>
 
       {/* Main Content Section */}
-      <section className="py-6 sm:py-6 md:py-6 lg:py-">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-8 sm:py-12 md:py-16 lg:py-8">
+        <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6">
           <div className="space-y-4 sm:space-y-6 md:space-y-8 text-gray-700">
-              <p className="text-2xl sm:text-sm md:text-base lg:text-xl leading-relaxed text-justify">
+              <p className="text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed text-justify">
                 Nata Consultancy Services is a global technology and business solutions provider dedicated to helping organizations operate with clarity, speed, and confidence. We focus on delivering outcome-driven services that simplify complex processes, strengthen digital foundations, and support long-term business advancement.
               </p>
 
               <p className="text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed text-justify">
-                Our company was built with a simple belief—technology should enable growth, not create barriers. With this vision, we bring together a diverse team of specialists who excel in cloud engineering, automation, cybersecurity, data integration, staffing solutions, business operations support, and regulatory services. Every solution we deliver is carefully designed to align with each client’s goals, industry standards, and future roadmap.
+                Our company was built with a simple belief—technology should enable growth, not create barriers. With this vision, we bring together a diverse team of specialists who excel in cloud engineering, automation, cybersecurity, data integration, staffing solutions, business operations support, and regulatory services. Every solution we deliver is carefully designed to align with each client's goals, industry standards, and future roadmap.
               </p>
 
               <p className="text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed text-justify">
@@ -36,7 +36,7 @@ export default function About() {
               </p>
 
               <p className="text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed text-justify">
-                Over the years, we’ve helped companies strengthen their digital ecosystems, build efficient workflows, adopt secure cloud infrastructures, and access the right talent to support mission-critical operations. We take pride in building long-lasting partnerships rooted in trust, transparency, and consistent results.
+                Over the years, we've helped companies strengthen their digital ecosystems, build efficient workflows, adopt secure cloud infrastructures, and access the right talent to support mission-critical operations. We take pride in building long-lasting partnerships rooted in trust, transparency, and consistent results.
               </p>
 
               <p className="text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed text-justify">
