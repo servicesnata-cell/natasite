@@ -58,14 +58,12 @@ export default function About() {
       Let's discuss how we can help transform your business with our innovative solutions
     </p>
 
-    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center">
-      <Link
-        to="/contact"
-        className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-100 transition-colors text-sm sm:text-base min-h-[44px]"
-      >
-        Contact Us
-      </Link>
-    </div>
+<Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-100 transition-colors text-xs sm:text-sm md:text-base min-h-[44px] w-full sm:w-auto justify-center"
+          >
+            Get Started Today
+          </Link>
   </div>
 </section>
 </div>
