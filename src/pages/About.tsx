@@ -59,11 +59,12 @@ export default function About() {
     </p>
 
 <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-100 transition-colors text-xs sm:text-sm md:text-base min-h-[44px] w-full sm:w-auto justify-center"
-          >
-            Get Started Today
-          </Link>
+  to="/contact"
+  className="inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-100 transition-colors text-xs sm:text-sm md:text-base min-h-[44px] justify-center"
+>
+  Get Started Today
+</Link>
+
   </div>
 </section>
 </div>
