@@ -71,7 +71,7 @@ export default function ServicesCarousel() {
           {services.map((service) => (
             <div
               key={service.id}
-              className="flex flex-col sm:flex-row bg-white border border-black rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              className="flex flex-col sm:flex-row bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
             >
               {/* Image */}
               <div className="relative w-full sm:w-40 md:w-48 lg:w-56 h-48 sm:h-auto sm:min-h-48 flex-shrink-0 overflow-hidden bg-gray-200">
