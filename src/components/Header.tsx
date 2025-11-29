@@ -50,7 +50,7 @@ export default function HeaderCTA() {
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center">
               <img
-                src="/logonata.svg"
+                src="/nata.svg"
                 alt="Logo"
                 className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 object-contain"
               />
@@ -83,18 +83,18 @@ export default function HeaderCTA() {
                 </button>
 
                 <div
-                  className={`absolute right-0 mt-2 w-56 sm:w-72 bg-white border border-gray-200 shadow-lg rounded-md z-50 overflow-hidden transition-all duration-300 origin-top transform ${
+                  className={`absolute right-0 mt-2 w-48 sm:w-56 bg-white border border-gray-200 shadow-lg rounded-md z-50 overflow-hidden transition-all duration-300 origin-top transform ${
                     isServicesOpen
-                      ? 'max-h-96 opacity-100 translate-y-0 pointer-events-auto'
+                      ? 'max-h-none opacity-100 translate-y-0 pointer-events-auto'
                       : 'max-h-0 opacity-0 -translate-y-2 pointer-events-none'
                   }`}
                 >
-                  <div className="py-2 max-h-80 overflow-y-auto">
+                  <div className="py-2 overflow-visible">
                     {servicesList.map((s) => (
                       <Link
                         key={s.id}
                         to={`/services/${s.id}`}
-                        className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 min-h-[44px] flex items-center"
+                        className="block px-4 py-1 text-sm sm:text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 min-h-[44px] flex items-center"
                       >
                         {s.label}
                       </Link>

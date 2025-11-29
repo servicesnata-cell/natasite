@@ -14,7 +14,7 @@ const slides = [
       'Empowering organizations with cutting-edge technology and expert guidance',
   },
   {
-    title: 'Global Excellence in Consulting',
+    title: 'Global Excellence in Staffing',
     subtitle: 'Your Success is Our Mission',
     description:
       'Delivering world-class consultancy services across India and USA',

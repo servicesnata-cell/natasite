@@ -1,14 +1,7 @@
-import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { Hexagon, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const services = [
-  {
-    id: 'bpo',
-    name: 'BPO Services',
-    description: 'Customer support, back-office, payroll and operational outsourcing',
-    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
-  },
   {
     id: 'cloud',
     name: 'Cloud Infrastructure',
@@ -34,10 +27,10 @@ const services = [
     image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg',
   },
   {
-    id: 'staffing',
-    name: 'Staffing Solutions',
-    description: 'Permanent, contract and offshore staffing across tech and non-tech',
-    image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
+    id: 'ai',
+    name: 'AI / Machine Learning',
+    description: 'NLP, computer vision, predictive analytics and MLOps',
+    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg',
   },
   {
     id: 'tax',
@@ -46,69 +39,25 @@ const services = [
     image: '/ut.jpeg',
   },
   {
-    id: 'ai',
-    name: 'AI / Machine Learning',
-    description: 'NLP, computer vision, predictive analytics and MLOps',
-    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg',
+    id: 'bpo',
+    name: 'BPO Services',
+    description: 'Customer support, back-office, payroll and operational outsourcing',
+    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
+  },
+  {
+    id: 'staffing',
+    name: 'Staffing Solutions',
+    description: 'Permanent, contract and offshore staffing across tech and non-tech',
+    image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
   },
 ];
 
 export default function ServicesCarousel() {
-  const [hovered, setHovered] = useState<number | null>(null);
-  const [revealed, setRevealed] = useState<Set<number>>(new Set());
-  const [tappedIndex, setTappedIndex] = useState<number | null>(null);
-  const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  // detect touch devices
-  const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-
-  useEffect(() => {
-    if (!isTouch) return;
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const idx = Number((entry.target as HTMLElement).dataset.index);
-          if (entry.isIntersecting) {
-            // once an item becomes visible, mark it revealed and keep it revealed
-            setRevealed((prev) => {
-              const next = new Set(prev);
-              next.add(idx);
-              return next;
-            });
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    itemRefs.current.forEach((el) => {
-      if (el) obs.observe(el);
-    });
-    return () => obs.disconnect();
-  }, [isTouch]);
-
-  // close tapped state on outside click
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      const target = e.target as Node;
-      if (!itemRefs.current.some((el) => el && el.contains(target))) {
-        setTappedIndex(null);
-      }
-    };
-    document.addEventListener('click', handler);
-    return () => document.removeEventListener('click', handler);
-  }, []);
-
   return (
-    <section id="services" className="relative bg-white text-black pt-12 sm:pt-16 md:pt-20 lg:pt-24 xl:pt-28 pb-0 flex justify-center overflow-hidden">
-      <div className="w-full max-w-full px-0 mx-0">
+    <section id="services" className="relative bg-white text-black pt-12 sm:pt-16 md:pt-20 lg:pt-24 xl:pt-28 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 md:px-6">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 px-3 sm:px-4 md:px-6 -mt-6 sm:-mt-8 md:-mt-12">
+        <div className="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20">
           <p className="text-[#002E6D] text-sm sm:text-base md:text-lg uppercase tracking-widest font-semibold mb-2 sm:mb-3">
             Services
           </p>
@@ -117,70 +66,45 @@ export default function ServicesCarousel() {
           </h2>
         </div>
 
-        {/* Focus-style Cards Grid: 1 col on mobile, 2 cols on md, 4 on lg */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
-          {services.map((service, index) => {
-            const showOverlay = isTouch ? (revealed.has(index) || tappedIndex === index) : hovered === index;
-            return (
-              <div
-                key={service.id}
-                data-index={index}
-                ref={(el) => (itemRefs.current[index] = el)}
-                onMouseEnter={() => !isTouch && setHovered(index)}
-                onMouseLeave={() => !isTouch && setHovered(null)}
-                onClick={(e) => {
-                  if (!isTouch) return; // desktop handled by Link
-                  e.preventDefault();
-                  if (tappedIndex === index) {
-                    navigate(`/services/${service.id}`);
-                    return;
-                  }
-                  setTappedIndex(index);
-                }}
-                className={`group relative overflow-hidden h-56 sm:h-48 md:h-56 lg:h-72 w-full transition-all duration-200 sm:duration-300 ease-out cursor-pointer ${
-                  // blur non-active on desktop
-                  !isTouch && hovered !== null && hovered !== index ? 'blur-sm scale-[0.98]' : ''
-                }`}
-                role="button"
-              >
+        {/* Services Grid: 1 col on mobile, 2 cols on md, 2 on lg */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-14">
+          {services.map((service) => (
+            <div
+              key={service.id}
+              className="flex flex-row bg-white border-1 border-black rounded-2xl overflow-hidden shadow-lg hover:shadow-xl"
+            >
+              {/* Image */}
+              <div className="relative w-48 sm:w-56 md:w-64 h-auto flex-shrink-0 overflow-hidden bg-gray-200">
                 <img
                   src={service.image}
                   alt={service.name}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 sm:duration-500 will-change-transform"
+                  className="w-full h-full object-cover"
                   loading="lazy"
                 />
-
-                {/* subtle base overlay for contrast (black/30) -> black/80 when active */}
-                <div className={`absolute inset-0 transition-colors duration-300 ${showOverlay ? 'bg-black/50' : 'bg-black/30'}`} />
-
-                {/* Centered title */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <h3 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl text-white drop-shadow-md text-center px-4 ${showOverlay ? 'font-extrabold' : 'font-semibold'}`}>
-                    {service.name}
-                  </h3>
-                </div>
-
-                {/* Bottom panel: description + hexagon+arrow — glide up when active */}
-                {/* Panel: on mobile glide in horizontally, on md+ glide up from bottom */}
-                <div className={`absolute inset-x-0 bottom-0 pb-4 px-4 transition-all duration-200 sm:duration-300 ease-out ${showOverlay ? 'translate-x-0 opacity-100 pointer-events-auto md:translate-y-0 md:opacity-100' : 'translate-x-6 opacity-0 pointer-events-none md:translate-y-6 md:opacity-0'}`}>
-                  <div className="bg-transparent flex items-center justify-between">
-                    <p className="text-sm text-white/90 mr-3 line-clamp-3">{service.description}</p>
-                    <div className="ml-3 flex-shrink-0">
-                      <div className="relative w-10 h-10 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110">
-                        <Hexagon strokeWidth={1.5} className="text-white/95" size={34} />
-                        <ArrowRight className="absolute text-white" size={16} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Desktop link overlay: navigate on click for non-touch */}
-                {!isTouch && (
-                  <a href={`/services/${service.id}`} className="absolute inset-0" aria-label={`Open ${service.name}`} />
-                )}
               </div>
-            );
-          })}
+
+              {/* Content */}
+              <div className="flex flex-col flex-grow p-6 sm:p-7 md:p-8">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-3">
+                  {service.name}
+                </h3>
+                <p className="text-sm sm:text-base text-gray-600 mb-6 line-clamp-4">
+                  {service.description}
+                </p>
+
+                {/* Learn More Button */}
+                <div className="mt-auto">
+                  <Link
+                    to={`/services/${service.id}`}
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 text-xs sm:text-sm min-h-[44px]"
+                  >
+                    <span>Learn More</span>
+                    <ArrowRight size={16} />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

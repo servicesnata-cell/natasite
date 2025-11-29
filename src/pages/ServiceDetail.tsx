@@ -19,7 +19,7 @@ const servicesData: Record<string, any> = {
     description:
       'Optimize operations and reduce costs with strategic BPO solutions that offload non-core functions to experienced teams.',
     longDescription:
-      `Business Process Outsourcing empowers organizations to delegate non-core operational functions—including customer support operations, technical help desk services, payroll administration, accounts payable processing, data entry, and back-office administration—to specialized providers who deliver superior efficiency at reduced operational costs.
+      `Business Process Outsourcing empowers organizations to delegate non-core operational functions including customer support operations, technical help desk services, payroll administration, accounts payable processing, data entry, and back-office administration to specialized providers who deliver superior efficiency at reduced operational costs.
 
 Our comprehensive BPO service portfolio includes customer-facing front-office solutions such as omnichannel customer service, inbound/outbound sales support, and technical troubleshooting, alongside critical back-office functions encompassing financial operations, accounting and reconciliation, human resources administration, procurement management, and vendor coordination. Leveraging advanced AI-augmented workflows and human expertise, we accelerate response times, improve first-contact resolution rates, and enhance overall customer satisfaction metrics.
 
@@ -208,7 +208,7 @@ export default function ServiceDetail() {
             </div>
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-white">{service.name}</h1>
-              <p className="text-white text-lg mt-2 max-w-2xl">{service.description}</p>
+              <p className="text-white text-lg mt-2 text-justify">{service.description}</p>
             </div>
           </div>
         </div>
@@ -216,16 +216,16 @@ export default function ServiceDetail() {
 
       {/* Overview */}
       <section className="py-24 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold mb-6 text-blue-900">Overview</h2>
-          <p className="text-xl text-slate-700 leading-relaxed">{service.longDescription}</p>
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl font-bold mb-6 text-blue-900">Overview</h2>
+          <p className="text-2xl text-slate-700 leading-relaxed text-justify">{service.longDescription}</p>
         </div>
       </section>
 
       {/* What We Offer */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 sm:mb-10 md:mb-12 text-blue-900">What We Offer</h2>
+      <section className="py-6 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl font-bold mb-8 text-blue-900">What We Offer</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
             {service.services.map((item: string, idx: number) => (
               <div
@@ -243,7 +243,8 @@ export default function ServiceDetail() {
       </section>
 
       {/* Key Benefits */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-50">
+      <div className="py-24">
+      <section className="py-12 sm:py-12 md:py-20 lg:py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-blue-900">Key Benefits</h2>
           <div className="space-y-4 sm:space-y-6 md:space-y-8">
@@ -261,8 +262,10 @@ export default function ServiceDetail() {
           </div>
         </div>
       </section>
+      </div>
 
       {/* Get Started */}
+      <div className="mt-[-6rem]">
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-blue-600 text-white">
         <div className="max-w-3xl mx-auto px-3 sm:px-4 md:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-6 tracking-tight">Ready to Get Started?</h2>
@@ -277,6 +280,7 @@ export default function ServiceDetail() {
           </Link>
         </div>
       </section>
+      </div>
     </div>
   );
 }
