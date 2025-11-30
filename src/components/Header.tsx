@@ -14,14 +14,14 @@ export default function HeaderCTA() {
   ];
 
   const servicesList = [
-    { id: 'bpo', label: 'BPO Services' },
     { id: 'cloud', label: 'Cloud Infrastructure' },
     { id: 'devops', label: 'DevOps & Automation' },
     { id: 'cybersecurity', label: 'Cybersecurity' },
     { id: 'etl', label: 'ETL & Data Integration' },
-    { id: 'staffing', label: 'Staffing Solutions' },
-    { id: 'tax', label: 'US Tax Services' },
     { id: 'ai', label: 'AI / Machine Learning' },
+    { id: 'tax', label: 'US Tax Services' },
+    { id: 'bpo', label: 'BPO Services' },
+    { id: 'staffing', label: 'Staffing Solutions' },
   ];
 
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -94,7 +94,7 @@ export default function HeaderCTA() {
                       <Link
                         key={s.id}
                         to={`/services/${s.id}`}
-                        className="block px-4 py-1 text-sm sm:text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 min-h-[44px] flex items-center"
+                        className="block px-6 -mt-[0.5rem] -mb-[0.5rem] text-sm sm:text-base font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 min-h-[44px] flex items-center"
                       >
                         {s.label}
                       </Link>
