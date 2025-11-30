@@ -20,7 +20,7 @@ export default function Footer() {
             </div>
 
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed max-w-sm">
-              Empowering businesses through innovative technology solutions and expert consultancy services.
+              Empowering businesses through innovative technology solutions and expert staffing services.
             </p>
 
             <div className="flex justify-center sm:justify-start gap-3 mt-6">
