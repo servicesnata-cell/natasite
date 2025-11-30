@@ -215,65 +215,89 @@ export default function Home() {
 
       {/* Why Choose NCS Section */}
       <section
-        className="py-12 sm:py-24 md:py-24 lg:py-40 xl:py-56 relative transition-all duration-500 overflow-hidden"
-        style={{
-          backgroundImage: 'url(/naw1.jpeg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'scroll',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="mt-[-6rem] text-center mb-12 sm:mb-16 md:mb-20 lg:mb-32">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-4 sm:mb-6 md:mb-8 tracking-tight leading-tight">
-              Why Choose <span className="text-white">NCS</span>
-            </h2>
-            <p className="text-gray-200 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto font-light px-4 leading-relaxed">
-              We deliver exceptional value through expertise, innovation, and dedication
+  className="py-8 sm:py-24 md:py-24 lg:py-40 xl:py-56 relative transition-all duration-500 overflow-hidden"
+  style={{
+    backgroundImage: 'url(/naw1.jpeg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'scroll',
+  }}
+>
+  <div className="absolute inset-0 bg-black/50"></div>
+
+  <div className="max-w-7xl mx-auto px-3 sm:px-6 relative z-10">
+
+    {/* HEADER */}
+    <div className="mt-[-3rem] sm:mt-[-6rem] text-center mb-8 sm:mb-16 md:mb-20 lg:mb-32">
+
+      <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-3 sm:mb-6 md:mb-8 tracking-tight leading-tight">
+        Why Choose <span className="text-white">NCS</span>
+      </h2>
+
+      <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-3xl mx-auto font-light px-2 sm:px-4 leading-relaxed">
+        We deliver exceptional value through expertise, innovation, and dedication
+      </p>
+    </div>
+
+    {/* GRID */}
+    <div className="mt-[-1rem] sm:mt-[-2rem] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20">
+
+      {features.map((feature, index) => {
+        const Icon = feature.icon;
+        return (
+          <div key={index} className="text-center">
+
+            {/* ICON */}
+            <div className="flex justify-center mb-4 sm:mb-8 md:mb-10">
+              <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-white flex items-center justify-center rounded-md">
+                <Icon className="text-black" size={28} />
+              </div>
+            </div>
+
+            {/* TITLE */}
+            <h3 className="text-lg sm:text-2xl md:text-2xl lg:text-3xl font-semibold text-white mb-2 sm:mb-4 md:mb-6">
+              {feature.title}
+            </h3>
+
+            {/* DESCRIPTION */}
+            <p className="text-xs sm:text-base md:text-lg lg:text-xl text-gray-200 leading-relaxed px-2">
+              {feature.description}
             </p>
           </div>
+        );
+      })}
 
-          <div className="mt-[-2rem] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <div key={index} className="text-center">
-                  <div className="flex justify-center mb-6 sm:mb-8 md:mb-10">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-white flex items-center justify-center">
-                      <Icon className="text-black" size={40} />
-                    </div>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold text-white mb-3 sm:mb-4 md:mb-6">{feature.title}</h3>
-                  <p className="text-gray-200 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed px-2">{feature.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+    </div>
+  </div>
+</section>
 
 
-      {/* Impact Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10 sm:mb-12 md:mb-16">
-            <h2 className="text-[#002E6D] text-xl sm:text-xl uppercase tracking-widest font-semibold mb-2 sm:mb-3 -mt-6">
-              Our <span className="text-[#002E6D]">Impact</span>
-            </h2>
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-black px-4">
-              Delivering measurable results for our clients
-            </p>
-          </div>
+{/* IMPACT SECTION — Only mobile improved, larger screens untouched */}
+<section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-white">
+  <div className="max-w-7xl mx-auto px-3 sm:px-6">
 
-          <div className="overflow-hidden bg-white rounded-xl shadow-lg p-4 sm:p-6 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-            <CounterComponent targetValue={500} label="Projects Delivered" className="text-black" />
-            <CounterComponent targetValue={200} label="Happy Clients" className="text-black" />
-            <CounterComponent targetValue={50} label="Expert Team" className="text-black" />
-            <CounterComponent targetValue={15} label="Years Experience" className="text-black" />
-          </div>
-        </div>
-      </section>
+    <div className="text-center mb-8 sm:mb-12 md:mb-16">
+
+      <h2 className="text-sm sm:text-xl uppercase tracking-widest font-semibold mb-1 sm:mb-3 text-[#002E6D] -mt-4">
+        Our <span className="text-[#002E6D]">Impact</span>
+      </h2>
+
+      <p className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-black px-2 sm:px-4">
+        Delivering measurable results for our clients
+      </p>
+
+    </div>
+
+    <div className="overflow-hidden bg-white rounded-xl shadow-lg p-3 sm:p-6 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
+      <CounterComponent targetValue={500} label="Projects Delivered" />
+      <CounterComponent targetValue={200} label="Happy Clients" />
+      <CounterComponent targetValue={50} label="Expert Team" />
+      <CounterComponent targetValue={15} label="Years Experience" />
+    </div>
+    
+  </div>
+</section>
+
 
 
       {/* CTA Section with Timeline */}
