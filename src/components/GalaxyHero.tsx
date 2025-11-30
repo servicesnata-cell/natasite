@@ -188,9 +188,20 @@ export default function GalaxyHero() {
               <h1 className="glide-up-h1 hero-text text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
                 {slides[currentSlide].title}
               </h1>
-              <p className="py-2 glide-up-desc hero-sub text-xs sm:text-sm md:text-base lg:text-lg mb-3 leading-relaxed px-2 max-w-3xl mx-auto">
-                {slides[currentSlide].subtitle ? `${slides[currentSlide].subtitle} — ${slides[currentSlide].description}` : slides[currentSlide].description}
-              </p>
+              {slides[currentSlide].subtitle ? (
+                <>
+                  <p className="py-2 glide-up-desc hero-sub text-xs sm:text-sm md:text-base lg:text-lg mb-1 leading-relaxed px-2 max-w-3xl mx-auto">
+                    {slides[currentSlide].subtitle}
+                  </p>
+                  <p className="py-2 glide-up-desc hero-desc text-xs sm:text-sm md:text-base lg:text-lg mb-3 leading-relaxed px-2 max-w-3xl mx-auto">
+                    {slides[currentSlide].description}
+                  </p>
+                </>
+              ) : (
+                <p className="py-2 glide-up-desc hero-desc text-xs sm:text-sm md:text-base lg:text-lg mb-3 leading-relaxed px-2 max-w-3xl mx-auto">
+                  {slides[currentSlide].description}
+                </p>
+              )}
 
               <div className="py-2 glide-up-buttons flex flex-col sm:flex-row gap-1 sm:gap-3 md:gap-4 justify-center px-2 w-full">
                 <a
