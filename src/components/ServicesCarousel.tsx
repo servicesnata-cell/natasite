@@ -42,13 +42,13 @@ const services = [
     id: 'bpo',
     name: 'BPO Services',
     description: 'Customer support, back-office, payroll and operational outsourcing',
-    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
+    image: '/bpo.jpeg',
   },
   {
     id: 'staffing',
     name: 'Staffing Solutions',
     description: 'Permanent, contract and offshore staffing across tech and non-tech',
-    image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
+    image: '/staffing.jpeg',
   },
 ];
 
@@ -96,7 +96,7 @@ export default function ServicesCarousel() {
                 <div className="mt-auto">
                   <Link
                     to={`/services/${service.id}`}
-                    className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors text-xs sm:text-sm min-h-[44px] min-w-[100px]"
+                    className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2.5 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors text-xs sm:text-sm min-h-[44px] min-w-[100px]"
                   >
                     <span>Learn More</span>
                     <ArrowRight size={14} className="sm:w-4 sm:h-4" />

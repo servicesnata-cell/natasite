@@ -38,7 +38,7 @@ export default function Careers() {
         <div
           className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden bg-cover bg-center mb-6 sm:mb-8 md:mb-12 rounded-lg sm:rounded-xl"
         >
-          <div className="absolute inset-0 bg-blue-600 rounded-lg sm:rounded-xl"></div>
+          <div className="absolute inset-0 bg-blue-500 rounded-lg sm:rounded-xl"></div>
           <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 text-center z-10">
             <h1 className="-mt-4 sm:mt-0 md:-mt-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
               Apply <span className="text-white">Now</span>
@@ -169,7 +169,7 @@ export default function Careers() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full flex items-center justify-center space-x-2 px-6 py-3 text-white font-semibold rounded-md transition-all duration-300 shadow-lg bg-blue-600 hover:bg-blue-700 min-h-[44px]"
+          className="w-full flex items-center justify-center space-x-2 px-6 py-3 text-white font-semibold rounded-md transition-all duration-300 shadow-lg bg-blue-500 hover:bg-blue-700 min-h-[44px]"
         >
           <Send size={18} />
           <span>Send Application</span>

@@ -18,9 +18,8 @@ export default function About() {
       {/* Hero Section */}
       <div
         className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden bg-cover bg-center mb-6 sm:mb-8 md:mb-12 rounded-lg sm:rounded-xl"
-        style={{ backgroundImage: "url('/ab.jpeg')", backgroundAttachment: 'scroll' }}
       >
-        <div className="absolute inset-0 bg-blue-600/70 rounded-lg sm:rounded-xl"></div>
+        <div className="absolute inset-0 bg-blue-500 rounded-lg sm:rounded-xl"></div>
         <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 text-center z-10">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
             Driving Business Performance <span className="text-white">Through Strategic Technology and Outsourcing Excellence</span>
@@ -36,11 +35,11 @@ export default function About() {
         <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6">
           <div className="space-y-4 sm:space-y-6 md:space-y-8 text-gray-700">
               <p className="justified-text text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed">
-                Nata Consultancy Services is a global technology and business solutions provider dedicated to helping organizations operate with clarity, speed, and confidence. We focus on delivering outcome-driven services that simplify complex processes, strengthen digital foundations, and support long-term business advancement.
+                Nata Consultancy Services is a global technology and business solutions provider dedicated to helping organizations operate with clarity, speed, and confidence. We focus on delivering outcome driven services that simplify complex processes, strengthen digital foundations, and support long-term business advancement.
               </p>
 
               <p className="justified-text text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed">
-                Our company was built with a simple belief—technology should enable growth, not create barriers. With this vision, we bring together a diverse team of specialists who excel in cloud engineering, automation, cybersecurity, data integration, staffing solutions, business operations support, and regulatory services. Every solution we deliver is carefully designed to align with each client's goals, industry standards, and future roadmap.
+                Our company was built with a simple belief technology should enable growth, not create barriers. With this vision, we bring together a diverse team of specialists who excel in cloud engineering, automation, cybersecurity, data integration, staffing solutions, business operations support, and regulatory services. Every solution we deliver is carefully designed to align with each client's goals, industry standards, and future roadmap.
               </p>
 
               <p className="justified-text text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed">
@@ -48,7 +47,7 @@ export default function About() {
               </p>
 
               <p className="justified-text text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed">
-                Over the years, we've helped companies strengthen their digital ecosystems, build efficient workflows, adopt secure cloud infrastructures, and access the right talent to support mission-critical operations. We take pride in building long-lasting partnerships rooted in trust, transparency, and consistent results.
+                Over the years, we've helped companies strengthen their digital ecosystems, build efficient workflows, adopt secure cloud infrastructures, and access the right talent to support mission critical operations. We take pride in building long lasting partnerships rooted in trust, transparency, and consistent results.
               </p>
 
               <p className="justified-text text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed">
@@ -60,7 +59,7 @@ export default function About() {
 
       {/* CTA Section */}
       <div className="mt-12 sm:mt-16 md:mt-20 lg:mt-24">
- <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] py-12 sm:py-16 md:py-20 lg:py-24 bg-blue-600 text-white">
+ <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] py-12 sm:py-16 md:py-20 lg:py-24 bg-blue-500 text-white">
   <div className="max-w-none w-full text-center">
     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 tracking-tight">
       Ready to Work Together?
@@ -72,7 +71,7 @@ export default function About() {
 
 <Link
   to="/contact"
-  className="inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-100 transition-colors text-xs sm:text-sm md:text-base min-h-[44px] justify-center"
+  className="inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-blue-500 font-semibold rounded-md hover:bg-gray-100 transition-colors text-xs sm:text-sm md:text-base min-h-[44px] justify-center"
 >
   Get Started Today
 </Link>

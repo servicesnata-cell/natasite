@@ -17,7 +17,7 @@ const slides = [
     title: 'Global Excellence in Staffing',
     subtitle: 'Your Success is Our Mission',
     description:
-      'Delivering world-class staffing services across India and USA',
+      'Delivering world class staffing services across India and USA',
   },
 ];
 
@@ -120,7 +120,7 @@ export default function GalaxyHero() {
 
         /* Premium buttons */
         .hero-button {
-          background: linear-gradient(135deg, #1e40af, #1e3a8a);
+          background: linear-gradient(135deg, #4984d1ff, #1e3a8a);
           color: white;
           font-weight: 600;
           border-radius: 0.65rem;

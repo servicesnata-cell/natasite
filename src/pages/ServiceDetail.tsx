@@ -18,9 +18,9 @@ const servicesData: Record<string, any> = {
     icon: Server,
     subtitle: 'Optimize Operations and Reduce Costs with Strategic BPO Solutions',
     description:
-      'Business Process Outsourcing empowers organizations to delegate non-core operational functions—including customer support operations, technical help desk services, payroll administration, accounts payable processing, data entry, and back-office administration—to specialized providers who deliver superior efficiency at reduced operational costs.',
+      'Business Process Outsourcing empowers organizations to delegate non-core operational functions including customer support operations, technical help desk services, payroll administration, accounts payable processing, data entry, and back-office administration to specialized providers who deliver superior efficiency at reduced operational costs.',
     longDescription:
-      `Business Process Outsourcing empowers organizations to delegate non-core operational functions—including customer support operations, technical help desk services, payroll administration, accounts payable processing, data entry, and back-office administration—to specialized providers who deliver superior efficiency at reduced operational costs.
+      `Business Process Outsourcing empowers organizations to delegate non-core operational functions including customer support operations, technical help desk services, payroll administration, accounts payable processing, data entry, and back-office administration to specialized providers who deliver superior efficiency at reduced operational costs.
 
 Our comprehensive BPO service portfolio includes customer-facing front-office solutions such as omnichannel customer service, inbound/outbound sales support, and technical troubleshooting, alongside critical back-office functions encompassing financial operations, accounting and reconciliation, human resources administration, procurement management, and vendor coordination. Leveraging advanced AI-augmented workflows and human expertise, we accelerate response times, improve first-contact resolution rates, and enhance overall customer satisfaction metrics.
 
@@ -52,9 +52,9 @@ Operating with follow-the-sun coverage across multiple time zones, our global BP
     icon: Cloud,
     subtitle: 'Accelerate Innovation with Enterprise Cloud Architecture and Migration',
     description:
-      'Harness the transformative capabilities of industry-leading cloud platforms—Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform—to modernize IT infrastructure, enhance operational agility, improve security posture, and achieve significant cost optimization.',
+      'Harness the transformative capabilities of industry-leading cloud platforms Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform to modernize IT infrastructure, enhance operational agility, improve security posture, and achieve significant cost optimization.',
     longDescription:
-      `Harness the transformative capabilities of industry-leading cloud platforms—Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform—to modernize IT infrastructure, enhance operational agility, improve security posture, and achieve significant cost optimization. Our cloud consulting, migration planning, architecture design, and managed services empower enterprises to transition from legacy on-premises systems to flexible, scalable cloud environments that accelerate digital transformation initiatives.
+      `Harness the transformative capabilities of industry-leading cloud platforms Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform to modernize IT infrastructure, enhance operational agility, improve security posture, and achieve significant cost optimization. Our cloud consulting, migration planning, architecture design, and managed services empower enterprises to transition from legacy on-premises systems to flexible, scalable cloud environments that accelerate digital transformation initiatives.
 
 Whether your strategic objectives include complete datacenter migration, implementation of hybrid or multi-cloud architectures, workload optimization, or cloud-native application development, our team of certified cloud architects and engineers delivers customized solutions aligned with your business requirements and compliance mandates. We emphasize Infrastructure-as-Code (IaC) methodologies, serverless computing architectures, containerization strategies, automated deployment pipelines, and comprehensive disaster recovery frameworks that ensure operational resilience and business continuity.
 
@@ -91,7 +91,7 @@ With robust focus on cloud security best practices, identity and access manageme
     longDescription:
       `Accelerate your software development lifecycle and improve collaboration between development and operations teams through comprehensive DevOps implementation services that enable continuous delivery, automated testing, and enhanced software quality while dramatically reducing time-to-market. We implement fully automated CI/CD pipelines, infrastructure automation frameworks, real-time monitoring solutions, and observability platforms that improve system reliability and operational efficiency.
 
-Our DevOps engineering experts leverage industry-standard tools and platforms—including Jenkins, GitLab CI/CD, Azure DevOps, AWS CodePipeline, Terraform, Ansible, Docker, Kubernetes, and Prometheus—to orchestrate containerized environments, implement microservices architectures, and enable scalable cloud-native deployments. From infrastructure provisioning and configuration management to automated testing frameworks and continuous deployment strategies, we systematically reduce manual intervention, minimize human error, and improve system stability.
+Our DevOps engineering experts leverage industry-standard tools and platforms including Jenkins, GitLab CI/CD, Azure DevOps, AWS CodePipeline, Terraform, Ansible, Docker, Kubernetes, and Prometheus to orchestrate containerized environments, implement microservices architectures, and enable scalable cloud-native deployments. From infrastructure provisioning and configuration management to automated testing frameworks and continuous deployment strategies, we systematically reduce manual intervention, minimize human error, and improve system stability.
 
 Whether your organization is initiating DevOps transformation or optimizing existing workflows and toolchains, we design strategies specifically aligned with your technical environment, team structure, and business objectives. Our methodology drives innovation velocity, operational efficiency, improved mean time to recovery (MTTR), and faster feedback cycles from production environments, enabling rapid response to changing market conditions and customer requirements.`,
     image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg',
@@ -128,7 +128,7 @@ Whether your organization is initiating DevOps transformation or optimizing exis
 
 Our cybersecurity framework encompasses cloud security architecture, network perimeter defense, endpoint detection and response (EDR), security information and event management (SIEM), identity and access management (IAM), privileged access management (PAM), data loss prevention (DLP), and zero-trust network architecture implementation. We assist organizations in achieving and maintaining compliance with stringent regulatory requirements including HIPAA, GDPR, SOC 2 Type II, ISO 27001, PCI-DSS, NIST Cybersecurity Framework, and CMMC.
 
-Our team of certified security professionals—including CISSPs, CEHs, and CISMs—employs cutting-edge technologies and methodologies for penetration testing, red team/blue team exercises, security architecture reviews, threat modeling, security awareness training programs, and phishing simulation campaigns to systematically minimize organizational risk exposure. By establishing a proactive security posture with continuous threat intelligence integration, your organization can prevent costly data breaches, maintain stakeholder trust, protect brand reputation, and ensure uninterrupted business operations in an increasingly hostile cyber threat environment.`,
+Our team of certified security professionals including CISSPs, CEHs, and CISMs employs cutting-edge technologies and methodologies for penetration testing, red team/blue team exercises, security architecture reviews, threat modeling, security awareness training programs, and phishing simulation campaigns to systematically minimize organizational risk exposure. By establishing a proactive security posture with continuous threat intelligence integration, your organization can prevent costly data breaches, maintain stakeholder trust, protect brand reputation, and ensure uninterrupted business operations in an increasingly hostile cyber threat environment.`,
     image: '/cs.jpeg',
     benefits: [
       'Security assessment and vulnerability management',
@@ -272,7 +272,7 @@ From strategic tax planning to year-end compliance and IRS representation, our c
     description:
       'Harness the power of Artificial Intelligence and Machine Learning to drive intelligent automation, predictive analytics, and data-driven decision-making across your enterprise operations. Nata Consultancy Services delivers end-to-end AI/ML solutions enabling organizations to extract actionable insights from complex data, automate repetitive processes, enhance customer experiences, and unlock new revenue opportunities.',
     longDescription:
-      `Harness the power of Artificial Intelligence and Machine Learning to drive intelligent automation, predictive analytics, and data-driven decision-making across your enterprise operations. Nata Consultancy Services delivers end-to-end AI/ML solutions—from strategic consulting and use case identification to custom model development, deployment, and ongoing optimization—enabling organizations to extract actionable insights from complex data, automate repetitive processes, enhance customer experiences, and unlock new revenue opportunities.
+      `Harness the power of Artificial Intelligence and Machine Learning to drive intelligent automation, predictive analytics, and data-driven decision-making across your enterprise operations. Nata Consultancy Services delivers end-to-end AI/ML solutions from strategic consulting and use case identification to custom model development, deployment, and ongoing optimization enabling organizations to extract actionable insights from complex data, automate repetitive processes, enhance customer experiences, and unlock new revenue opportunities.
 
 Our comprehensive AI/ML service portfolio encompasses Natural Language Processing (NLP) for text analytics and chatbot development, Computer Vision for image and video analysis, Predictive Analytics for forecasting and risk assessment, Recommendation Engines for personalized customer engagement, Intelligent Process Automation (IPA) combining RPA with AI capabilities, and Custom Machine Learning Model Development tailored to your specific business challenges. We leverage cutting-edge frameworks and platforms including TensorFlow, PyTorch, Scikit-learn, Azure Machine Learning, AWS SageMaker, Google Vertex AI, and OpenAI APIs to build scalable, production-ready AI solutions.
 
@@ -315,7 +315,7 @@ export default function ServiceDetail() {
       <div className="bg-white min-h-screen pt-20 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-blue-900 mb-4">Service Not Found</h1>
-          <Link to="/services" className="text-blue-600 hover:text-blue-500">
+          <Link to="/services" className="text-blue-500 hover:text-blue-500">
             Back to Services
           </Link>
         </div>
@@ -358,7 +358,7 @@ export default function ServiceDetail() {
               {service.subtitle && (
                 <h2 className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 mt-2 sm:mt-3 font-semibold leading-snug">{service.subtitle}</h2>
               )}
-              <p className="text-white text-xs sm:text-sm md:text-base lg:text-lg mt-3 sm:mt-4 leading-relaxed">{service.description}</p>
+              <p className="justified-text text-white text-xs sm:text-sm md:text-base lg:text-lg mt-3 sm:mt-4 leading-relaxed max-w-3xl">{service.description}</p>
             </div>
           </div>
         </div>
@@ -382,7 +382,7 @@ export default function ServiceDetail() {
                 key={idx}
                 className="flex items-start gap-2 sm:gap-3 md:gap-4 p-3 sm:p-4 md:p-6 lg:p-8 bg-blue-50 border border-blue-100 rounded-lg"
               >
-                <div className="mt-0.5 text-blue-600 flex-shrink-0">
+                <div className="mt-0.5 text-blue-500 flex-shrink-0">
                   <CheckCircle size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6" />
                 </div>
                 <div className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-slate-800 leading-snug">{item}</div>
@@ -394,7 +394,7 @@ export default function ServiceDetail() {
 
       {/* Key Benefits */}
       <div className="py-8 sm:py-12 md:py-16 lg:py-24">
-      <section className="py-8 sm:py-10 md:py-16 lg:py-20 bg-gray-50">
+      <section className="py-8 sm:py-10 md:py-16 lg:py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 sm:mb-8 md:mb-12 lg:mb-16 text-blue-900">Key Benefits</h2>
           <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
@@ -403,7 +403,7 @@ export default function ServiceDetail() {
                 key={i}
                 className="flex items-start sm:items-center gap-3 sm:gap-4 md:gap-6 bg-white p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg border border-blue-100 shadow-sm"
               >
-                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 flex-shrink-0 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 flex-shrink-0 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg">
                   {i + 1}
                 </div>
                 <p className="text-slate-800 text-xs sm:text-sm md:text-base lg:text-lg font-semibold leading-relaxed">{benefit}</p>
@@ -416,7 +416,7 @@ export default function ServiceDetail() {
 
       {/* Get Started */}
       <div className="mt-0 md:mt-[-6rem]">
-      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-blue-600 text-white">
+      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-blue-500 text-white">
         <div className="max-w-3xl mx-auto px-3 sm:px-4 md:px-6 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-6 tracking-tight leading-snug">Ready to Get Started?</h2>
           <p className="text-blue-100 text-xs sm:text-sm md:text-base lg:text-lg mb-6 sm:mb-8 md:mb-10 leading-relaxed">
@@ -424,7 +424,7 @@ export default function ServiceDetail() {
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-100 transition-colors text-xs sm:text-sm md:text-base min-h-[44px] w-full sm:w-auto justify-center"
+            className="inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-blue-500 font-semibold rounded-md hover:bg-gray-100 transition-colors text-xs sm:text-sm md:text-base min-h-[44px] w-full sm:w-auto justify-center"
           >
             Get Started Today
           </Link>

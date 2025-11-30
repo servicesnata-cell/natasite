@@ -8,7 +8,7 @@ const services = [
     shortName: 'BPO Services',
     description: 'Optimize operations and reduce costs with strategic BPO solutions. We handle customer support, payroll, data entry, and back-office functions.',
     icon: Server,
-    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
+    image: '/bpo.jpeg',
     features: ['Customer Service & Support', 'Technical Help Desk', 'Payroll & Accounts Payable', 'Data Entry & Back-office'],
   },
   {
@@ -53,7 +53,7 @@ const services = [
     shortName: 'Staffing Solutions',
     description: 'Build high-performance teams quickly with global talent acquisition, screening, and managed workforce solutions.',
     icon: Users,
-    image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
+    image: '/staffing.jpeg',
     features: ['Permanent & Contract Staffing', 'Offshore Team Augmentation', 'Executive Search', 'Diversity & Inclusion Hiring'],
   },
   {
@@ -127,7 +127,7 @@ export default function Services() {
                   {/* Content */}
                   <div>
                     <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Icon className="text-white w-6 h-6 sm:w-7 sm:h-7" />
                       </div>
                       <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
@@ -135,7 +135,7 @@ export default function Services() {
                       </h3>
                     </div>
 
-                    <h4 className="text-base sm:text-lg md:text-xl font-semibold text-blue-600 mb-3 sm:mb-4 break-words">
+                    <h4 className="text-base sm:text-lg md:text-xl font-semibold text-blue-500 mb-3 sm:mb-4 break-words">
                       {service.name}
                     </h4>
 
@@ -149,7 +149,7 @@ export default function Services() {
                       <ul className="space-y-2 sm:space-y-2.5">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm md:text-base text-gray-700">
-                            <span className="inline-flex items-center justify-center w-5 h-5 bg-blue-600 text-white rounded-full flex-shrink-0 text-xs font-bold mt-0.5">✓</span>
+                            <span className="inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white rounded-full flex-shrink-0 text-xs font-bold mt-0.5">✓</span>
                             <span>{feature}</span>
                           </li>
                         ))}
@@ -159,7 +159,7 @@ export default function Services() {
                     {/* CTA Link */}
                     <Link
                       to={`/services/${service.id}`}
-                      className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 md:py-3.5 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors text-xs sm:text-sm md:text-base min-h-[44px]"
+                      className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 md:py-3.5 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors text-xs sm:text-sm md:text-base min-h-[44px]"
                     >
                       Learn More <ArrowRight size={16} className="sm:w-5 sm:h-5" />
                     </Link>
@@ -172,7 +172,7 @@ export default function Services() {
       </main>
 
       {/* CTA Section */}
-      <section className="py-10 sm:py-12 md:py-16 lg:py-20 bg-blue-600 text-white">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 bg-blue-500 text-white">
         <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6 text-center">
           <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 tracking-tight">
             Ready to Get Started?
@@ -182,7 +182,7 @@ export default function Services() {
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 md:py-4 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-100 transition-colors text-xs sm:text-sm md:text-base min-h-[44px]"
+            className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 md:py-4 bg-white text-blue-500 font-semibold rounded-md hover:bg-gray-100 transition-colors text-xs sm:text-sm md:text-base min-h-[44px]"
           >
             Contact Us Today
           </a>

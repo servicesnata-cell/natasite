@@ -368,7 +368,7 @@ export default function Home() {
     </div>
 
     <div className="text-center mt-10 sm:mt-12 md:mt-16 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-      <Link to="/contact" className="pop-animation inline-flex items-center gap-2 px-8 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition-colors min-h-[44px]">
+      <Link to="/contact" className="pop-animation inline-flex items-center gap-2 px-8 py-3 bg-white text-blue-500 font-bold rounded-lg hover:bg-gray-100 transition-colors min-h-[44px]">
         <span>Get Started</span>
       </Link>
     </div>
