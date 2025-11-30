@@ -17,7 +17,7 @@ const slides = [
     title: 'Global Excellence in Staffing',
     subtitle: 'Your Success is Our Mission',
     description:
-      'Delivering world-class consultancy services across India and USA',
+      'Delivering world-class staffing services across India and USA',
   },
 ];
 
