@@ -58,7 +58,7 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <div className="mt-12 sm:mt-16 md:mt-20 lg:mt-24">
+      <div className="mt-12 sm:mt-16 md:mt-20 lg:mt-16">
  <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] py-12 sm:py-16 md:py-20 lg:py-24 bg-blue-500 text-white">
   <div className="max-w-none w-full text-center">
     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 tracking-tight">
