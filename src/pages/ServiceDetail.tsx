@@ -327,6 +327,18 @@ export default function ServiceDetail() {
 
   return (
     <div className="bg-white min-h-screen text-slate-900">
+      <style>{`
+        .justified-text {
+          text-align: justify;
+          word-spacing: -0.05em;
+          hyphens: auto;
+        }
+        @media (min-width: 640px) {
+          .justified-text {
+            word-spacing: normal;
+          }
+        }
+      `}</style>
       {/* Hero */}
       <div className="relative min-h-[80vh] md:h-96 overflow-hidden">
         <div
@@ -356,7 +368,7 @@ export default function ServiceDetail() {
       <section className="py-8 sm:py-12 md:py-16 lg:py-24 px-3 sm:px-4 md:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-blue-900">Overview</h2>
-          <p className="text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed text-justify">{service.longDescription}</p>
+          <p className="justified-text text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed">{service.longDescription}</p>
         </div>
       </section>
 
