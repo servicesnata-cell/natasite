@@ -373,7 +373,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* What We Offer */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-3 px-3 sm:px-4 md:px-6 bg-white">
+      <section className="py-8 sm:py-12 md:py-16 lg:-mt-[6rem] px-3 sm:px-4 md:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-blue-900">What We Offer</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
@@ -393,7 +393,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* Key Benefits */}
-      <div className="py-8 sm:py-12 md:py-16 lg:py-24">
+      <div className="py-8 sm:py-12 md:py-16 lg:py-28 -mt-[5rem]">
       <section className="py-8 sm:py-10 md:py-16 lg:py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 sm:mb-8 md:mb-12 lg:mb-16 text-blue-900">Key Benefits</h2>
