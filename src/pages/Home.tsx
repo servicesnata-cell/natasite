@@ -215,7 +215,7 @@ export default function Home() {
 
       {/* Why Choose NCS Section */}
       <section
-        className="py-12 sm:py-16 md:py-24 lg:py-40 xl:py-56 relative transition-all duration-500 overflow-hidden"
+        className="py-12 sm:py-24 md:py-24 lg:py-40 xl:py-56 relative transition-all duration-500 overflow-hidden"
         style={{
           backgroundImage: 'url(/naw1.jpeg)',
           backgroundSize: 'cover',
