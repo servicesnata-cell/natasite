@@ -233,7 +233,7 @@ function MapGallery() {
               <iframe
                 src={m.src}
                 width="100%"
-                height="350"
+                height="125"
                 style={{ border: 0 }}
                 allowFullScreen={true}
                 loading="lazy"
