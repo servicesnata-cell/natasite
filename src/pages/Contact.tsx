@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Mail, MapPin, Send, Clock } from 'lucide-react';
+import { Mail, MapPin, Send, Clock, ArrowLeft, ArrowRight } from 'lucide-react';
 
 export default function Contact() {
   const form = useRef<HTMLFormElement>(null);
@@ -86,24 +86,16 @@ export default function Contact() {
                   <div className="flex-1 min-w-0">
                     <h4 className="text-blue-900 font-bold text-xl sm:text-2xl md:text-3xl break-words">Location:</h4>
                     <h5 className="text-blue-700 mt-1 sm:mt-2 text-base sm:text-lg md:text-xl font-semibold">India:</h5>
-                    <p className="text-blue-800 font-semibold text-xs sm:text-sm md:text-base leading-relaxed">
-                      Hyderabad, Telangana
+                    <p className="text-blue-800 font-normal text-xs sm:text-sm md:text-base leading-relaxed">
+                      12th Floor, Manjeera Trinity Corporate, Geek Space Business Centre, JNTU - Hitech City Rd, Kukatpally Housing Board Colony, Kukatpally, Hyderabad, Telangana 500072
                     </p>
                     <h5 className="text-blue-700 mt-2 text-base sm:text-lg md:text-xl font-semibold">U.S.A:</h5>
-                    <p className="text-blue-800 font-semibold text-xs sm:text-sm md:text-base">Atlanta, Georgia</p>
+                    <p className="text-blue-800 font-normal text-xs sm:text-sm md:text-base">7301 N State Highway 161, Suite 148 , Irving, TX 75039-2803 United States of America</p>
                   </div>
                 </div>
 
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.8176068155844!2d78.474991!3d17.406688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sHyderabad!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1234567890"
-                  width="100%"
-                  height="350"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="rounded-lg sm:rounded-xl"
-                ></iframe>
+                {/* Map gallery: Indian office (first) then US office (second) */}
+                <MapGallery />
               </div>
 
               {/* Right: Contact Form */}
@@ -186,6 +178,73 @@ export default function Contact() {
           </div>
         </section>
       </main>
+    </div>
+  );
+}
+
+function MapGallery() {
+  const maps = [
+    {
+      title: 'Indian office',
+      src: 'https://www.google.com/maps?q=Nata+Consultancy+Services+Private+Limited&output=embed',
+      iframeTitle: 'Nata Consultancy Services - Indian office',
+    },
+    {
+      title: 'US office',
+      src: 'https://www.google.com/maps?q=7301+N+State+Highway+161+Suite+148+Irving+TX+75039+United+States&output=embed',
+      iframeTitle: 'Nata Consultancy Services - US office (Irving, TX)',
+    },
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  const prev = () => setIndex((i) => (i - 1 + maps.length) % maps.length);
+  const next = () => setIndex((i) => (i + 1) % maps.length);
+
+  return (
+    <div className="mt-4">
+      <div className="flex items-center justify-between mb-2">
+        <h4 className="text-blue-900 font-bold text-lg sm:text-xl md:text-2xl">{maps[index].title}</h4>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={prev}
+            aria-label="Previous map"
+            className="p-2 rounded-full border border-blue-300 bg-white text-blue-700 hover:bg-blue-600 hover:text-white transition"
+          >
+            <ArrowLeft size={16} />
+          </button>
+          <button
+            onClick={next}
+            aria-label="Next map"
+            className="p-2 rounded-full border border-blue-300 bg-white text-blue-700 hover:bg-blue-600 hover:text-white transition"
+          >
+            <ArrowRight size={16} />
+          </button>
+        </div>
+      </div>
+
+      <div className="relative w-full overflow-hidden rounded-lg sm:rounded-xl">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ width: `${maps.length * 100}%`, transform: `translateX(-${index * (100 / maps.length)}%)` }}
+        >
+          {maps.map((m, i) => (
+            <div key={i} style={{ width: `${100 / maps.length}%` }} className="flex-shrink-0">
+              <iframe
+                src={m.src}
+                width="100%"
+                height="350"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-lg sm:rounded-xl"
+                title={m.iframeTitle}
+              ></iframe>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

@@ -215,7 +215,7 @@ export default function Home() {
 
       {/* Why Choose NCS Section */}
       <section
-        className="py-8 sm:py-24 md:py-24 lg:py-40 xl:py-56 relative transition-all duration-500 overflow-hidden flex items-center justify-center"
+        className="py-8 sm:py-24 md:py-24 lg:py-40 xl:py-6 relative transition-all duration-500 overflow-hidden flex items-center justify-center"
         style={{
           backgroundImage: 'url(/naw1.jpeg)',
           backgroundSize: 'cover',
@@ -225,7 +225,7 @@ export default function Home() {
       >
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="max-w-7xl mx-auto px-3 sm:px-6 relative z-10 w-full">
-          <div className="mt-0 sm:mt-[-6rem] text-center mb-6 sm:mb-16 md:mb-20 lg:mb-32">
+          <div className="mt-0 sm:mt-[1rem]  text-center mb-6 sm:mb-16 md:mb-20 lg:mb-32">
             <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-2 sm:mb-6 md:mb-8 tracking-tight leading-tight">
               Why Choose <span className="text-white">NCS</span>
             </h2>
@@ -278,7 +278,7 @@ export default function Home() {
 
       {/* CTA Section with Timeline */}
 <section
-  className="bg-blue-500 py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 relative overflow-hidden text-white"
+  className="bg-blue-500 py-12 sm:py-16 md:py-24 lg:py-32 xl:py-8 relative overflow-hidden text-white"
 >
   <div></div>
   <style>{`
