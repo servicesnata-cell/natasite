@@ -51,7 +51,7 @@ export default function Contact() {
       >
         <div className="absolute inset-0 bg-blue-500 rounded-lg sm:rounded-xl"></div>
         <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 text-center z-10">
-          <h1 className="-mt-6 sm:-mt-8 md:-mt-10 text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
+          <h1 className="-mt-6 sm:-mt-8 md:-mt-1 text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
             Get In <span className="text-white">Touch</span>
           </h1>
           <p className="mt-2 sm:mt-3 md:mt-4 text-blue-100 text-xs sm:text-sm md:text-base lg:text-lg max-w-2xl mx-auto px-2">
