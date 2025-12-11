@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="text-center sm:text-left col-span-1">
             <div className="flex justify-center sm:justify-start mb-4">
               <img
-                src="/nata.svg"
+                src="/natalogo.svg"
                 alt="Nata Consultancy Logo"
                 className="h-16 sm:h-20 md:h-24 w-auto"
               />
@@ -58,7 +58,7 @@ export default function Footer() {
           </div>
 
           {/* QUICK LINKS */}
-          <div className="text-center sm:text-left col-span-1 ml-20">
+          <div className="text-center sm:text-left col-span-1">
             <h4 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li><Link to="/" className="text-xs sm:text-sm text-gray-700 hover:text-blue-600 transition-colors">Home</Link></li>
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
 
           {/* SERVICES */}
-          <div className="text-center sm:text-left col-span-1 sm:col-span-1 lg:col-span-1 ml-12">
+          <div className="text-center sm:text-left col-span-1 sm:col-span-1 lg:col-span-1">
             <h4 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Services</h4>
             <ul className="grid grid-cols-1 sm:grid-cols-1 gap-2 text-xs sm:text-sm">
               <li><Link to="/services/cloud" className="text-gray-700 hover:text-blue-600 transition-colors">Cloud Infrastructure</Link></li>
@@ -84,19 +84,19 @@ export default function Footer() {
           </div>
 
           {/* CONTACT */}
-          <div className="text-center sm:text-left col-span-1 ml-12">
+          <div className="text-center sm:text-left col-span-1">
             <h4 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Contact</h4>
             <ul className="space-y-3 text-gray-700 text-xs sm:text-sm">
               <li className="flex items-start justify-center sm:justify-start gap-2">
-                <Mail size={18} className="text-blue-600 flex-shrink-0 mt-0.5" />
-                <span className="break-all">info@nataservices.com</span>
+                <Mail size={17} className="text-blue-600 flex-shrink-0 mt-0.5" />
+                <span className="whitespace-nowrap">info@nataservices.com</span>
               </li>
               <li className="flex items-start justify-center sm:justify-start gap-2">
-                <MapPin size={18} className="text-blue-600 flex-shrink-0 mt-0.5" />
+                <MapPin size={17} className="text-blue-600 flex-shrink-0 mt-0.5" />
                 <span>Atlanta, Georgia</span>
               </li>
               <li className="flex items-start justify-center sm:justify-start gap-2">
-                <MapPin size={18} className="text-blue-600 flex-shrink-0 mt-0.5" />
+                <MapPin size={17} className="text-blue-600 flex-shrink-0 mt-0.5" />
                 <span>Hyderabad, Telangana</span>
               </li>
             </ul>

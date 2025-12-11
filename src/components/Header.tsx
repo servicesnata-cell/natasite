@@ -50,7 +50,7 @@ export default function HeaderCTA() {
           <div className="flex items-center justify-between max-w-7xl mx-auto">
             <Link to="/" className="flex items-center flex-shrink-0">
               <img
-                src="/nata.svg"
+                src="/natalogo.svg"
                 alt="Logo"
                 className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain"
               />
