@@ -1,5 +1,6 @@
+import emailjs from "@emailjs/browser";
 import { useState, useRef } from "react";
-import { Mail, MapPin, Send, Clock, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Mail, MapPin, Send, ArrowLeft, ArrowRight } from 'lucide-react';
 
 export default function Contact() {
   const form = useRef<HTMLFormElement>(null);
@@ -26,22 +27,55 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const validationErrors = validateValues(formData);
-    setErrors(validationErrors);
-    setSubmitting(true);
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (Object.keys(validationErrors).length === 0) {
-      setTimeout(() => {
+  const validationErrors = validateValues(formData);
+  setErrors(validationErrors);
+
+  if (Object.keys(validationErrors).length !== 0) {
+    return;
+  }
+
+  setSubmitting(true);
+
+  emailjs
+    .send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        service: formData.service,
+        message: formData.message,
+        reply_to: formData.email, // important for reply-to
+      },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+    .then(
+      () => {
         alert("Message sent successfully. Thank you — we will get back to you soon.");
-        setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' });
+
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          message: "",
+        });
+
         setSubmitting(false);
-      }, 700);
-    } else {
-      setSubmitting(false);
-    }
-  };
+      },
+      (error) => {
+        console.error("EmailJS Error:", error);
+        alert("Something went wrong. Please try again later.");
+        setSubmitting(false);
+      }
+    );
+};
 
   return (
     <div className="bg-white min-h-screen pt-16 sm:pt-20 md:pt-24 px-3 sm:px-4 md:px-6 overflow-x-hidden">
